@@ -58,15 +58,19 @@ function CoursesSearch() {
     }, [AllCoursesList])
 
     const handleSelectedCategory = (Category) => {
-        setSelectedCategory(Category)
+        setSelectedCategory(Category);
+        
+        let filteredArray = [];
         if (Category === "All") {
-            setList(AllCoursesList)
+            filteredArray = AllCoursesList;
         } else {
-            const filteredArray = AllCoursesList.filter((item) => item.Category === Category)
-            setList(filteredArray)
+            filteredArray = AllCoursesList.filter((item) => item.Category === Category);
         }
-        setIsEmpty(filteredArray.length === 0)
+        
+        setList(filteredArray);
+        setIsEmpty(filteredArray.length === 0);
     }
+    
 
     const handleFilterChange = (e) => {
         setFilter(e.target.value)
