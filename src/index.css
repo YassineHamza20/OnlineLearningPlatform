@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  :root{
+    --color-elements: 135 169 34;
+    --color-button: 255 164 71;
+    --color-backg: 249 244 240;
+    --color-button2: 242 133 133;
+    --color-darkg: 118 118 118;
+    --color-lightg: 229 229 229;
+    --color-lightbutton: 255 242 229;
+    --color-errorbg: 236 200 197;
+    --color-errortext: 192 59 58;
+    --color-successbg: 222 242 214;
+    --color-lightGreen: 241 250 240;
+    --color-cellColor: 255 209 163;
+    --color-hoverOrange: 234 88 12;
+    --color-disabled: 187 187 187;
+    --color-active: 65 63 66;
+    --color-lightButton2: 251 220 220;
+    --color-star: 255 205 60;
+    --color-lightYellow: 255 254 200;
+    --color-lightRed: 255 218 219;
+    --color-textRed: 255 108 112;
+
+  }
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
