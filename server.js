@@ -209,7 +209,9 @@ app.use('/admin', adminInformation)
 // Socket.io logic
 require('./helpers/socketHandler')(io);//non authenticated 
 
-
+app.post('/', (req, res) => {
+  res.status(200).send('Server is running');
+});
 
 
 
