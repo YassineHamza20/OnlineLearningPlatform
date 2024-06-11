@@ -23,7 +23,7 @@ router.post('/regular_signup', (req, res) => {
         mysql.query(query, [email, email], (err, result) => {
             //Checking whether there's an error in database or not 
             if (err) {
-                res.status(500).json({message: "Internal Server Error"})
+                res.status(500).json({message: "error in database"})
             }
             else {
                 //checking whether the user already signed up or not 
@@ -41,7 +41,7 @@ router.post('/regular_signup', (req, res) => {
                             //Checking whether there's an error in database or not 
                             if (err) {
                                 console.log("query error: ", err)
-                                res.status(500).json({message: "Internal Server Error"})
+                                res.status(500).json({message: "error in database2"})
                             }
                             else {
                                 //if the operation was succesful return tokens
@@ -62,7 +62,7 @@ router.post('/regular_signup', (req, res) => {
                     })
                     .catch(error => {
                         console.error('Error hashing password:', error);
-                        res.status(500).json({message: "Internal Server Error"})
+                        res.status(500).json({message: "Error hashing password"})
                     })  
                     
                 }
