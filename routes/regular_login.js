@@ -17,7 +17,7 @@ router.post('/regularLogin', async (req, res) => {
     console.log('verification', verification);
     if(true) { // if recaptcha token is true  
         if(!information === 'learner' && !information ==='tutor') { // if it's not a tutor nor a learner respond with error
-            res.status(400).json({message: 'Invalid Request'})
+            res.status(400).json({message: 'not a learner nor tutor'})
         }
         if(email && password) { // checking whether the user sent his credentials or not
             //assuring that the email exists
@@ -49,7 +49,7 @@ router.post('/regularLogin', async (req, res) => {
                 }
             })
         }else {
-            res.status(400).json({message: 'Invalid Request'})
+            res.status(400).json({message: 'wrong email or password'})
         }
     }else {//wrong recaptcha token
         console.log(verification.success)
