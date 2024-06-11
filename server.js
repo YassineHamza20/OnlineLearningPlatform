@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: { 
-    origin: 'http://localhost:3000',
+    origin: 'https://linguify.netlify.app',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Authorization', 'Content-Type'],
     credentials: true
@@ -20,7 +20,7 @@ const io = socketIo(server, {
 
 // Middleware for parsing multipart/form-data
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "https://linguify.netlify.app"
 }))
 
 //port
@@ -209,7 +209,7 @@ app.use('/admin', adminInformation)
 // Socket.io logic
 require('./helpers/socketHandler')(io);//non authenticated 
 
-app.post('/', (req, res) => {
+app.get('/check', (req, res) => {
   res.status(200).send('Server is running');
 });
 
