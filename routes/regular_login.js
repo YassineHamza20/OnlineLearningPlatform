@@ -25,7 +25,7 @@ router.post('/regularLogin', async (req, res) => {
             mysql.query(query, [email], (err, result) => {
                 if(err) {
                     console.log(err);
-                    res.status(500).json({message: 'Internal Server Error'})
+                    res.status(500).json({message: 'Internal Server Error1'})
                 }else if (result.length > 0) {
                     //if the email exits  we compare the stored password for the email and the given password from the user
                     const user = result[0]
@@ -42,7 +42,7 @@ router.post('/regularLogin', async (req, res) => {
                     })
                     .catch(error => {
                         console.log(error)
-                        res.status(500).json({message: 'Internal Server Error'})
+                        res.status(500).json({message: 'Internal Server Error2'})
                     })
                 }else {//email doesn't exist
                     res.status(401).json({message: 'Invalid Email'})
