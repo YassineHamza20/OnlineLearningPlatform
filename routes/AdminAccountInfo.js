@@ -7,7 +7,8 @@ const roleCheck = require('../middleware/roleCheck');
 //, auth, roleCheck(["Admin"]),
 router.post('/AdminInfo' ,(req, res)=> {
     
-    const userId = req.user.id
+    //const userId = req.user.id
+    const { userId } = req.body;
     
     const query = `select email, firstname, lastname, tel, CIN from administrator where id= ?`
 
