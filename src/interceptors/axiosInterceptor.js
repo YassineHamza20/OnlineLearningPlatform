@@ -3,7 +3,7 @@ import {jwtDecode} from 'jwt-decode';
 
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: 'https://onlinelearningplatform-d9w2.onrender.com',
 });
 
 axiosInstance.interceptors.request.use(
@@ -18,7 +18,7 @@ axiosInstance.interceptors.request.use(
         try {
           // Call your backend to refresh the token
           const refreshedTokenResponse = await axios.post(
-            'http://localhost:5000/api/refreshToken',
+            'https://onlinelearningplatform-d9w2.onrender.com/api/refreshToken',
             {},
             { 
               headers: {

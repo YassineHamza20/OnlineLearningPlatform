@@ -10,7 +10,7 @@ const LikeButton = (props) => {
   const handleCheckboxChange = async () => {
       if(!isChecked) {//liking tutor
         try {
-            await axiosInstance.post('http://localhost:5000/learner/Like', {
+            await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/Like', {
               tutorId: props.id,
               action: 'Like'
             })
@@ -19,7 +19,7 @@ const LikeButton = (props) => {
         }
       }else {//disliking tutor
         try {
-            await axiosInstance.post('http://localhost:5000/learner/Like', {
+            await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/Like', {
                 tutorId: props.id,
                 action: 'Dislike'
             }) 
@@ -36,7 +36,7 @@ const LikeButton = (props) => {
     if(likedTutors) {
         const fetchLikedTutors = async () => {
             try {
-                await axiosInstance.post('http://localhost:5000/learner/LikedTutors', {})
+                await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/LikedTutors', {})
                 const liked= likedTutors.find(item => item.id === props.id)
                 setIsChecked(liked)
             } catch (error) {

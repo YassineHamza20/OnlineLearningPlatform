@@ -41,7 +41,7 @@ function Account(props) {
                 email = tutorData.email
             }
             setLoading(true)
-            const response = await axios.post('http://localhost:5000/resend/verification_Link', {
+            const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/resend/verification_Link', {
                 email: email,
                 role : firstSegment ==="learner"? "Learner" : "Tutor",
                 type:"Settings"

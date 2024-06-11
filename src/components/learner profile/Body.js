@@ -17,7 +17,7 @@ function Body() {
     useEffect(() =>{
         const fetchData = async () => {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/learner/getRecommendedCourses')
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getRecommendedCourses')
                 setCourses(response.data.result)
                 console.log("course recommendation: ", response.data.result)
             } catch (error) {

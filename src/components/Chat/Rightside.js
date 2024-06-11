@@ -43,7 +43,7 @@ useEffect(() => {
   const fetchConvo = async() => {
 
     try {
-      const response = await axiosInstance.post(`http://localhost:5000/${segments[1]}/getMessages`, {
+      const response = await axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${segments[1]}/getMessages`, {
       uuid: param.uuid
     })
     console.log("RESULT", response.data)
@@ -67,7 +67,7 @@ const handleReceiveMessage = (data) => {
 
 useEffect(() => {
   if(userId) {
-      const socket = io('http://localhost:5000', {
+      const socket = io('https://onlinelearningplatform-d9w2.onrender.com', {
       auth: {
           token: localStorage.getItem('accesstoken')
       }

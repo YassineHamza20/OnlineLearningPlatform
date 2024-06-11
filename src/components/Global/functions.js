@@ -15,7 +15,7 @@ export const fetchCountryData = async (countryName) => {
 //getting files from backend
 export const fetchFile = async (pfp, fileType, role, id, )=> {
     return new Promise((resolve, reject) => {
-        axiosInstance.get(`http://localhost:5000/api/uploads/${pfp}`, {
+        axiosInstance.get(`https://onlinelearningplatform-d9w2.onrender.com/api/uploads/${pfp}`, {
             params: {
                 role: role,
                 fileType: fileType,

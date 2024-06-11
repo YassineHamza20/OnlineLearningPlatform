@@ -44,7 +44,7 @@ function MessagesNotif(props) {
         try {
             if(!modalVisibility){
                 setLoading(true)
-                const response = await axiosInstance.post(`http://localhost:5000/${segments[1]}/getLatestMessages`)
+                const response = await axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${segments[1]}/getLatestMessages`)
                 console.log("message: ", response)
                 dispatch(setChatNotification(response.data))
                 setLoading(false)

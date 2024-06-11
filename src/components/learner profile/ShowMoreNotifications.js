@@ -17,7 +17,7 @@ function ShowMoreNotifications(props) {
             accepted = 0
         }
         try {
-            const notifications = await axiosInstance.post(`http://localhost:5000/${props.role}/getNotifications`, {
+            const notifications = await axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${props.role}/getNotifications`, {
                 page: pageNumber+1,//getting the next page
                 pageSize: 5,
                 Accepted: accepted

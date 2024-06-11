@@ -44,7 +44,7 @@ function TutorProfile(props) {
     useEffect(() => {
         const fetchLikedTutors = async () => {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/learner/LikedTutors', {})
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/LikedTutors', {})
                 
                 dispatch(setLikedTutors(response.data.message))
                 
@@ -65,7 +65,7 @@ function TutorProfile(props) {
         const fetchData = async () => {
             try {
                 setIsLoading(true)
-                const response = await axiosInstance.post('http://localhost:5000/learner/selectedTutor', {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/selectedTutor', {
                     uuid: param.uuid
                 }, {
                     headers: {

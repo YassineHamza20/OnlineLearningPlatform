@@ -33,7 +33,7 @@ function DeleteCourseModal(props) {
       const handleDelete = async () => {
         try {
             setLoading(true)
-            await axiosInstance.post(`http://localhost:5000/tutor/DeleteCourse`, {
+            await axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/tutor/DeleteCourse`, {
                 courseId: props.courseId
             })
             dispatch(deleteCourse(props.courseId))

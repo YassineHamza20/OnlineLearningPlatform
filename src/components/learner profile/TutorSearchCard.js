@@ -36,7 +36,7 @@ function TutorSearchCard(props) {
         if(!liked){//liking the tutor
             try {
                 console.log("tutorId:", props.tutor.id);
-                const response = await axiosInstance.post('http://localhost:5000/learner/Like', {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/Like', {
                     tutorId: props.tutor.id,
                     action: 'Like'
                 })
@@ -81,7 +81,7 @@ function TutorSearchCard(props) {
             try {
                 console.log("tutorId:", props.tutor.id);
 
-                await axiosInstance.post('http://localhost:5000/learner/Like', {
+                await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/Like', {
                     tutorId: props.tutor.id,
                     action: 'Dislike'
                 })

@@ -86,7 +86,7 @@ function TutorRow(props) {
                     lessonLength: scheduleData.lessonLength,
                     lessonLanguage: scheduleData.language
                 }
-                const response = await axiosInstance.post('http://localhost:5000/learner/scheduleLesson', sentData, {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/scheduleLesson', sentData, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
                     }
@@ -137,7 +137,7 @@ function TutorRow(props) {
                     ReadByLearner: 0
 
                 }
-                socket.current = io('http://localhost:5000', {
+                socket.current = io('https://onlinelearningplatform-d9w2.onrender.com', {
                     auth: {
                     token: localStorage.getItem('accesstoken')
                     }

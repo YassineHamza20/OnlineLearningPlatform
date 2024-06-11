@@ -35,7 +35,7 @@ function LessonNotifications(props) {
         const fetchData = async () => {
             try {
                 setLoading(true)
-                const notifications = await axiosInstance.post('http://localhost:5000/learner/getNotifications', {
+                const notifications = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getNotifications', {
                     page: 1,
                     pageSize: 5,
                     Accepted: ""
@@ -71,7 +71,7 @@ function LessonNotifications(props) {
         }
         console.log("accepted: ", accepted);
         try {
-            const notifications = await axiosInstance.post('http://localhost:5000/learner/getNotifications', {
+            const notifications = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getNotifications', {
                 page: 1,
                 pageSize: 5,
                 Accepted: accepted
@@ -110,7 +110,7 @@ function LessonNotifications(props) {
         const handleMarkAllAsRead = async () => {
             try {
                 setMarkAllAsReadLoading(true)
-                const reponse = await axiosInstance.post('http://localhost:5000/learner/markAllAsRead', {
+                const reponse = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/markAllAsRead', {
 
                 }, {
                     headers: {

@@ -10,7 +10,7 @@ function TutorsCard(props) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/learner/RecommendedTutors', {})
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/RecommendedTutors', {})
                 console.log("response: ", response.data);
                 setRecommendedTutors(response.data)
             }catch(err) {

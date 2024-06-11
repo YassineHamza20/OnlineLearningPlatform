@@ -41,7 +41,7 @@ function Notifications(props) {
             console.log("fetching notifications again ");
             try {
                 setLoading(true)
-                const notifications = await axiosInstance.post('http://localhost:5000/tutor/getNotifications', {
+                const notifications = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/getNotifications', {
                     page: 1,
                     pageSize: 5,
                     Accepted: Accepted
@@ -96,7 +96,7 @@ function Notifications(props) {
         }
         console.log("accepted: ", accepted);
         try {
-            const notifications = await axiosInstance.post('http://localhost:5000/tutor/getNotifications', {
+            const notifications = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/getNotifications', {
                 page: 1,
                 pageSize: 5,
                 Accepted: accepted
@@ -136,7 +136,7 @@ function Notifications(props) {
         const handleMarkAllAsRead = async () => {
             try {
                 setMarkAllAsReadLoading(true)
-                const reponse = await axiosInstance.post('http://localhost:5000/tutor/markAllAsRead', {
+                const reponse = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/markAllAsRead', {
 
                 }, {
                     headers: {

@@ -12,7 +12,7 @@ async function refreshToken() {
     
     // Call your backend to refresh the token
     const refreshedTokenResponse = await axios.post(
-      'http://localhost:5000/api/refreshToken',
+      'https://onlinelearningplatform-d9w2.onrender.com/api/refreshToken',
       {},
       {
         headers: {
@@ -33,7 +33,7 @@ async function refreshToken() {
     throw error;
   }
 }
-const socket = io('http://localhost:5000', {
+const socket = io('https://onlinelearningplatform-d9w2.onrender.com', {
   auth: {
     token: localStorage.getItem('accesstoken')
   }

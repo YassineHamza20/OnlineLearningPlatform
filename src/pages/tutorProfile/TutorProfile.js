@@ -75,7 +75,7 @@ function TutorProfile() {
         const fetchData = async () => {
             dispatch(setIsLoading(true))
             try {
-                const response = await axiosInstance.post('http://localhost:5000/tutor/details', {}, {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/details', {}, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`,
                         'Content-Type': 'multipart/form-data' // Set the content type to multipart/form-data
@@ -147,7 +147,7 @@ function TutorProfile() {
         //consuming api to get if there are unread notifs or not 
         const fetchNumberOfUnreadNotifs = async () => {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/tutor/CountUnreadNotifications', {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/CountUnreadNotifications', {
 
                 },  {
                     headers: {
@@ -182,7 +182,7 @@ function TutorProfile() {
 
     useEffect(() => {
         if(tutorData.id) {
-            const socket = io('http://localhost:5000', {
+            const socket = io('https://onlinelearningplatform-d9w2.onrender.com', {
             auth: {
                 token: localStorage.getItem('accesstoken')
             }
@@ -255,7 +255,7 @@ function TutorProfile() {
 
         const fetchTodaysUpcomingLessons = async () => {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/tutor/getDayLessons', {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/getDayLessons', {
                     date: `${year}-${month}-${dayOfMonth}`
                 }, {
                     headers: {
@@ -324,7 +324,7 @@ function TutorProfile() {
 
     useEffect(() => {
         if(tutorData.id) {
-            const socket = io('http://localhost:5000', {
+            const socket = io('https://onlinelearningplatform-d9w2.onrender.com', {
             auth: {
                 token: localStorage.getItem('accesstoken')
             }

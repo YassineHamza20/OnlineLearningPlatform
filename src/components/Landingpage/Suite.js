@@ -47,7 +47,7 @@ const App = () => {
   useEffect(() => {
     const fetchCourses = async () =>  {
       try {
-        const response = await axios.post('http://localhost:5000/visitor/getCoursesLP')
+        const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/visitor/getCoursesLP')
         console.log("courses: ", response.data);
         setCourseData(response.data.result)
       } catch (error) {

@@ -31,7 +31,7 @@ export default function Voicemsg() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
-    const response = await axiosInstance.post(`http://localhost:5000/${segments[1]}/saveMessages`, {
+    const response = await axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${segments[1]}/saveMessages`, {
     id: param.uuid,
     msg: text
     })
@@ -65,7 +65,7 @@ export default function Voicemsg() {
       firstname: segments[1] === "learner" ? learnerData.firstname : tutorData.firstname,
       otherUuid: segments[1] === "learner" ? learnerData.uuid : tutorData.uuid 
     } 
-    const socket = io('http://localhost:5000/', {
+    const socket = io('https://onlinelearningplatform-d9w2.onrender.com/', {
             auth: {
                 token: localStorage.getItem('accesstoken')
             }

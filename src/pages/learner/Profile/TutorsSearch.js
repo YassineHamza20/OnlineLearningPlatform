@@ -35,7 +35,7 @@ function TutorsSearch(props) {
     useEffect(() => {
         const fetchLikedTutors = async () => {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/learner/LikedTutors', {})
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/LikedTutors', {})
                 
                 dispatch(setLikedTutors(response.data.message))
             } catch (error) {
@@ -50,7 +50,7 @@ function TutorsSearch(props) {
         try {
                 dispatch(resetPageNumber())
                 setLoading(true)
-                const response = await axiosInstance.post('http://localhost:5000/SearchTutors', {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/SearchTutors', {
                     page: 1,
                     pageSize: 3,
                     filterOptions: filterOption

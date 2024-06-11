@@ -17,7 +17,7 @@ function Calendar(props) {
   useEffect(() => {
     const fetchFirstDayLessons = async () => {
       try {
-        const response = await axiosInstance.post('http://localhost:5000/tutor/getFirstLesson', {}, {
+        const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/getFirstLesson', {}, {
          headers: {
              'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
          }

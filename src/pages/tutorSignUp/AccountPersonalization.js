@@ -55,7 +55,7 @@ function AccountPersonalization() {
             formData.append('lastname', tutorData.lastname)
 
 
-            axiosInstance.post('http://localhost:5000/tutor/personalization', formData, {
+            axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/personalization', formData, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`,
                     'Content-Type': 'multipart/form-data' // Set the content type to multipart/form-data

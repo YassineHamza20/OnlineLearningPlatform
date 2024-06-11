@@ -22,7 +22,7 @@ function FourthPhase() {
         setIsLoading(true);
     
         axiosInstance.post(
-            'http://localhost:5000/speedTest',
+            'https://onlinelearningplatform-d9w2.onrender.com/speedTest',
             {},
             {
                 headers: {

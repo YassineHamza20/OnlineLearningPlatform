@@ -19,7 +19,7 @@ function CoursePage(props) {
     useEffect (() => {
         const fetchCourseData = async () => {
             try {
-                const response = await axiosInstance.post('http://localhost:5000/learner/getCourseInfo', {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getCourseInfo', {
                     courseUuid: param.uuid
                 })
                 console.log("CourseData", response.data.result);

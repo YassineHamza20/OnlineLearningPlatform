@@ -37,7 +37,7 @@ const LinguaBuddy = () => {
         return new Promise(async (resolve, reject) => {
             setLoading(true);
             try {
-                const response = await axiosInstance.post('http://localhost:5000/user/ChatBot', {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/user/ChatBot', {
                     data: { 
                         topic: topic,
                         language: language,

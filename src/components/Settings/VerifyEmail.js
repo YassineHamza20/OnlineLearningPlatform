@@ -15,7 +15,7 @@ function VerifyEmail(props) {
     useEffect(()=> {
         const verifyEmail =  async () => {
             try {
-                const response = await axios.post('http://localhost:5000/user/verifEmail', {
+                const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/user/verifEmail', {
                     type : 'Settings'
                 },{
                     headers: {

@@ -34,7 +34,7 @@ function Image() {
             formData.append('image', imageFile)
             //sending the image to server so that ai checks if it contains a face
             try {
-                const response = await axiosInstance.post('http://localhost:5000/imageFaceDetection', formData, {
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/imageFaceDetection', formData, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
                     }

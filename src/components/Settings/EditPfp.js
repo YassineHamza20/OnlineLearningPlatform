@@ -43,7 +43,7 @@ function EditPfp(props) {
                 reader.readAsDataURL(imageFile)
                 reader.onload = async () => {
                     try {
-                        const response = await axiosInstance.post('http://localhost:5000/learner/UpdateFile', formData, 
+                        const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/UpdateFile', formData, 
                             {
                                 headers: {
                                     'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`,
@@ -69,7 +69,7 @@ function EditPfp(props) {
                     const aiForm = new FormData()
                     aiForm.append('image', imageFile)
 
-                    const response = await axiosInstance.post('http://localhost:5000/imageFaceDetection', aiForm, {
+                    const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/imageFaceDetection', aiForm, {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem('accesstoken')}`
                         }
@@ -79,7 +79,7 @@ function EditPfp(props) {
                         reader.readAsDataURL(imageFile)
                         reader.onload = async () => {
                             try {
-                                const response = await axiosInstance.post('http://localhost:5000/tutor/UpdateFile', formData, 
+                                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/UpdateFile', formData, 
                                     {
                                         headers: {
                                             'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`,

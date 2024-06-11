@@ -10,7 +10,7 @@ const Tutors = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await axios.post('http://localhost:5000/visitor/getTutorinfoLandingPage')
+        const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/visitor/getTutorinfoLandingPage')
         setTutors(response.data.result)
         console.log("tutors: ", response.data.result) 
     }
