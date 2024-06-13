@@ -38,7 +38,7 @@ function handleDisconnect() {
         console.error('Error keeping the connection alive:', err);
       }
     });
-  }, 30000);
+  }, 60000 * 5);
 }
 
 handleDisconnect();
