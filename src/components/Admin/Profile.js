@@ -20,7 +20,7 @@ function Profile(props) {
                     <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-between">
                         <span className="font-bold text-gray-700">Email</span>
-                        <span className="text-gray-600">{info.email}</span>
+                        {/* <span className="text-gray-600">{info.email}</span> */}
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="font-bold text-gray-700">First Name</span>
