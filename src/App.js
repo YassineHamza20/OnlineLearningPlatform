@@ -24,7 +24,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='https://linguify.netlify.app/learner/signup' element={<Signup />} />
+        <Route path='z/learner/signup' element={<Signup />} />
         <Route path='/learner/signup/personalize' element={<Signup />} />
         <Route path='/tutor/signup' element={<TutorSignUp />} />
         <Route path='/learner/signin' element={<Signin />} />
@@ -259,7 +259,7 @@ function App() {
           }
         />
         <Route
-          path='https://linguify.netlify.app/admin/Dashboard'
+          path='/admin/Dashboard'
           element={
             <ProtectedRoute>
               <Admin />
@@ -267,7 +267,7 @@ function App() {
           }
         />
         <Route
-          path='https://linguify.netlify.app//admin/Profile'
+          path='/admin/Profile'
           element={
             <ProtectedRoute>
               <Admin />
@@ -275,14 +275,14 @@ function App() {
           }
         />
         <Route
-          path='https://linguify.netlify.app/admin/CreateAdmin'
+          path='/admin/CreateAdmin'
           element={
             <ProtectedRoute>
               <Admin />
             </ProtectedRoute>
           }
         />
-        <Route path='https://linguify.netlify.app/backOffice/admin/login' element={<LogIn />} />
+        <Route path='/backOffice/admin/login' element={<LogIn />} />
         <Route index element={<Landingpage />} />
       </Routes>
     </Router>
