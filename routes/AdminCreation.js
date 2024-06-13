@@ -32,7 +32,7 @@ router.post('/signup', async (req, res) => {
     mysql.query(selectQuery, [email, email, email], async(err, result) => {
         if(err) {
             console.log(err);
-            res.status(500).json({message: "Internal Server Error"})
+            res.status(500).json({message: "Internal Server Error1"})
         }else if(result.length >0) {
             res.status(409).json({message:"Email Already exits!"})
         }else {
@@ -42,14 +42,14 @@ router.post('/signup', async (req, res) => {
                 mysql.query(insertQuery, [email, firstname, lastname, tel, hash, CIN], (insertErr, insertResult) => {
                     if(insertErr) {
                         console.log(insertErr)
-                        res.status(500).json({message: "Internal Server Error!"})
+                        res.status(500).json({message: "Internal Server Error2!"})
                     }else {
                         res.status(201).json({message:"Created"})
                     }
                 })
             } catch (error) {
                 console.log(error)
-                res.status(500).json({message: "Internal Server Error!"})
+                res.status(500).json({message: "Internal Server Error3!"})
             }
         }
     })
