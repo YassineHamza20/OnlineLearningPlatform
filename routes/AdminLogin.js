@@ -13,7 +13,7 @@ router.post('/login', async (req, res) => {
         res.status(400).json({message:"No input!"})
     }
 
-    const verifQuery = "select id, pword from Administrator where email = ?"
+    const verifQuery = "select id, pword from administrator where email = ?"
     mysql.query(verifQuery, [email], (err, result) => {
         if(err) {
             console.log(err);
