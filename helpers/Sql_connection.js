@@ -1,62 +1,42 @@
-// const mysql = require('mysql');
-
-// const connection = mysql.createConnection({
-//     host: 'localhost',  // localhost is typically sufficient
-//     user: 'root',  // Your MySQL username
-//     //password: 'root', 
-//     database: 'pfe',  // Your database name
-//     port: 3306  // Default MySQL port, change if your XAMPP uses different
-// });
-
-// connection.connect((err) => {
-//     if (err) {
-//         console.error('Error connecting: ' + err.stack);
-//         return;
-//     }
-//     console.log('Connected as id ' + connection.threadId);
-// });
-
-// // Example query
-// // connection.query('SELECT * FROM learner', (err, rows, fields) => {
-// //     if (err) throw err;
-
-// //     console.log('Data received from Db:');
-// //     console.log(rows);
-// // });
-
-// module.exports = connection;
-
-
-
-
-
-
-
-
-
-
-
-
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-  host: 'sql8.freesqldatabase.com', // Your database host
-  user: 'sql8713364',  // Your database username
-  password: '9EDLUi6WXJ',  // Your database password
-  database: 'sql8713364',  // Your database name
-  port: 3306 
+// Create a pool
+const connection = mysql.createPool({
+    connectionLimit: 10,  // Maximum number of connections to create at once
+    host: 'sql8.freesqldatabase.com',
+    user: 'sql8713364',
+    password: '9EDLUi6WXJ',
+    database: 'sql8713364',
+    port: 3306
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database:');
-    console.error('Error code:', err.code);
-    console.error('Error errno:', err.errno);
-    console.error('Error message:', err.message);
-    console.error('Error stack:', err.stack);
-    return;
-  }
-  console.log('Connected to the database as id', connection.threadId);
+// Get a promise wrapped instance of the pool
+const promisePool = connection.promise();
+
+// Handle connection errors
+connection.on('connection', (connection) => {
+    console.log('Connected to the database with threadId:', connection.threadId);
+
+    connection.on('error', (err) => {
+        console.error('MySQL connection error:', err.code);  // e.g., 'PROTOCOL_CONNECTION_LOST'
+    });
+
+    connection.on('close', (err) => {
+        console.error('MySQL connection closed:', err);
+    });
 });
 
-module.exports = connection;
+pool.on('acquire', (connection) => {
+    console.log('Connection %d acquired', connection.threadId);
+});
+
+pool.on('release', (connection) => {
+    console.log('Connection %d released', connection.threadId);
+});
+
+pool.on('error', (err) => {
+    console.error('Unexpected error on idle client', err);
+    process.exit(-1);
+});
+
+module.exports = promisePool;
