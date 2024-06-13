@@ -25,7 +25,7 @@ function App() {
     <>
     <Router>
       <Routes>
-        <Route path='z/learner/signup' element={<Signup />} />
+        <Route path='/learner/signup' element={<Signup />} />
         <Route path='/learner/signup/personalize' element={<Signup />} />
         <Route path='/tutor/signup' element={<TutorSignUp />} />
         <Route path='/learner/signin' element={<Signin />} />
