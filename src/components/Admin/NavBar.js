@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function NavBar(props) {
     const navigate = useNavigate();
