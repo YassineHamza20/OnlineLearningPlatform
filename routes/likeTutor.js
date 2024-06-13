@@ -22,7 +22,7 @@ router.post('/Like', auth, roleCheck(["Learner"]), (req, res) => {
         query = `insert into likedtutors(learnerId, tutorId) value(?, ?)`
     }  
     else if(action ==="Dislike"){
-        query = `delete from likedTutors where learnerId= ? and tutorId=?` 
+        query = `delete from likedtutors where learnerId= ? and tutorId=?` 
     }
 
     mysql.query(query, [userId, tutorId], (err, result)=> {

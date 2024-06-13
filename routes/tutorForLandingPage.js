@@ -16,7 +16,7 @@ router.post('/getTutorinfoLandingPage', (req, res)=> {
     t.Country,
     t.created_at,
     COUNT(lt.tutorId) AS like_count
-	from likedTutors lt, tutor t 
+	from likedtutors lt, tutor t 
     where t.id = lt.tutorId
 GROUP BY 
     t.id, t.lastname, t.firstname
