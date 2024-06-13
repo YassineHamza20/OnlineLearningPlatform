@@ -1,42 +1,46 @@
 const mysql = require('mysql');
 
-// Create a pool
-const connection = mysql.createPool({
-    connectionLimit: 10,  // Maximum number of connections to create at once
-    host: 'sql8.freesqldatabase.com',
-    user: 'sql8713364',
-    password: '9EDLUi6WXJ',
-    database: 'sql8713364',
-    port: 3306
-});
+const dbConfig = {
+  host: 'sql8.freesqldatabase.com',
+  user: 'sql8713364',
+  password: '9EDLUi6WXJ',
+  database: 'sql8713364',
+  port: 3306
+};
 
-// Get a promise wrapped instance of the pool
-const promisePool = connection.promise();
+let connection;
 
-// Handle connection errors
-connection.on('connection', (connection) => {
-    console.log('Connected to the database with threadId:', connection.threadId);
+function handleDisconnect() {
+  connection = mysql.createConnection(dbConfig);
 
-    connection.on('error', (err) => {
-        console.error('MySQL connection error:', err.code);  // e.g., 'PROTOCOL_CONNECTION_LOST'
+  connection.connect((err) => {
+    if (err) {
+      console.error('Error connecting to the database:', err);
+      setTimeout(handleDisconnect, 2000); // Reconnect after 2 seconds
+    } else {
+      console.log('Connected to the database as id', connection.threadId);
+    }
+  });
+
+  connection.on('error', (err) => {
+    console.error('Database error:', err);
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+      handleDisconnect(); // Reconnect if connection is lost
+    } else {
+      throw err;
+    }
+  });
+
+  // Keep the connection alive by sending a query every 30 seconds
+  setInterval(() => {
+    connection.query('SELECT 1', (err) => {
+      if (err) {
+        console.error('Error keeping the connection alive:', err);
+      }
     });
+  }, 30000);
+}
 
-    connection.on('close', (err) => {
-        console.error('MySQL connection closed:', err);
-    });
-});
+handleDisconnect();
 
-pool.on('acquire', (connection) => {
-    console.log('Connection %d acquired', connection.threadId);
-});
-
-pool.on('release', (connection) => {
-    console.log('Connection %d released', connection.threadId);
-});
-
-pool.on('error', (err) => {
-    console.error('Unexpected error on idle client', err);
-    process.exit(-1);
-});
-
-module.exports = promisePool;
+module.exports = connection;
