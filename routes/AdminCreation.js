@@ -36,7 +36,7 @@ router.post('/signup', async (req, res) => {
         }else if(result.length >0) {
             res.status(409).json({message:"Email Already exits!"})
         }else {
-            const insertQuery = "insert into Administrator(email, firstname, lastname, tel, pword, CIN) Values(? ,?, ?, ?, ?, ?)"
+            const insertQuery = "insert into sql8713364.Administrator(email, firstname, lastname, tel, pword, CIN) Values(? ,?, ?, ?, ?, ?)"
             try {
                 const hash = await bcrypt.hash(password, 10);
                 mysql.query(insertQuery, [email, firstname, lastname, tel, hash, CIN], (insertErr, insertResult) => {
