@@ -5,8 +5,8 @@ import ReactLoading from 'react-loading';
 function CreateAdmin(props) {
     const [formData, setFormData] = useState({
         email: '',
-        firstname: '',
-        lastname: '',
+        firstName: '',
+        lastName: '',
         password: '',
         confPass: '',
         phoneNumber: '',
@@ -38,8 +38,8 @@ function CreateAdmin(props) {
             const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/admin/signup`, {
                 email: formData.email,
                 password: formData.password,
-                firstname: formData.firstname, 
-                lastname: formData.lastname,
+                firstname: formData.firstName, 
+                lastname: formData.lastName,
                 tel: formData.phoneNumber,
                 CIN: formData.CIN
             })
@@ -47,8 +47,8 @@ function CreateAdmin(props) {
             setSuccess(true)
             setFormData({
                 email: '',
-                firstname: '',
-                lastname: '',
+                firstName: '',
+                lastName: '',
                 password: '',
                 confPass: '',
                 phoneNumber: '',
@@ -83,8 +83,8 @@ function CreateAdmin(props) {
           <label className="block text-gray-700">First Name</label>
           <input
             type="text"
-            name="firstname"
-            value={formData.firstname}
+            name="firstName"
+            value={formData.firstName}
             onChange={handleChange}
             placeholder='First Name'
             className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-elements"
@@ -95,8 +95,8 @@ function CreateAdmin(props) {
           <label className="block text-gray-700">Last Name</label>
           <input
             type="text"
-            name="lastname"
-            value={formData.lastname}
+            name="lastName"
+            value={formData.lastName}
             onChange={handleChange}
             placeholder='Last Name'
             className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-elements"
