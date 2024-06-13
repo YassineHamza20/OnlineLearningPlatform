@@ -40,17 +40,18 @@ router.post('/signup', async (req, res) => {
             try {
                 const hash = await bcrypt.hash(password, 10);
                 mysql.query(insertQuery, [email, firstname, lastname, tel, hash, CIN], (insertErr, insertResult) => {
-                    if(insertErr) {
-                        console.log(insertErr)
-                        res.status(500).json({message: "Internal Server Error2!"})
-                    }else {
-                        res.status(201).json({message:"Created"})
+                    if (insertErr) {
+                        console.error('Database error during insertion:', insertErr);
+                        res.status(500).json({ message: "Internal Server Error2!", error: insertErr });
+                    } else {
+                        res.status(201).json({ message: "Created" });
                     }
-                })
+                });
             } catch (error) {
-                console.log(error)
-                res.status(500).json({message: "Internal Server Error3!"})
+                console.error('Error hashing password or during database operation:', error);
+                res.status(500).json({ message: "Internal Server Error3!" });
             }
+            
         }
     })
 
