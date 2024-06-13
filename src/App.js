@@ -22,6 +22,7 @@ import ProtectedRoute from './components/ProtectedRoute'; // Import the Protecte
 function App() {
  
   return (
+    <>
     <Router>
       <Routes>
         <Route path='z/learner/signup' element={<Signup />} />
@@ -286,6 +287,7 @@ function App() {
         <Route index element={<Landingpage />} />
       </Routes>
     </Router>
+    </>
   );
 }
 
