@@ -19,11 +19,11 @@ router.post('/regular_signup', (req, res) => {
     }
     else {
         //checking if the email already exists in the Database or not 
-        const query = 'select email from learner where email = ? UNION select email from Tutor where email = ?'
+        const query = 'select email from learner where email = ? UNION select email from tutor where email = ?'
         mysql.query(query, [email, email], (err, result) => {
             //Checking whether there's an error in database or not 
             if (err) {
-                res.status(500).json({message: "error in database"})
+                res.status(500).json({message: "Internal Server Error1"})
             }
             else {
                 //checking whether the user already signed up or not 
@@ -36,12 +36,12 @@ router.post('/regular_signup', (req, res) => {
                     .then(hash => {
                         //generating unique key for learner
                         const uuid = uuidv4();
-                        const insertionQuery = 'INSERT INTO LEARNER(email, pword, pfp, isVerified, uuid) VALUES(?, ?, ?, 0, ?)'
+                        const insertionQuery = 'INSERT INTO learner(email, pword, pfp, isVerified, uuid) VALUES(?, ?, ?, 0, ?)'
                         mysql.query(insertionQuery, [email, hash, pfp, uuid], async (err, result)=> {
                             //Checking whether there's an error in database or not 
                             if (err) {
                                 console.log("query error: ", err)
-                                res.status(500).json({message: "error in database2"})
+                                res.status(500).json({message: "Internal Server Error2"})
                             }
                             else {
                                 //if the operation was succesful return tokens
@@ -62,7 +62,7 @@ router.post('/regular_signup', (req, res) => {
                     })
                     .catch(error => {
                         console.error('Error hashing password:', error);
-                        res.status(500).json({message: "Error hashing password"})
+                        res.status(500).json({message: "Internal Server Error3"})
                     })  
                     
                 }
