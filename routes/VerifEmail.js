@@ -22,7 +22,7 @@ router.post('/verifEmail', async (req, res) => {
         mysql.query(query, [payload.id], async (err, result) => {
             if (err) {
                 console.log(err);
-                res.status(500).json({message: "Internal Server Error"})
+                res.status(500).json({message: "Internal Server Error1"})
             }
             else if (result.length > 0) {
                 if (result[0].isVerified !== 1) {
@@ -31,7 +31,7 @@ router.post('/verifEmail', async (req, res) => {
                     mysql.query(verifQuery, [payload.id], async (err, result) => {
                         if (err) {
                             console.log(err);
-                            res.status(500).json({message: "Internal Server Error"})
+                            res.status(500).json({message: "Internal Server Error2"})
                         }else {
                             if(type ==="Settings") {
                                 res.status(200).json({ message: 'Email verified successfully', role :payload.role })
@@ -56,7 +56,7 @@ router.post('/verifEmail', async (req, res) => {
         
     }catch(err) {
         console.log(err);
-        res.status(500).json({ message: 'Internal Server Error', verified:false });
+        res.status(500).json({ message: 'Internal Server Error3', verified:false });
     }
 })
 

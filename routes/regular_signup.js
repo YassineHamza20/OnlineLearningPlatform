@@ -51,7 +51,7 @@ router.post('/regular_signup', (req, res) => {
                                 //making verification token
                                 const {verificationToken} = await generateVerificationToken(user)
                                 
-                                const url = `${process.env.BASE_URL}users/verify/${verificationToken}`
+                                const url = `${process.env.BASE_URL}/users/verify/${verificationToken}`
                                 //making the email beautiful
                                 const emailHtml = generateLearnerEmailHtml(url)
                                 //sending verification email to user 
