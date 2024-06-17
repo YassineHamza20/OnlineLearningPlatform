@@ -20,23 +20,23 @@ function Profile(props) {
                     <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-between">
                         <span className="font-bold text-gray-700">Email</span>
-                        {/* <span className="text-gray-600">{info.email}</span> */}
+                        <span className="text-gray-600">{info.email}</span>
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="font-bold text-gray-700">First Name</span>
-                        {/* <span className="text-gray-600">{info.firstname}</span> */}
+                        <span className="text-gray-600">{info.firstname}</span>
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="font-bold text-gray-700">Last Name</span>
-                        {/* <span className="text-gray-600">{info.lastname}</span> */}
+                        <span className="text-gray-600">{info.lastname}</span>
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="font-bold text-gray-700">Phone Number</span>
-                        {/* <span className="text-gray-600">{info.tel}</span> */}
+                        <span className="text-gray-600">{info.tel}</span>
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="font-bold text-gray-700">CIN</span>
-                        {/* <span className="text-gray-600">{info.CIN}</span> */}
+                        <span className="text-gray-600">{info.CIN}</span>
                     </div>
                     </div>
                 </div>
