@@ -9,12 +9,12 @@ const sendEmail = require('../helpers/sendEmail')
 router.post('/verification_Link', async (req, res) => {
     const {role, email, type} = req.body
     console.log("req.body: ", req.body);
-    const query = `SELECT id, isVerified from ${mysql.escapeId(role)} where email = ?`
+    const query = `SELECT id, isVerified from ${mysql.escapeId(role).toLowerCase()} where email = ?`
     try {
         if (role === "Learner"){
             mysql.query(query, [email], async (err, result)=> {
                 if(err) {
-                    res.status(500).json({message: 'Internal Server Error'})
+                    res.status(500).json({message: 'Internal Server Error1'})
                 }
                 else if(result.length > 0 ) {
                     if(result[0].isVerified === 0) {
