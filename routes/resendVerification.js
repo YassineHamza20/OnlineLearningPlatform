@@ -11,7 +11,7 @@ router.post('/verification_Link', async (req, res) => {
     console.log("req.body: ", req.body);
     const query = `SELECT id, isVerified from ${mysql.escapeId(role).toLowerCase()} where email = ?`
     try {
-        if (role === "Learner"){
+        if (role === "learner"){
             mysql.query(query, [email], async (err, result)=> {
                 if(err) {
                     res.status(500).json({message: 'Internal Server Error1'})
