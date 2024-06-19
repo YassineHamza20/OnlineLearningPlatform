@@ -2,7 +2,7 @@ import axios from 'axios'
 import {useEffect, useState, useRef} from 'react'
 import {NavLink, useParams} from 'react-router-dom'
 
-function EmailVerif() {
+function "EmailVerif() {
     //getting the token from the url
     const param = useParams()
     

@@ -13,7 +13,7 @@ function VerifEmail({role, user}) {
     const [resendDisabled, setResendDisabled] = useState(false)
     
     
-    const timeoutDuration = 60000
+    const timeoutDuration = 5000
 
 
     

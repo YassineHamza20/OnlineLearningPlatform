@@ -74,10 +74,11 @@ export default function Normal({recaptchaRef}) {
             <div className="m-auto w-full scale-110 md:scale-x-[.60] md:scale-y-[.90] lg:scale-x-[.85] xl:scale-95 transform origin-top-left" >
                 <ReCAPTCHA
                     ref={recaptchaRef}
-                    sitekey="6LdxbokpAAAAAKKHEv8T-O4geuCKWcFGMZC_BtGl"
+                    sitekey="6LfKH_spAAAAAHciHD6aMg8kznCpMUK-FCwgKPM2"
                     onChange={handleRecaptchaChange}
                 />
             </div>
+            
             <div className="mb-4 text-sm">
                 <NavLink to={`/${firstSegment}/signin/forgotpassword`}  className="text-blue-500 underline">Forgot your password?</NavLink>
             </div>
