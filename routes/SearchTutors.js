@@ -13,7 +13,7 @@ router.post('/SearchTutors', (req, res) => {
     console.log("req.body: ", req.body);
     const offset = (parseInt(page) - 1) * parseInt(pageSize)
 
-    let query = "SELECT t.id, t.lastname, t.firstname, t.email, t.pfp, t.Country, t.tel, t.isConnected, t.Birthday, t.introductionVideo, t.description, t.teachingStyle, t.AboutMe, t.Languages, t.WorkExperience, t.Education, t.uuid FROM TUTOR as t"
+    let query = "SELECT t.id, t.lastname, t.firstname, t.email, t.pfp, t.Country, t.tel, t.isConnected, t.Birthday, t.introductionVideo, t.description, t.teachingStyle, t.AboutMe, t.Languages, t.WorkExperience, t.Education, t.uuid FROM tutor as t"
     let dependancyArray = []
     if (filterOptions.name ) {
         query += ` where (t.firstname like CONCAT('%', ?, '%') or t.lastname like CONCAT('%', ?, '%') OR CONCAT(t.firstname, ' ', t.lastname) LIKE CONCAT('%', ?, '%') OR CONCAT(t.lastname, ' ', t.firstname) LIKE CONCAT('%', ?, '%'))`
