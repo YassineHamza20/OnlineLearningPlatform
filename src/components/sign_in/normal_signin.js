@@ -82,10 +82,12 @@ export default function Normal({recaptchaRef}) {
             <div className="mb-4 text-sm">
                 <NavLink to={`/${firstSegment}/signin/forgotpassword`}  className="text-blue-500 underline">Forgot your password?</NavLink>
             </div>
+            {/* && loginData.recaptchaToken */}
+            {/* && loginData.recaptchaToken */}
             <button 
-            disabled={!(loginData.email && loginData.password && loginData.recaptchaToken)} 
+            disabled={!(loginData.email && loginData.password )} 
             type="submit" 
-            className={`w-full ${loginData.email && loginData.password && loginData.recaptchaToken? 'hover:bg-orange-600 opacity-100': 'opacity-60'} bg-button text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}>
+            className={`w-full ${loginData.email && loginData.password ? 'hover:bg-orange-600 opacity-100': 'opacity-60'} bg-button text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}>
                 Sign In
             </button>
             <div className="mt-4 text-sm">
