@@ -18,7 +18,7 @@ router.post('/verifEmail', async (req, res) => {
         const payload = { id: tokenDetails.id, role: tokenDetails.role, email: tokenDetails.email };
 
         
-        const query = `SELECT isVerified, email FROM ${mysql.escapeId(payload.role)} WHERE id = ?`;
+        const query = `SELECT isVerified, email FROM ${mysql.escapeId(payload.role.toLowerCase())} WHERE id = ?`;
         mysql.query(query, [payload.id], async (err, result) => {
             if (err) {
                 console.log(err);
