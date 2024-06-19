@@ -18,7 +18,7 @@ const insertLearner = async(payload, res) => {
             else{
                 //if the operation was succesful return tokens
                 const userId = result.insertId
-                const user = {id: userId, role: "Learner"}
+                const user = {id: userId, role: "learner"}
 
                 const {accessToken} = await generateAccessToken(user)
                 const {refreshToken} = await generateRefreshToken(user)

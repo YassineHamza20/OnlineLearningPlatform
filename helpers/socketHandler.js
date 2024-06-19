@@ -115,7 +115,7 @@ const socketHandler = (io) => {
 
         socket.on("send_message", (data) => {
             let query 
-            if(data.Sender === "Learner"){
+            if(data.Sender === "learner"){
                 query = "select id from tutor where uuid = ?"
             }
             else {
