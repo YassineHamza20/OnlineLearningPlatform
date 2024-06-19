@@ -50,7 +50,7 @@ function CardSignIn(){
                     email: loginData.email, 
                     password: loginData.password, 
                     information: firstSegment, //telling whether it's a learner or tutor
-                    recaptchaToken: loginData.recaptchaToken //verifying the recaptcha
+                    //recaptchaToken: loginData.recaptchaToken //verifying the recaptcha
                 })
                 console.log(response);
                 localStorage.clear();
