@@ -49,7 +49,7 @@ router.post('/regular_signup', (req, res) => {
                                 const user = {id: userId, role: "Learner"}
 
                                 //making verification token
-                                const {verificationToken} = await generateVerificationToken(user)
+                                const {verificationToken} = await generateVerificationToken (user)
                                 
                                 const url = `${process.env.BASE_URL}users/verify/${verificationToken}`
                                 //making the email beautiful
