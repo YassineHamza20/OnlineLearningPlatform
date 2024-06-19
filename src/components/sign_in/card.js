@@ -38,12 +38,15 @@ function CardSignIn(){
     //sending request to the api to login with user's credentials
     const handleLogin = async (e) => {
         e.preventDefault()
-        if(loginData.email && loginData.password && loginData.recaptchaToken) {
+
+        // && loginData.recaptchaToke
+
+        if(loginData.email && loginData.passwordn) {
             try {
                 setIsLoading(true)
                 //resetting the recaptcha after attempt to login
-                recaptchaRef.current.reset()
-                dispatch(setRecaptchaToken(''))
+                //recaptchaRef.current.reset()
+               // dispatch(setRecaptchaToken(''))
                 
                 //sending request to the server in order to login
                 const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/regularLogin', {
