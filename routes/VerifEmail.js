@@ -26,7 +26,7 @@ router.post('/verifEmail', async (req, res) => {
             }
             else if (result.length > 0) {
                 if (result[0].isVerified !== 1) {
-                    const verifQuery = `UPDATE ${mysql.escapeId(payload.role)} SET isVerified = 1 WHERE id = ?`;
+                    const verifQuery = `UPDATE ${mysql.escapeId(payload.role.toLowerCase())})} SET isVerified = 1 WHERE id = ?`;
 
                     mysql.query(verifQuery, [payload.id], async (err, result) => {
                         if (err) {
