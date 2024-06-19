@@ -4,8 +4,7 @@ const axios = require('axios')
 
 const verifyRecaptchaToken = async (token, ip) => {
     try{
-        const googleResponse = await axios.post(`https://www.google.com/recaptcha/enterprise.js?render=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}&remoteip=${ip}`);
-
+        const googleResponse= await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=6LfKH_spAAAAAOXNkwc2hCeJzapZ7LlJ5W_2h2zJ&response=${token}`)
         console.log(googleResponse.data);
         const { success } = googleResponse.data;
         if (success) {
