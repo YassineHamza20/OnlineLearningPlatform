@@ -12,7 +12,7 @@ router.post('/regularLogin', async (req, res) => {
     const {email, password, information, recaptchaToken} = req.body
 
     console.log('ip', req.ip);
-    const verification = await verifyRecaptchaToken(recaptchaToken, req.ip)
+    //const verification = await verifyRecaptchaToken(recaptchaToken, req.ip)
 
     console.log('verification', verification);
     //verification.success
@@ -22,7 +22,8 @@ router.post('/regularLogin', async (req, res) => {
         }
         if(email && password) { // checking whether the user sent his credentials or not
             //assuring that the email exists
-            const query = `SELECT id, pword FROM ${mysql.escapeId(information)} where email = ?`
+         //   ${mysql.escapeId(information)}
+            const query = `SELECT id, pword FROM learner where email = ?`
             mysql.query(query, [email], (err, result) => {
                 if(err) {
                     console.log(err);
