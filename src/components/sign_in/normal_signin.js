@@ -47,6 +47,7 @@ export default function Normal({recaptchaRef}) {
     }
 
     return(
+        <form onSubmit={handleSignIn}> 
         <div className="w-full flex flex-col space-y-5 items-center">
             <div className="w-full">
                 <label className="block text-[#000] text-sm font-semibold mb-2">Email</label>
@@ -94,5 +95,6 @@ export default function Normal({recaptchaRef}) {
                 <p>Don't have an account? <button onClick={handleSignUp} className="text-blue-500 underline">Sign up</button></p>
             </div>
         </div>
+        </form>
     );
 }

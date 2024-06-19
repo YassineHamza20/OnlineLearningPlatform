@@ -55,6 +55,7 @@ function CardSignIn(){
                     information: firstSegment, //telling whether it's a learner or tutor
                     //recaptchaToken: loginData.recaptchaToken //verifying the recaptcha
                 })
+                console.log("Attempting to sign in with:", loginData.email, loginData.password);
                 console.log(response);
                 localStorage.clear();
                 localStorage.setItem('refreshtoken', response.data.refreshToken)
