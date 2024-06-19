@@ -29,7 +29,7 @@ router.post('/verification_Link', async (req, res) => {
                             await sendEmail(email, "Email Verification", emailHtml)
                             res.status(201).json({message:"Email sent"})
                         }else if(type ==="Signup") { 
-                            const url = `${process.env.BASE_URL}/users/verify/${verificationToken}`
+                            const url = `${process.env.BASE_URL}users/verify/${verificationToken}`
                             //making the email beautiful
                             const emailHtml = generateLearnerEmailHtml(url)
                             //sending verification email to user 
@@ -57,14 +57,14 @@ router.post('/verification_Link', async (req, res) => {
                         //making verification token
                         const {verificationToken} = await generateVerificationToken(user)
                         if(type ==="Settings") {
-                            const url = `${process.env.BASE_URL}/users/verify/${verificationToken}`
+                            const url = `${process.env.BASE_URL}users/verify/${verificationToken}`
                             //making the email beautiful
                             const emailHtml = generateTutorEmailHtml(url)
                             //sending verification email to user 
                             await sendEmail(email, "Email Verification", emailHtml)
                             res.status(201).json({message: "Email sent", roomId: `users_${email}`})  
                         }else if(type ==="Signup"){
-                            const url = `${process.env.BASE_URL}/users/verify/${verificationToken}`
+                            const url = `${process.env.BASE_URL}users/verify/${verificationToken}`
                             //making the email beautiful
                             const emailHtml = generateTutorEmailHtml(url)
                             //sending verification email to user 

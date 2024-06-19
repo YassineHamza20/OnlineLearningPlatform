@@ -52,7 +52,7 @@ router.post('/regsignup', (req, res) => {
                                 const {verificationToken} = await generateVerificationToken(user)
                                 
                                 //sending verification email to user 
-                                const url = `${process.env.BASE_URL}/users/verify/${verificationToken}`
+                                const url = `${process.env.BASE_URL}users/verify/${verificationToken}`
                                 //making the email beautiful
                                 const emailHtml= generateTutorEmailHtml(url)
                                 await sendEmail(email, "Email Verification", emailHtml)
