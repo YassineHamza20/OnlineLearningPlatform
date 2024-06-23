@@ -75,7 +75,7 @@ export default function Normal({recaptchaRef}) {
             <div className="m-auto w-full scale-110 md:scale-x-[.60] md:scale-y-[.90] lg:scale-x-[.85] xl:scale-95 transform origin-top-left" >
                 <ReCAPTCHA
                     ref={recaptchaRef}
-                    sitekey="6LfKH_spAAAAAHciHD6aMg8kznCpMUK-FCwgKPM2"
+                    sitekey="6Ld0tv8pAAAAAEjYmyPqn5V_T_PW67wljx2jH-P-"
                     onChange={handleRecaptchaChange}
                 />
             </div>
