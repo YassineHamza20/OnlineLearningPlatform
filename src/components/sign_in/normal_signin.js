@@ -47,7 +47,6 @@ export default function Normal({recaptchaRef}) {
     }
 
     return(
-        
         <div className="w-full flex flex-col space-y-5 items-center">
             <div className="w-full">
                 <label className="block text-[#000] text-sm font-semibold mb-2">Email</label>
@@ -79,22 +78,18 @@ export default function Normal({recaptchaRef}) {
                     onChange={handleRecaptchaChange}
                 />
             </div>
-            
             <div className="mb-4 text-sm">
                 <NavLink to={`/${firstSegment}/signin/forgotpassword`}  className="text-blue-500 underline">Forgot your password?</NavLink>
             </div>
-            {/* && loginData.recaptchaToken */}
-            {/* && loginData.recaptchaToken */}
             <button 
-            disabled={!(loginData.email && loginData.password )} 
+            disabled={!(loginData.email && loginData.password && loginData.recaptchaToken)} 
             type="submit" 
-            className={`w-full ${loginData.email && loginData.password ? 'hover:bg-orange-600 opacity-100': 'opacity-60'} bg-button text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}>
+            className={`w-full ${loginData.email && loginData.password && loginData.recaptchaToken? 'hover:bg-orange-600 opacity-100': 'opacity-60'} bg-button text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}>
                 Sign In
             </button>
             <div className="mt-4 text-sm">
                 <p>Don't have an account? <button onClick={handleSignUp} className="text-blue-500 underline">Sign up</button></p>
             </div>
         </div>
-        
     );
 }
