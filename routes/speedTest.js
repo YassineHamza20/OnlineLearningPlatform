@@ -1,13 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
-const auth = require('../middleware/auth')
-const roleCheck = require('../middleware/roleCheck')
-
 
 // POST endpoint for speed test
-//auth
-//roleCheck(["Tutor"])
 router.post('/speedTest', async (req, res) => {
     try {
         const startTime = Date.now(); // Capture start time
@@ -29,7 +24,16 @@ router.post('/speedTest', async (req, res) => {
 
         res.json({ latency, connectionQuality });
     } catch (error) {
-        console.error('Error:', error.message);
+        console.error('Error occurred during speed test:', error.message);
+        if (error.response) {
+            console.error('Response data:', error.response.data);
+            console.error('Response status:', error.response.status);
+            console.error('Response headers:', error.response.headers);
+        } else if (error.request) {
+            console.error('Request data:', error.request);
+        } else {
+            console.error('Error message:', error.message);
+        }
         res.status(500).json({ error: 'Error occurred during speed test' });
     }
 });
