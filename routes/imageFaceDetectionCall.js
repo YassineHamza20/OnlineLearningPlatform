@@ -33,7 +33,7 @@ router.post('/imageFaceDetection', auth, roleCheck(["Tutor"]), async (req, res) 
         res.status(200).json({message: response.data.faces})
     }catch(err) {
         console.log("service server error: ",err)
-        res.status(500).json({message: "Internal Server Error"})
+        res.status(500).json({message: "Internal Server Error2"})
     }
 
 })
