@@ -9,12 +9,12 @@ const { v4: uuidv4 } = require('uuid');
 const tutorInsertion = async (payload, res) => {
     //generating unique key for tutor
     const uuid = uuidv4();
-    const query = "INSERT INTO Tutor(firstname, lastname, email, pword, pfp, isVerified, uuid) VALUES (?, ?, ?, ?, ?, 1, ?)"
+    const query = "INSERT INTO tutor(firstname, lastname, email, pword, pfp, isVerified, uuid) VALUES (?, ?, ?, ?, ?, 1, ?)"
         mysql.query(query, [payload.given_name, payload.family_name, payload.email, '', payload.picture, uuid], async (err, result)=> {
             if(err) {
                 //if there is error in data base return error 
                 console.log(err)
-                res.status(500).json({message:"Internal Server Error"})
+                res.status(500).json({message:err.message})
             }
             else{
                 //if the operation was succesful return tokens
