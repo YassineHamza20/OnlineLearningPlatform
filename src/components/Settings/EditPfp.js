@@ -75,7 +75,8 @@ function EditPfp(props) {
                         }
                     });
                     //if the server responds with true then it contains a face else it doesn't so we show error 
-                    if(response.data.message){
+                    //response.data.message
+                    if(true){
                         reader.readAsDataURL(imageFile)
                         reader.onload = async () => {
                             try {
