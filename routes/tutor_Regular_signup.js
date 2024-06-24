@@ -18,16 +18,16 @@ router.post('/regsignup', (req, res) => {
     else {
         //checking if the email already exists in the Database or not 
         
-        const query = 'select email from learner where email = ? UNION select email from Tutor where email = ?'
+        const query = 'select email from learner where email = ? UNION select email from tutor where email = ?'
         mysql.query(query, [email, email], (err, result) => {
             //Checking whether there's an error in database or not 
             if (err) {
-                res.status(500).json({message: "Internal Server Error"})
+                res.status(500).json({message:  err.message})
             }
             else {
                 //checking whether the user already signed up or not 
                 if (result.length > 0 ) {
-                    res.status(409).json({message: "Email Already Signed Up"})
+                    res.status(409).json({message: err.message})
                 }else{
                     //creating account if there's no user with the same email
                     //hashing the password before the insertion in the database
@@ -35,12 +35,12 @@ router.post('/regsignup', (req, res) => {
                     .then(hash => {
                         // Generate UUID for a new tutor
                         const uuid = uuidv4();
-                        const insertionQuery = 'INSERT INTO Tutor(email, pword, isVerified, uuid) VALUES(?, ?, 0, ?)'
+                        const insertionQuery = 'INSERT INTO tutor(email, pword, isVerified, uuid) VALUES(?, ?, 0, ?)'
                         mysql.query(insertionQuery, [email, hash, uuid], async (err, result)=> {
                             //Checking whether there's an error in database or not 
                             if (err) {
                                 console.log("query error: ", err)
-                                res.status(500).json({message: "Internal Server Error"})
+                                res.status(500).json({message: err.message})
                             }
                             else {
                                 
@@ -62,7 +62,7 @@ router.post('/regsignup', (req, res) => {
                     })
                     .catch(error => {
                         console.error('Error hashing password:', error);
-                        res.status(500).json({message: "Internal Server Error"})
+                        res.status(500).json({message: err.message})
                     })  
                     
                 }
