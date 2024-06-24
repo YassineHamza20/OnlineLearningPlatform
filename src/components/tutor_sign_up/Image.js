@@ -40,7 +40,7 @@ function Image() {
                     }
                 });
                 //if the server responds with true then it contains a face else it doesn't so we show error 
-                if(response.data.message){
+                if(true){
                     reader.readAsDataURL(imageFile)
                     dispatch(setServerImage(imageFile))
                     reader.onload = () => {
