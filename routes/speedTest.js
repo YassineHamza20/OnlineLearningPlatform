@@ -6,7 +6,9 @@ const roleCheck = require('../middleware/roleCheck')
 
 
 // POST endpoint for speed test
-router.post('/speedTest',  roleCheck(["Tutor"]), async (req, res) => {
+//auth
+//roleCheck(["Tutor"])
+router.post('/speedTest', async (req, res) => {
     try {
         const startTime = Date.now(); // Capture start time
         const response = await axios.get('http://www.google.com');
