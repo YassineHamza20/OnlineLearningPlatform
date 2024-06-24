@@ -2,11 +2,11 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 
-// POST endpoint for speed test
+// POST endpoint for speed test using fast.com
 router.post('/speedTest', async (req, res) => {
     try {
         const startTime = Date.now(); // Capture start time
-        const response = await axios.get('http://www.google.com');
+        const response = await axios.get('https://fast.com');
         const endTime = Date.now(); // Capture end time
         const latency = endTime - startTime; // Calculate latency
 
