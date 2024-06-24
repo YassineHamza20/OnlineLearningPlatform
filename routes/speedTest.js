@@ -24,7 +24,7 @@ router.post('/speedTest', async (req, res) => {
 
         res.json({ latency, connectionQuality });
     } catch (error) {
-        console.error('Error occurred during speed test:', error.message);
+        console.error('Error occurred during speed test:', error);
         if (error.response) {
             console.error('Response data:', error.response.data);
             console.error('Response status:', error.response.status);
