@@ -3,8 +3,8 @@ const router = express.Router()
 const auth = require('../middleware/auth')
 const roleCheck = require('../middleware/roleCheck')
 const mysql = require('../helpers/Sql_connection')
-
-router.post('/finalstep', auth, roleCheck(["Learner"]), (req, res)=> {
+//
+router.post('/finalstep', auth, roleCheck(["learner"]), (req, res)=> {
     const learning_goals = req.body.learning_goals
     const interested_topics = req.body.interested_topics
 
