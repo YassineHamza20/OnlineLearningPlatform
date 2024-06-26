@@ -9,10 +9,10 @@ const verifyRecaptchaToken = require('../helpers/verifyRecaptchaToken')
 
 
 router.post('/regularLogin', async (req, res) => {
-    const {email, password, information, recaptchaToken} = req.body
-
+    const {email, password, information} = req.body
+//recaptchaToken
     console.log('ip', req.ip);
-    const verification = await verifyRecaptchaToken(recaptchaToken, req.ip)
+    //const verification = await verifyRecaptchaToken(recaptchaToken, req.ip)
 
     console.log('verification', verification);
    
