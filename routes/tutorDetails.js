@@ -4,8 +4,8 @@ const auth = require('../middleware/auth')
 const roleCheck = require('../middleware/roleCheck')
 const mysql = require('../helpers/Sql_connection')
 
-//, roleCheck(["Tutor"]),
-router.post('/details', auth, (req, res) => {
+//auth, roleCheck(["Tutor"]),
+router.post('/details', (req, res) => {
     console.log(req.user.id);
     const userId = req.user.id
     const query ='select * from tutor where id = ?'
