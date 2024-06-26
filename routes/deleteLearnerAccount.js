@@ -8,7 +8,7 @@ const deleteExistingFileFromDB = require('../middleware/deleteFile')
 
 
 
-router.post('/DeleteAccount', auth, roleCheck(["learner"]), (req, res) => {
+router.post('/DeleteAccount', auth, roleCheck(["Learner"]), (req, res) => {
     const userId = req.user.id
 
     const query = `delete from learner where id = ?`
