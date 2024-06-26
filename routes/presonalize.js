@@ -3,8 +3,8 @@ const router = express.Router()
 const auth = require('../middleware/auth')
 const roleCheck = require('../middleware/roleCheck')
 const mysql = require('../helpers/Sql_connection')
-
-router.post('/personalize', auth, roleCheck(["Learner"]), (req, res) => {
+//roleCheck(["Learner"])
+router.post('/personalize', auth, (req, res) => {
     const language_proficiency = req.body.language_proficiency
     const firstname = req.body.firstname
     const lastname = req.body.lastname
