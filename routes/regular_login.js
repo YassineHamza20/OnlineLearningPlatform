@@ -12,11 +12,11 @@ router.post('/regularLogin', async (req, res) => {
     const {email, password, information, recaptchaToken} = req.body
 
     console.log('ip', req.ip);
-    //const verification = await verifyRecaptchaToken(recaptchaToken, req.ip)
+    const verification = await verifyRecaptchaToken(recaptchaToken, req.ip)
 
     console.log('verification', verification);
-    //verification.success
-    if(true) { // if recaptcha token is true  
+   
+    if(verification.success) { // if recaptcha token is true  
         if(!information === 'learner' && !information ==='tutor') { // if it's not a tutor nor a learner respond with error
             res.status(400).json({message: 'Invalid Requestt'})
         }
