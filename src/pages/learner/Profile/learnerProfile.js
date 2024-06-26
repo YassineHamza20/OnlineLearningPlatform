@@ -79,14 +79,14 @@ function LearnerProfile() {
                 ]);
 
                 //if it's a google profile picture we save it and just show it, else we fetch the picture from our server
-                let imageUrl = response.data.message.pfp
-                if(imageUrl) {
-                    if (!isGoogleProfilePicture(imageUrl)) {
-                        imageUrl = await fetchFile(response.data.message.pfp, 'images', 'Learner', response.data.message.id);
-                    }
-                }
-                console.log("image: ", imageUrl);
-                dispatch(setPic(imageUrl))
+                // let imageUrl = response.data.message.pfp
+                // if(imageUrl) {
+                //     if (!isGoogleProfilePicture(imageUrl)) {
+                //         imageUrl = await fetchFile(response.data.message.pfp, 'images', 'Learner', response.data.message.id);
+                //     }
+                // }
+                // console.log("image: ", imageUrl);
+               // dispatch(setPic(imageUrl))
 
                 dispatch(setIsLoading(false))
             } catch (error) {
