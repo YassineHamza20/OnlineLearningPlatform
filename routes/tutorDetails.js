@@ -4,8 +4,8 @@ const auth = require('../middleware/auth')
 const roleCheck = require('../middleware/roleCheck')
 const mysql = require('../helpers/Sql_connection')
 
-//auth, roleCheck(["Tutor"]),
-router.post('/details', (req, res) => {
+
+router.post('/details', auth, roleCheck(["Tutor"]), (req, res) => {
     console.log(req.user.id);
     const userId = req.user.id
     const query ='select * from tutor where id = ?'
@@ -23,11 +23,11 @@ router.post('/details', (req, res) => {
                 lastname: result[0].lastname,
                 email: result[0].email,
                 hasPassword: result[0].pword !== '',
-                // pfp: result[0].pfp,
+                pfp: result[0].pfp,
                 country: result[0].Country,
                 tel: result[0].tel,
                 Birthday: result[0].Birthday,
-               // introductionVideo: result[0].introductionVideo,
+                introductionVideo: result[0].introductionVideo,
                 description: result[0].description,
                 teachingStyle: result[0].teachingStyle,
                 AboutMe: result[0].AboutMe,
