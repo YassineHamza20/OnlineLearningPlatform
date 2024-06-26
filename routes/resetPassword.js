@@ -28,7 +28,7 @@ router.post('/resetpassword', async (req, res) => {
                         res.status(500).json({message: "Internal Server Error"})
                     }else {
                         console.log(forgotPasswordToken);
-                        mysql.query("insert into usedTokens(token, role) VALUES(?, ?) ", [forgotPasswordToken, response.tokenDetails.role], (error, results) => {
+                        mysql.query("insert into usedtokens(token, role) VALUES(?, ?) ", [forgotPasswordToken, response.tokenDetails.role], (error, results) => {
                             if(error) {
                                 console.log(error)
                                 res.status(500).json({message: "Internal Server Error"})
