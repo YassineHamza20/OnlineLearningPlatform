@@ -1,47 +1,55 @@
-const express = require('express')
-const router = express.Router()
-const mysql = require('../helpers/Sql_connection')
-const generateForgotPasswordToken = require('../helpers/generateForgotPasswordToken')
-const {generateForgotPasswordHtml} = require('../helpers/emailContent')
-const sendEmail = require('../helpers/sendEmail')
-
-
-
+const express = require('express');
+const router = express.Router();
+const mysql = require('../helpers/Sql_connection');
+const generateForgotPasswordToken = require('../helpers/generateForgotPasswordToken');
+const { generateForgotPasswordHtml } = require('../helpers/emailContent');
+const sendEmail = require('../helpers/sendEmail');
 
 router.post('/forgotpassword', (req, res) => {
-    const {email, role} = req.body
+    const { email, role } = req.body;
 
-    if(role !== "learner" && role !== "tutor"){
-        res.status(400).json({message: "Wrong!"})  //sending while not being a tutor nor a learner
+    // Validate the role input
+    if (role !== "learner" && role !== "tutor") {
+        return res.status(400).json({ message: "Invalid role!" });
     }
 
-    const query = `select id from ${mysql.escapeId(role)} where email = ?`
+    // Ensure the role is sanitized
+    const validRoles = ['learner', 'tutor'];
+    if (!validRoles.includes(role)) {
+        return res.status(400).json({ message: "Invalid role!" });
+    }
+
+    // Construct the query using the validated role
+    const query = `SELECT id FROM ${mysql.escapeId(role)} WHERE email = ?`;
     mysql.query(query, [email], async (error, result) => {
-        if(error) {
-            console.log(error);
-            res.status(500).json({message: "Internal Server Error"})
-        }else if(result.length <=0) {
-            console.log("no email");
-            res.status(202).json({message: ""})  //not indicating that the email doesn't exist in our database to avoid bots to know emails in our db
-        }else {
-            const userId = result[0].id 
-            console.log("userId: ", userId)
-            const user = {id: userId, role: role}
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ message: "Internal Server Error!" });
+        } else if (result.length === 0) {
+            console.log("No email found");
+            return res.status(202).json({ message: "" });  // Not indicating that the email doesn't exist to avoid bots
+        } else {
+            const userId = result[0].id;
+            console.log("userId:", userId);
+            const user = { id: userId, role };
 
+            try {
+                // Generate forgot password token
+                const { forgotPasswordToken } = await generateForgotPasswordToken(user);
+                const url = `${process.env.BASE_URL}users/ForgotPassword/${forgotPasswordToken}`;
 
-            //making forgotpassword Token
-            const {forgotPasswordToken} = await generateForgotPasswordToken(user)
-            
-            const url = `${process.env.BASE_URL}users/ForgotPassword/${forgotPasswordToken}`
+                // Generate the email content
+                const emailHtml = generateForgotPasswordHtml(url);
 
-            //sending forgot password email 
-            const emailHtml = generateForgotPasswordHtml(url)
-
-             await sendEmail(email, "Reset Password", emailHtml)
-             res.status(201).json({message: "Email sent"}) 
-
+                // Send the email
+                await sendEmail(email, "Reset Password", emailHtml);
+                res.status(201).json({ message: "Email sent" });
+            } catch (err) {
+                console.error(err);
+                res.status(500).json({ message: "Error generating forgot password token or sending email" });
+            }
         }
-    })
-})
+    });
+});
 
-module.exports = router
+module.exports = router;
