@@ -11,7 +11,7 @@ const isSubscribed = async (req, res, next) => {
             console.log(err);
             res.
             status(500)
-            .json({message: "Internal server error!"})
+            .json({message: "Internal server error2!"})
         }else {
             if(result.length >0) {
                 next()

@@ -17,7 +17,7 @@ router.post('/login', async (req, res) => {
     mysql.query(verifQuery, [email], (err, result) => {
         if(err) {
             console.log(err);
-            res.status(500).json({message: "Internal Server Error!"})
+            res.status(500).json({message: "Internal Server Error!!!"})
         }else if(result.length >0){
             bcrypt.compare(password, result[0].pword)
             .then(async (match) => {

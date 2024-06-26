@@ -11,7 +11,7 @@ router.post('/SubHistory', auth, roleCheck(["Learner"]), (req, res) => {
     mysql.query(query, [userId], (err, result) => {
         if(err){
             console.log(err)
-            res.status(500).json({message: "Internal Server Error!"})
+            res.status(500).json({message: "Internal Server Error1!"})
         }else {
             res.status(200).json(result)
         }
