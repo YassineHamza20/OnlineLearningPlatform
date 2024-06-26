@@ -13,11 +13,11 @@ const verifyForgotPassword = (forgotPasswordToken) => {
             }else {
                 //checking if the token is already used or not 
                 console.log(forgotPasswordToken);
-                    const selectQuery = "select * from usedTokens where token = ? and role = ?"
+                    const selectQuery = "select * from usedtokens where token = ? and role = ?"
                     mysql.query(selectQuery, [forgotPasswordToken, tokenDetails.role], (error, result) => {
                         if(error) {
                             console.log(err)
-                            reject({message: "Internal Servor Error!"})
+                            reject({message: "Internal Servor Error45!"})
                         }
                         else if (result.length <=0) {
                             console.log("result1: ", result);

@@ -22,8 +22,8 @@ router.post('/regularLogin', async (req, res) => {
         }
         if(email && password) { // checking whether the user sent his credentials or not
             //assuring that the email exists
-         //   ${mysql.escapeId(information)}
-            const query = `SELECT id, pword FROM learner where email = ?`
+         //learner
+            const query = `SELECT id, pword FROM ${mysql.escapeId(information)} where email = ?`
             mysql.query(query, [email], (err, result) => {
                 if(err) {
                     console.log(err);
