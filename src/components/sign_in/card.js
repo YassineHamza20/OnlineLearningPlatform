@@ -39,9 +39,9 @@ function CardSignIn(){
     const handleLogin = async (e) => {
         e.preventDefault()
 
-        // && loginData.recaptchaToke
+        // && loginData.recaptchaToken
 
-        if(loginData.email && loginData.passwordn) {
+        if(loginData.email && loginData.password) {
             try {
                 setIsLoading(true)
                 //resetting the recaptcha after attempt to login
