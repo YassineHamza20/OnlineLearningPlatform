@@ -6,17 +6,14 @@ const { generateForgotPasswordHtml } = require('../helpers/emailContent');
 const sendEmail = require('../helpers/sendEmail');
 
 router.post('/forgotpassword', (req, res) => {
-    const { email, role } = req.body;
+    let { email, role } = req.body;
+
+    // Convert role to lowercase
+    role = role.toLowerCase();
 
     // Validate the role input
     if (role !== "learner" && role !== "tutor") {
-        return res.status(400).json({ message: "Invalid role!" });
-    }
-
-    // Ensure the role is sanitized
-    const validRoles = ['learner', 'tutor'];
-    if (!validRoles.includes(role)) {
-        return res.status(400).json({ message: "Invalid role!" });
+        return res.status(400).json({ message: "Wrong!" });
     }
 
     // Construct the query using the validated role
@@ -24,10 +21,10 @@ router.post('/forgotpassword', (req, res) => {
     mysql.query(query, [email], async (error, result) => {
         if (error) {
             console.error(error);
-            return res.status(500).json({ message: "Internal Server Error!" });
-        } else if (result.length === 0) {
+            return res.status(500).json({ message: "Internal Server Errorrrr!" });
+        } else if (result.length <= 0) {
             console.log("No email found");
-            return res.status(202).json({ message: "" });  // Not indicating that the email doesn't exist to avoid bots
+            return res.status(202).json({ message: "" }); // Not indicating that the email doesn't exist to avoid bots
         } else {
             const userId = result[0].id;
             console.log("userId:", userId);
