@@ -19,10 +19,11 @@ function Feed(props) {
             {tutorData.countryFlag && tutorData.countryFlag[0]?.flags && (
                 <img className="rounded-lg w-8 h-8 object-cover" src={tutorData.countryFlag[0].flags.png} alt={tutorData.Country} />
             )}
-            <span className="text-darkg ">From {tutorData.Country}</span>
+            
         </div>,
-        <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguify, {tutorData.firstname+" "+tutorData.lastname}!</span>
-]
+        <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguify, {tutorData.firstname+" "+tutorData.lastname}!</span>,
+<span className="text-darkg ">Country: {tutorData.Country}</span>
+    ]
 
     //content to show the component has finished loading
     const loadedContent = [
