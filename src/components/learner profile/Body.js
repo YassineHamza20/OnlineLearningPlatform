@@ -10,40 +10,30 @@ import axiosInstance from "../../interceptors/axiosInterceptor";
 import Footer from "../Global/Footer";
 
 function Body() {
-    const learnerData = useSelector(state => state.userData);
-    const [courses, setCourses] = useState([]);
+    const learnerData = useSelector(state => state.userData)
 
-    useEffect(() => {
+    const [courses, setCourses] = useState([])
+
+    useEffect(() =>{
         const fetchData = async () => {
             try {
-                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getRecommendedCourses');
-                setCourses(response.data.result);
-                console.log("course recommendation: ", response.data.result);
+                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getRecommendedCourses')
+                setCourses(response.data.result)
+                console.log("course recommendation: ", response.data.result)
             } catch (error) {
                 console.log(error);
             }
-        };
-        fetchData();
-    }, []);
-
-    // Ensure that the pic URL is correct
-    const profilePicUrl = learnerData.pic === "user.png" ? `/${learnerData.pic}` : learnerData.pic;
-    console.log("Profile Picture URL: ", profilePicUrl); // Debugging
+        }
+        fetchData()
+    }, [])
 
     const welcomeContent = [
-        <img 
-            key="0" 
-            referrerPolicy="no-referrer" 
-            src={profilePicUrl} 
-            alt="profilepicture"  
-            className="w-20 h-20 object-cover rounded-full" 
-            onError={(e) => { e.target.onerror = null; e.target.src="/defaultProfilePicture.jpg" }} // Fallback image
-        />,
-        <span key="1" className="font-bold text-2xl text-center">
-            Welcome to Linguify, {learnerData.firstname} {learnerData.lastname}!
-        </span>
-    ];
+        <img key="0" referrerPolicy="no-referrer" src={`${learnerData.pic==="user.png" ? "/" +learnerData.pic: learnerData.pic }`} alt="profilepicture"  className="w-20 h-20 object-cover rounded-full"></img>,
+        <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguify, {learnerData.firstname+" "+learnerData.lastname}!</span>
+    ]
 
+
+    //content to show the component has finished loading
     const loadedContent = [
         <div key="loaded" className="grid grid-cols-1 md:grid-cols-3 w-full h-[90%] overflow-y-auto px-2 sm:px-15 lg:px-28 py-7 gap-5">
             <div key="leftpart" className="flex flex-col col-span-1 h-auto space-y-5">
@@ -57,8 +47,9 @@ function Body() {
             </div>
             <Footer></Footer>
         </div>
-    ];
+    ]
 
+    //content to show when the component is loading
     const loadingContent = [
         <div key="loading" className="grid grid-cols-1 md:grid-cols-3 w-full h-[90%] overflow-y-auto px-2 sm:px-15 lg:px-28 py-7 gap-5">
             <div key="leftpart" className="flex flex-col col-span-1 h-auto space-y-5">
@@ -73,11 +64,16 @@ function Body() {
                 <RowCardsLoading></RowCardsLoading>
             </div>
         </div>
-    ];
+    ]
 
     return (
         <>
-            {learnerData.isLoading ? loadingContent : loadedContent}
+            {
+                learnerData.isLoading?
+                loadingContent
+                :
+                loadedContent
+            }
         </>
     );
 }

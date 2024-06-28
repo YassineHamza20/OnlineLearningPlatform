@@ -14,12 +14,12 @@ function Feed(props) {
 
     //introduction card of the tutor
     const content = [
-        <img key="0"  src={tutorData.displayableImage}  alt="profilepicture"  className="w-20 h-20 object-cover rounded-full"></img>,
+        // <img key="0"  src={tutorData.displayableImage}  alt="profilepicture"  className="w-20 h-20 object-cover rounded-full"></img>,
         <div key="Country" className="flex items-center space-x-2">
             {tutorData.countryFlag && tutorData.countryFlag[0]?.flags && (
                 <img className="rounded-lg w-8 h-8 object-cover" src={tutorData.countryFlag[0].flags.png} alt={tutorData.Country} />
             )}
-            <span className="text-darkg ">{tutorData.Country}</span>
+            <span className="text-darkg ">From {tutorData.Country}</span>
         </div>,
         <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguify, {tutorData.firstname+" "+tutorData.lastname}!</span>
 ]
