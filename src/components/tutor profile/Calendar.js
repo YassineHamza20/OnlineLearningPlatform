@@ -1,35 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Card from '../learner profile/Card';
-import axiosInstance from '../../interceptors/axiosInterceptor'
-import { useDispatch, useSelector } from 'react-redux'
+import axiosInstance from '../../interceptors/axiosInterceptor';
 import { setFirstLessonList } from '../../state/slices/lessonsList';
-import { useEffect } from 'react';
 import { timeFormatter, handleLessonDifficultyColor } from '../Global/functions';
-import { IoMdTime } from "react-icons/io"
-
+import { IoMdTime } from "react-icons/io";
 
 function Calendar(props) {
-
-  const dispatch = useDispatch()
-  const weekFirstLesson = useSelector(state => state.lessonsList.firstlessonList)
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  const dispatch = useDispatch();
+  const weekFirstLesson = useSelector(state => state.lessonsList.firstlessonList);
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   useEffect(() => {
     const fetchFirstDayLessons = async () => {
       try {
         const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/getFirstLesson', {}, {
-         headers: {
-             'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
-         }
-     })   
-     console.log('API Response:', response.data.message);
-     dispatch(setFirstLessonList(response.data.message))
-     }catch(err) {
-        console.log(err)
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
+          }
+        });
+        console.log('API Response:', response.data.message); // Debug: check the response data
+        dispatch(setFirstLessonList(response.data.message));
+      } catch (err) {
+        console.log(err);
       }
     }
-    fetchFirstDayLessons()
-  }, [])
+    fetchFirstDayLessons();
+  }, [dispatch]);
 
   // Function to get the dates for the upcoming days of the week
   const getDatesForWeek = () => {
@@ -66,72 +63,56 @@ function Calendar(props) {
     <div key="calendar" className="w-full grid grid-cols-3 md:grid-cols-5 xl:grid-cols-7 gap-3 rounded-3xl p-4 border border-1">
       {/* Render days of the week with their number in the month */}
       {weekFirstLesson && datesForWeek.map(({ day, dayOfMonth, className }, index) => {
-        let firstLesson = {};
-        const currentDate = new Date()
-        for (let i = 0; i < weekFirstLesson.length; i++) {
-          const currentItemDate = new Date(weekFirstLesson[i].start_time)
-          if(dayOfMonth === currentItemDate.getDate() && currentDate.getMonth() === currentItemDate.getMonth() && currentDate.getFullYear() === currentItemDate.getFullYear() ) {
-            const dayName = daysOfWeek[currentItemDate.getDay()];
-            if (dayName === day) {
-              firstLesson = weekFirstLesson[i];
-              break;
-            }
-          }
-        }
-  
-        console.log("firstLesson length : ", Object.keys(firstLesson).length);
+        const firstLesson = weekFirstLesson.find(lesson => {
+          const lessonDate = new Date(lesson.start_time);
+          return lessonDate.getDate() === dayOfMonth && lessonDate.getMonth() === new Date().getMonth() && lessonDate.getFullYear() === new Date().getFullYear();
+        });
+
         return (
           <div key={index} className="flex flex-col items-center">
             <span className={`rounded-full py-2 px-4 text-center ${className}`}>
               {day}
             </span>
             <span className={className}>{dayOfMonth}</span>
-            {Object.keys(firstLesson).length > 0 ? (
+            {firstLesson ? (
               <div className="flex flex-col items-center justify-center space-y-2 bg-cellColor p-[2px] rounded-md min-w-20 max-w-20">
-                  <div className="font-semibold text-center text-white w-[80%] truncate">
-                      {firstLesson.lesson_topic}
-                  </div>
-                  <div 
-                  className={`text-xs p-1 border text-button2 bg-lightButton2 border-button2 rounded-xl`}>
-                      {firstLesson.language}
-                  </div>
-                  <div 
-                  className={`text-xs p-1 border ${handleLessonDifficultyColor(firstLesson.lesson_difficulty, 'other')} rounded-xl`}>
-                      {firstLesson.lesson_difficulty}
-                  </div>
-                  <div className="flex flex-col items-center">
-                      <IoMdTime className="text-darkg" size="15"></IoMdTime>
-                      <span className="text-darkg text-xs ">
-                        {timeFormatter(firstLesson.start_time)}
-                      </span>
-                      <span className="text-darkg text-xs ">
-                        -
-                      </span>
-                      <span className="text-darkg text-xs ">
-                        {timeFormatter(firstLesson.end_time)}
-                      </span>
-                  </div>
+                <div className="font-semibold text-center text-white w-[80%] truncate">
+                  {firstLesson.lesson_topic}
+                </div>
+                <div className={`text-xs p-1 border text-button2 bg-lightButton2 border-button2 rounded-xl`}>
+                  {firstLesson.language}
+                </div>
+                <div className={`text-xs p-1 border ${handleLessonDifficultyColor(firstLesson.lesson_difficulty, 'other')} rounded-xl`}>
+                  {firstLesson.lesson_difficulty}
+                </div>
+                <div className="flex flex-col items-center">
+                  <IoMdTime className="text-darkg" size="15"></IoMdTime>
+                  <span className="text-darkg text-xs ">
+                    {timeFormatter(firstLesson.start_time)}
+                  </span>
+                  <span className="text-darkg text-xs ">
+                    -
+                  </span>
+                  <span className="text-darkg text-xs ">
+                    {timeFormatter(firstLesson.end_time)}
+                  </span>
+                </div>
               </div>
             ) : (
               <div className="min-h-[169px] min-w-20 bg-lightg p-2 rounded-md">
               </div>
             )}
           </div>
-        );        
+        );
       })}
     </div>
   ];
-  
 
-  return <>
-          {
-            weekFirstLesson?
-            <Card content={content}></Card>
-            :
-            null
-          }
-  
-  </>
+  return (
+    <>
+      {weekFirstLesson.length > 0 ? <Card content={content}></Card> : <p>No lessons found for the upcoming week.</p>}
+    </>
+  );
 }
 
 export default Calendar;
