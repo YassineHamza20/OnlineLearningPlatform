@@ -24,7 +24,7 @@ router.post('/getFirstLesson', auth, roleCheck(["Learner"]), (req, res) => {
     mysql.query(query, [userId], (err, result) => {
         if(err) {
             console.log(err)
-            res.status(500).json({message:"Internal Server Error"})
+            res.status(500).json({message:"Internal Server Errorr"})
         }else {
             res.status(200).json({message: result})
         }
