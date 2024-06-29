@@ -6,8 +6,8 @@ const roleCheck = require('../middleware/roleCheck')
 
 // auth, roleCheck(["Learner"])
 router.post('/getFirstLesson',(req, res) => {
-    const userId = req.user.id
-
+    //const userId = req.user.id
+    const userId = req.body.id
     //getting only the future lessons
     const query = `SELECT *
     FROM private_lesson t1
