@@ -1,35 +1,38 @@
-const express = require('express');
-const router = express.Router();
-const mysql = require('../helpers/Sql_connection');
-const auth = require('../middleware/auth');
-const roleCheck = require('../middleware/roleCheck');
+const express = require('express')
+const router = express.Router()
+const mysql = require('../helpers/Sql_connection')
+const auth = require('../middleware/auth')
+const roleCheck = require('../middleware/roleCheck')
 
-router.post('/getDayLessons', auth, roleCheck(["Learner"]), (req, res) => {
-    const userId = req.user.id;
-    const { date } = req.body;
+//, auth, roleCheck(["Learner"])
+router.post('/getDayLessons', (req, res) => {
+    //const userId= req.user.id
+    const userId= req.body.id
+    const {
+        date //year-month-day
+    } = req.body
 
-    if (!date) {
+    if(!date){
         res.status(400).json({ message: "Bad Data!" });
-        return;
+        return // to avoid further execution when data missing 
     }
 
-    const query = `SELECT pl.*, t.pfp, t.lastname, t.firstname 
-    FROM private_lesson AS pl 
-    JOIN tutor AS t ON t.id = pl.tutor_id 
+    const query = `SELECT pl.* , t.pfp, t.lastname, t.firstname FROM private_lesson as pl, tutor as t 
     WHERE pl.start_time >= NOW() 
-    AND DATE(pl.start_time) = ? 
+    AND DATE(pl.start_time) = ?
     AND pl.private_learner_id = ? 
-    AND pl.Accepted <> 0`;
+    and Accepted <> 0
+    AND t.id = pl.tutor_id`
 
     mysql.query(query, [date, userId], (err, result) => {
-        if (err) {
-            console.log(err);
-            res.status(500).json({ message: 'Internal Server Error' });
-        } else {
-            console.log(result);
-            res.status(200).json({ result });
+        if(err) {
+            console.log(err)
+            res.status(500).json({message: 'Internal Server Error'})
+        }else {
+            console.log(result)
+            res.status(200).json({result: result})
         }
-    });
-});
+    })
+})
 
-module.exports = router;
+module.exports = router
