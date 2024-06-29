@@ -4,8 +4,8 @@ const mysql = require('../helpers/Sql_connection');
 const auth = require('../middleware/auth');
 const roleCheck = require('../middleware/roleCheck');
 const { formatTime } = require('../helpers/Functions');
-//, auth, roleCheck(["Learner"])
-router.post('/getFreeTutors', (req, res) => {
+ 
+router.post('/getFreeTutors', auth, roleCheck(["Learner"]),(req, res) => {
     const {
         selectedDate,
         lessonLength,
