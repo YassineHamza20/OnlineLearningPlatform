@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const path = require('path');
 const router = express.Router();
 
 router.use('/api/uploads', (req, res, next) => {
@@ -6,7 +7,11 @@ router.use('/api/uploads', (req, res, next) => {
     const fileType = req.query.fileType;
     const id = req.query.id;
 
-    express.static(`./uploads/${fileType}/${role}/${id}`)(req, res, next);
+    // Construct the absolute path
+    const dirPath = path.join(__dirname, '..', 'uploads', fileType, role, id);
+
+    // Serve static files from the constructed path
+    express.static(dirPath)(req, res, next);
 });
 
 module.exports = router;

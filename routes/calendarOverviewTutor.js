@@ -4,10 +4,10 @@ const mysql = require('../helpers/Sql_connection')
 const auth = require('../middleware/auth')
 const roleCheck = require('../middleware/roleCheck')
 
-//auth, roleCheck(["Tutor"]),
-router.post('/getFirstLesson',  (req, res) => {
-  //  const userId = req.user.id
-    const userId = req.body.id
+
+router.post('/getFirstLesson', auth, roleCheck(["Tutor"]), (req, res) => {
+    const userId = req.user.id
+
     //getting only the first lessons for the next 6 days
     const query = `SELECT *
     FROM private_lesson AS t1
