@@ -1,31 +1,28 @@
-
 const formatTime = (selectedDate, lessonLength) => {
-    // Extracting the date, hours, and minutes from the request's data
-    const date = selectedDate.split(' ')[0]
-    const month = date.split('/')[0]
-    const day = date.split('/')[1]
-    const year = date.split('/')[2]
-    const time = selectedDate.split(' ')[1];
-    const [hours, minutes] = time.split(':').map(Number);
+    const dateParts = selectedDate.split(' ');
+    const date = dateParts[0].split('-'); // Assuming 'YYYY-MM-DD' format
+    const time = dateParts[1].split(':'); // Assuming 'HH:MM:SS' format
 
-    const lessonDuration = parseInt(lessonLength.split(' ')[0]);
+    const year = parseInt(date[0]);
+    const month = parseInt(date[1]) - 1; // Month is 0-based in JavaScript Date
+    const day = parseInt(date[2]);
 
-    // Calculate adjusted hours and minutes
-    let adjustedHours = hours + Math.floor((minutes + lessonDuration) / 60);
-    let adjustedMinutes = (minutes + lessonDuration) % 60;
+    const hours = parseInt(time[0]);
+    const minutes = parseInt(time[1]);
 
-    // Adjust date if necessary
-    let endDate = new Date(Date.UTC(date.split('/')[2], date.split('/')[0] - 1, date.split('/')[1], adjustedHours, adjustedMinutes));
+    // Create Date object for the selected date and time
+    const beginDate = new Date(Date.UTC(year, month, day, hours, minutes));
 
-    // Format the adjusted enddate to "YYYY-MM-DD HH:MM:SS" format for MySQL
-    const formattedEndDate = endDate.toISOString().slice(0, 19).replace('T', ' ');
+    // Calculate end date by adding lesson length (in minutes)
+    const endDate = new Date(beginDate.getTime() + lessonLength * 60000);
 
-    // Format the adjusted startdate to "YYYY-MM-DD HH:MM:SS" format for MySQL
-    const formattedBeginDate = year+"-"+month+"-"+day+" "+hours+":"+minutes+":"+"00"
+    // Format dates to 'YYYY-MM-DD HH:MM:SS'
+    const formattedBeginDate = beginDate.toISOString().replace('T', ' ').substring(0, 19);
+    const formattedEndDate = endDate.toISOString().replace('T', ' ').substring(0, 19);
 
-    return {formattedBeginDate, formattedEndDate}
-}
+    return { formattedBeginDate, formattedEndDate };
+};
 
 module.exports = {
     formatTime
-}
+};
