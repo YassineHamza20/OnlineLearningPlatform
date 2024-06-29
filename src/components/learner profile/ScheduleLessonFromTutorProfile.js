@@ -9,7 +9,7 @@ function ScheduleLessonFromTutorProfile(props) {
             <span className="">Welcome to the scheduling section. Here, you can conveniently arrange a lesson with your chosen tutor. Please note that you will automatically be presented with available time slots that align with both your and the tutor's schedules.</span>
             <BigCalendar></BigCalendar>
         </>
-    );
+    );''
 }
 
 export default ScheduleLessonFromTutorProfile;
