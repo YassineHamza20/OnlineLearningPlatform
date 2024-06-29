@@ -145,6 +145,8 @@ app.use('/', forgotpassword)
 app.use('/', verifyForgotPassword)
 app.use('/', resetpassword)
 app.use('/tutor', tutorDetails)
+
+
 app.use('/learner', scheduleLesson)
 app.use('/learner', getFirstLessons)
 app.use('/learner', getDayLessons)
@@ -194,6 +196,8 @@ app.use('/learner', paymentRouter)
 app.use('/learner', getSubscriptionHistory)
 app.use('/tutor', tutorRevenue)
 app.use('/tutor', tutorInformation)
+
+
 app.use('/admin', adminLogin)
 app.use('/admin', adminCreation)
 app.use('/admin', adminDashBoardInfo)
