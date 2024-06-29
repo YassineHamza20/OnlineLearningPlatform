@@ -4,10 +4,9 @@ const mysql = require('../helpers/Sql_connection')
 const auth = require('../middleware/auth')
 const roleCheck = require('../middleware/roleCheck')
 
-//, auth, roleCheck(["Learner"])
-router.post('/getDayLessons', (req, res) => {
-    //const userId= req.user.id
-    const userId= req.body.id
+
+router.post('/getDayLessons', auth, roleCheck(["Learner"]), (req, res) => {
+    const userId= req.user.id
     const {
         date //year-month-day
     } = req.body
