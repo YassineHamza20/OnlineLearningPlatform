@@ -90,6 +90,7 @@ function BigCalendar() {
                 'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
             }
         })
+         console.log('API Response:', response.data.message);
         dispatch(setFirstLessonList(response.data.message))
         }catch(err) {
             console.log(err)
