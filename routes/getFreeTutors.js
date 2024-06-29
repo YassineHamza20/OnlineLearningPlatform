@@ -24,7 +24,7 @@ router.post('/getFreeTutors', (req, res) => {
         ({ formattedBeginDate, formattedEndDate } = formatTime(selectedDate, lessonLength));
         console.log('Formatted Dates:', { formattedBeginDate, formattedEndDate });
     } catch (error) {
-        console.error('Error formatting time:', error);
+        console.error('Error formatting time:', error.message);
         return res.status(500).json({ message: "Error formatting time" });
     }
 
