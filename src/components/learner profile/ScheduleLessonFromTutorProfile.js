@@ -1,33 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import axiosInstance from '../../interceptors/axiosInterceptor';
+import BigCalendar from './BigCalendar'
 
-function ScheduleLessonFromTutorProfile() {
-    const dispatch = useDispatch();
-    const [lessons, setLessons] = useState([]);
-
-    useEffect(() => {
-        const fetchLessons = async () => {
-            try {
-                const response = await axiosInstance.get('/lessons');
-                setLessons(response.data);
-            } catch (error) {
-                console.error('Error fetching lessons', error);
-            }
-        };
-
-        fetchLessons();
-    }, [dispatch]);
+function ScheduleLessonFromTutorProfile(props) {
+    
 
     return (
-        <div>
-            <h1>Schedule Lesson</h1>
-            <ul>
-                {lessons.map((lesson) => (
-                    <li key={lesson.id}>{lesson.title}</li>
-                ))}
-            </ul>
-        </div>
+        <>
+            <h4 className="text-xl text-gray-900 font-bold">Schedule a lesson</h4>
+            <span className="">Welcome to the scheduling section. Here, you can conveniently arrange a lesson with your chosen tutor. Please note that you will automatically be presented with available time slots that align with both your and the tutor's schedules.</span>
+            <BigCalendar></BigCalendar>
+        </>
     );
 }
 
