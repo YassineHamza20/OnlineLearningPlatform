@@ -12,10 +12,7 @@ export const fetchCountryData = async (countryName) => {
     }
   };
  // Replace `axiosInstance` with your axios configuration if necessary
-const axiosInstance = axios.create({
-    baseURL: 'https://onlinelearningplatform-d9w2.onrender.com'
-});
-
+ 
 // Getting files from backend
 export const fetchFile = async (pfp, fileType, role, id) => {
     return new Promise((resolve, reject) => {
