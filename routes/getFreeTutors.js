@@ -42,9 +42,11 @@ router.post('/getFreeTutors', (req, res) => {
             ) AND pl.Accepted <> 0
             GROUP BY t.id
         )
-        AND (JSON_CONTAINS(education, ?, '$') = 1
-            OR JSON_CONTAINS(workexperience, ?, '$') = 1)
-        AND (JSON_CONTAINS(Languages, ?, '$') = 1)
+        AND (
+            (education LIKE CONCAT('%', ?, '%'))
+            OR (workexperience LIKE CONCAT('%', ?, '%'))
+        )
+        AND (Languages LIKE CONCAT('%', ?, '%'))
     `;
 
     const queryParams = [
@@ -54,9 +56,9 @@ router.post('/getFreeTutors', (req, res) => {
         formattedEndDate, 
         formattedBeginDate,
         formattedEndDate,
-        JSON.stringify({ tag: lessonTopic }),
-        JSON.stringify({ tag: lessonTopic }),
-        JSON.stringify({ language: Language })
+        lessonTopic,
+        lessonTopic,
+        Language
     ];
 
     console.log('Query Params:', queryParams);
