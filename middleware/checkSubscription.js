@@ -16,7 +16,7 @@ const isSubscribed = async (req, res, next) => {
             if(result.length >0) {
                 next()
             }else {
-                console.log("not payed!");
+                console.log("not payed! Must be premuim");
                 res.
                 status(402)
                 .json({message: "Not payed!"})
