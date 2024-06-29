@@ -31,7 +31,7 @@ function ThirdStep(props) {
 
             const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getFreeTutors', {
                 selectedDate: selectedDate,
-                lessonLength: scheduleData.lessonLength,
+                lessonLength: `${scheduleData.lessonLength} minutes`,
                 lessonTopic: scheduleData.lessonTopic, 
                 Language: scheduleData.language
             }, {
