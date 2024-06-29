@@ -30,7 +30,7 @@ function Calendar(props) {
 
   // Function to get the dates for the upcoming days of the week
   const getDatesForWeek = () => {
-    const today = new Date(); // Get today's date
+    const today = new Date(); // Get today's datezz
     const datesForWeek = [];
 
     // Loop through the next 7 days
