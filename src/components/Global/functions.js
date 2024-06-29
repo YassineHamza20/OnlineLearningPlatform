@@ -1,5 +1,5 @@
 import axiosInstance from "../../interceptors/axiosInterceptor"
-import axios from 'axios';
+
 //getting flag image with name of country
 export const fetchCountryData = async (countryName) => {
     try {
@@ -11,12 +11,11 @@ export const fetchCountryData = async (countryName) => {
       return null;
     }
   };
- // Replace `axiosInstance` with your axios configuration if necessary
- 
-// Getting files from backend
-export const fetchFile = async (pfp, fileType, role, id) => {
+
+//getting files from backend
+export const fetchFile = async (pfp, fileType, role, id, )=> {
     return new Promise((resolve, reject) => {
-        axiosInstance.get(`/api/uploads/${pfp}`, {
+        axiosInstance.get(`https://onlinelearningplatform-d9w2.onrender.com/api/uploads/${pfp}`, {
             params: {
                 role: role,
                 fileType: fileType,
@@ -28,9 +27,6 @@ export const fetchFile = async (pfp, fileType, role, id) => {
             const reader = new FileReader();
             reader.onload = () => {
                 resolve(reader.result);
-            };
-            reader.onerror = (error) => {
-                reject(error);
             };
             reader.readAsDataURL(response.data);
         })
