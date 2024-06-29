@@ -79,7 +79,7 @@ function BigCalendar() {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [dispatch, firstSegment]);
 
     return (
         <div className={`bg-backg overflow-y-auto ${location.pathname.startsWith('/learner/profile/Tutor/') ? "p-3 h-full" : "py-4 px-4 lg:px-36 h-[90%] "} overflow-x-hidden rounded-lg shadow-lg`}>
