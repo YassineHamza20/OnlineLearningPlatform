@@ -4,7 +4,7 @@ const mysql = require('../helpers/Sql_connection');
 const auth = require('../middleware/auth');
 const roleCheck = require('../middleware/roleCheck');
 
-router.post('/admins', auth, roleCheck(["Admin"]), async (req, res) => {
+router.post('/Getadmins', auth, roleCheck(["Admin"]), async (req, res) => {
     const query = `
         SELECT 
             id, email, firstname, lastname, tel, CIN
