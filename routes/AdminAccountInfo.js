@@ -22,4 +22,4 @@ router.post('/AdminInfo', auth, roleCheck(["Admin"]) ,(req, res)=> {
     })  
 })
 
-module.exports = router
+module.exports = router;

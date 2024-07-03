@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 
 const dbConfig = {
-  host: 'sql8.freesqldatabase.com',
+  host: 'sql5.freesqldatabase.com',
   user: 'sql8717785',
   password: 'NFViUDgfbh',
   database: 'sql8717785',

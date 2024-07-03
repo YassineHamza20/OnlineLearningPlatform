@@ -3,13 +3,13 @@ const router = express.Router();
 const mysql = require('../helpers/Sql_connection');
 const auth = require('../middleware/auth');
 const roleCheck = require('../middleware/roleCheck');
-const deleteExistingFileFromDB = require('../middleware/deleteFile');
 
-router.post('/DeleteAdminAccount', auth, roleCheck(["Admin"]), (req, res) => {
+
+router.post('/DeleteAdminAccount', auth, roleCheck(["Admin"]),(req, res) => {
     const { userId } = req.body;
 
-    const directory = `./uploads/images/Admin/${userId}`;
-    deleteExistingFileFromDB(userId, "Administrator", "image", directory);
+    
+     
     const query = `DELETE FROM administrator WHERE id = ?`;
 
     mysql.query(query, [userId], (err, result) => {
