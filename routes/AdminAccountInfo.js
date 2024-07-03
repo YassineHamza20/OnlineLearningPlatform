@@ -4,7 +4,7 @@ const mysql = require('../helpers/Sql_connection');
 const auth = require('../middleware/auth');
 const roleCheck = require('../middleware/roleCheck');
 
-//
+
 router.post('/AdminInfo', auth, roleCheck(["Admin"]) ,(req, res)=> {
     
     const userId = req.user.id
