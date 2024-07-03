@@ -40,8 +40,9 @@ function Admin(props) {
               <DeletionPanel></DeletionPanel>
               <DeleteLearner></DeleteLearner>
               <DeleteTutor></DeleteTutor>
+              <PurchaseHistory></PurchaseHistory>
             </div>
-            <PurchaseHistory></PurchaseHistory>
+            
       </>
     }else if(path ==="/admin/Profile"){
         return <Profile></Profile>
