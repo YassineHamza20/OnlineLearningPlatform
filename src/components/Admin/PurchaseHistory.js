@@ -27,7 +27,7 @@ function PurchaseHistory(props) {
             <table className="w-full">
               <thead>
                 <tr className="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                  <th className="px-4 py-3">ID</th>
+                  {/* <th className="px-4 py-3">ID</th> */}
                   <th className="px-4 py-3">Learner</th>
                   <th className="px-4 py-3">Cost</th>
                   <th className="px-4 py-3">Payment date</th>
@@ -39,7 +39,7 @@ function PurchaseHistory(props) {
                   history.map((item, index) =>{
                     return <tr key={index} className="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                     
-                    <td className="px-4 py-3 text-sm">{item.SubId}</td>
+                    {/* <td className="px-4 py-3 text-sm">{item.SubId}</td> */}
                     <td className="px-4 py-3 text-sm">{item.firstname + " "+ item.lastname}</td>
                     <td className="px-4 py-3 text-sm">{item.cost} TND</td>
                     <td className="px-4 py-3 text-sm">{new Date(item.PayementDate).toLocaleString()}</td>

@@ -11,6 +11,7 @@ import SideBar from "../../components/Admin/SideBar";
 import { useDispatch} from 'react-redux'
 import { setAdmin } from "../../state/slices/adminSlice";
 import axiosInstance from "../../interceptors/axiosInterceptor";
+import AdminList from "../../components/Admin/Admins";
 
 
 function Admin(props) {
@@ -41,6 +42,7 @@ function Admin(props) {
               <DeleteLearner></DeleteLearner>
               <DeleteTutor></DeleteTutor>
               <PurchaseHistory></PurchaseHistory>
+              <AdminList></AdminList>
             </div>
             
       </>
