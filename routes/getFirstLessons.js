@@ -3,6 +3,8 @@
 // const mysql = require('../helpers/Sql_connection')
 // const auth = require('../middleware/auth')
 // const roleCheck = require('../middleware/roleCheck')
+
+
 // router.post('/getFirstLesson', auth, roleCheck(["Learner"]), (req, res) => {
 //     const userId = req.user.id
 
@@ -32,7 +34,6 @@
 // })
 
 // module.exports = router
-
 const express = require('express');
 const router = express.Router();
 const mysql = require('../helpers/Sql_connection');

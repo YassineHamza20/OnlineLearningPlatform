@@ -1,11 +1,11 @@
 const mysql = require('mysql');
 
 const dbConfig = {
-  host: 'sql5.freesqldatabase.com',
+  host: 'sql8.freesqldatabase.com',
   user: 'sql8717785',
   password: 'NFViUDgfbh',
   database: 'sql8717785',
-  port: 3306
+  port: 3306,
 };
 
 let connection;
