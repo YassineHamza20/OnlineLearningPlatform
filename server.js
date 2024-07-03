@@ -122,7 +122,8 @@ const adminDeleteCourse = require('./routes/AdminDeleteCourse')
 const adminDeleteTutor = require('./routes/AdminDeleteTutor')
 const adminDeleteLearner = require('./routes/AdminDeleteLearner')
 const adminInformation = require('./routes/AdminAccountInfo')
-
+const Getadmins = require('./routes/getAdmins')
+const AdminDeleteAdmin = require('./routes/AdminDeleteAdmin')
 
 //apis
 app.use('/', googleSignupRouter)
@@ -199,6 +200,8 @@ app.use('/tutor', tutorInformation)
 
 
 app.use('/admin', adminLogin)
+app.use('/admin', AdminDeleteAdmin)
+app.use('/admin', Getadmins)
 app.use('/admin', adminCreation)
 app.use('/admin', adminDashBoardInfo)
 app.use('/admin', adminProfile)
