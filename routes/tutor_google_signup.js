@@ -13,7 +13,7 @@ router.post('/signupgoogle', async (req, res) => {
             if (payload) {
                 console.log('Token verified successfully');
                 //verifying if the email already exists in the Database
-                mysql.query('select email from learner where email = ? UNION select email from Tutor where email = ? ', [payload.email, payload.email], (err, result) =>{
+                mysql.query('select email from learner where email = ? UNION select email from tutor where email = ? ', [payload.email, payload.email], (err, result) =>{
                     if(err) {
                         //if there is error in database return error 
                         console.log(err)
