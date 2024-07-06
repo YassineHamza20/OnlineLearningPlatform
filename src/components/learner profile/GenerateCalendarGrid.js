@@ -105,11 +105,11 @@ const GenerateCalendarGrid = (props) => {
     }
     const getStatusClass = (Accepted) => {
         if (Accepted === -1) {
-            return "bg-blue-500 text-white"; // Example color for On Hold
+            return "bg-blue-200 text-blue"; // Example color for On Hold
         } else if (Accepted === 0) {
-            return "bg-red-500 text-white"; // Example color for Canceled
+            return "bg-red-200 text-red"; // Example color for Canceled
         } else {
-            return "bg-green-500 text-white"; // Example color for Approved
+            return "bg-green-200 text-green"; // Example color for Approved
         }
     };
     //generating the cell to be show in calendar
