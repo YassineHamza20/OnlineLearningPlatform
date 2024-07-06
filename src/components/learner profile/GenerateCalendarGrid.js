@@ -95,14 +95,15 @@ const GenerateCalendarGrid = (props) => {
             dispatch(setVisibility(true))
     };
     const handleLessonStatus = (Accepted) => {
-        if(Accepted === -1){
-            return "On Hold"
-        }else if(Accepted===0) {
-            return "Canceled"
-        }else {
-            return "Approved"
+        if (Accepted === -1) {
+            return { text: "On Hold", className: "bg-blue text-white border-blue" };
+        } else if (Accepted === 0) {
+            return { text: "Canceled", className: "bg-red text-white border-red" };
+        } else {
+            return { text: "Approved", className: "bg-green text-white border-green" };
         }
-    }
+    };
+    
     //generating the cell to be show in calendar
     const cellContent = (day, cellClass, isToday) => {
         cellClass += `bg-cellColor flex flex-col text-white ${firstSegment === "learner"? "cursor-pointer" : ""}`;
@@ -155,12 +156,12 @@ const GenerateCalendarGrid = (props) => {
                         </div>
                          
                         <div className="flex">
-    <div className={`p-1 border rounded-xl text-xs ${lesson.Accepted === 'On Hold' ? 'bg-blue text-black border-blue' : 'bg-lightGreen text-elements border-elements'}`}>
-        {
-            handleLessonStatus(lesson.Accepted)
-        }
-    </div>
-</div>
+                        <div className="bg-lightGreen text-xs p-1 border border-elements text-elements rounded-xl">
+                            {
+                                handleLessonStatus(lesson.Accepted)
+                            }
+                        </div>
+                        </div>
 
                         <div className="flex items-center space-x-1 max-w-full truncate">
                             <IoMdTime className="text-darkg" size="15"></IoMdTime>
