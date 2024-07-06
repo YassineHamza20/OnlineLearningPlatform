@@ -66,8 +66,8 @@ function ProfileChange(props) {
                     <Languages modifyCall={modifyCall} title="Languages"></Languages>
                     <WorkExperience title="Work Experience" modifyCall={modifyCall}></WorkExperience>
                     <Education title="Education" modifyCall={modifyCall}></Education>
-                    <Description modifyCall={modifyCall} title ="Description"></Description>
-                    <TeachingStyle modifyCall={modifyCall} title="Teaching Style"></TeachingStyle>
+                    <Description modifyCall={modifyCall} title ="Notes / Unavailable times"></Description>
+                    <TeachingStyle modifyCall={modifyCall} title="Teaching Style & Description"></TeachingStyle>
                     <AboutMe modifyCall={modifyCall} title="About Me"></AboutMe>
                     <Country modifyCall={modifyCall} title="From" role={firstSegment}></Country>
                 </>
