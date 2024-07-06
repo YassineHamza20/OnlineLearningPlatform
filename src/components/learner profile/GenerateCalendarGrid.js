@@ -96,11 +96,11 @@ const GenerateCalendarGrid = (props) => {
     };
     const handleLessonStatus = (Accepted) => {
         if (Accepted === -1) {
-            return { text: "On Hold", className: "bg-blue text-white border-blue" };
+            return { text: "On Hold", style: { backgroundColor: 'blue', color: 'white', borderColor: 'blue' } };
         } else if (Accepted === 0) {
-            return { text: "Canceled", className: "bg-red text-white border-red" };
+            return { text: "Canceled", style: { backgroundColor: 'red', color: 'white', borderColor: 'red' } };
         } else {
-            return { text: "Approved", className: "bg-green text-white border-green" };
+            return { text: "Approved", style: { backgroundColor: 'lightgreen', color: '#yourColor', borderColor: '#yourColor' } };
         }
     };
     
