@@ -123,7 +123,7 @@ function FirstStep(props) {
 
     return (
         <>
-            <span className="block text-center text-black font-semibold text-lg">Schedule a Lesson</span>
+            <span className="block text-center text-black font-semibold text-lg">Schedule a Lesson  </span>
             <div className="flex p-2 items-center space-x-6"> 
                 <IoMdCalendar size="25" className="text-active"></IoMdCalendar>
                 <span className="text-active">{props.selectedDate}</span>
