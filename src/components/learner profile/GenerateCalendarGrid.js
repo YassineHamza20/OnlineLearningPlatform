@@ -94,15 +94,15 @@ const GenerateCalendarGrid = (props) => {
             saveDate(day)
             dispatch(setVisibility(true))
     };
-    const handleLessonStatus = (Accepted) => {
-        if(Accepted === -1){
-            return "On Hold"
-        }else if(Accepted===0) {
-            return "Canceled"
-        }else {
-            return "Approved"
-        }
-    }
+    // const handleLessonStatus = (Accepted) => {
+    //     if(Accepted === -1){
+    //         return "On Hold"
+    //     }else if(Accepted===0) {
+    //         return "Canceled"
+    //     }else {
+    //         return "Approved"
+    //     }
+    // }
     //generating the cell to be show in calendar
     const cellContent = (day, cellClass, isToday) => {
         cellClass += `bg-cellColor flex flex-col text-white ${firstSegment === "learner"? "cursor-pointer" : ""}`;
@@ -153,14 +153,17 @@ const GenerateCalendarGrid = (props) => {
                         className={`text-xs p-1 border max-w-full truncate ${handleLessonDifficultyColor(lesson.lesson_difficulty, 'other')} rounded-xl`}>
                             {lesson.lesson_difficulty}
                         </div>
-                        
-                        <div className="flex">
+                        <div 
+                        className={`text-xs p-1 border max-w-full truncate ${handleLessonDifficultyColor(lesson.lesson_difficulty, 'other')} rounded-xl`}>
+                            {lesson.lesson_difficulty}
+                        </div>
+                        {/* <div className="flex">
                         <div className="bg-lightGreen text-xs p-1 border border-elements text-elements rounded-xl">
                             {
                                 handleLessonStatus(lesson.Accepted)
                             }
                         </div>
-                        </div>
+                        </div> */}
 
                         <div className="flex items-center space-x-1 max-w-full truncate">
                             <IoMdTime className="text-darkg" size="15"></IoMdTime>
