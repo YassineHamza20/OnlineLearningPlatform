@@ -29,7 +29,7 @@ function Body() {
 
     const welcomeContent = [
         <img key="0" referrerPolicy="no-referrer" src={`${learnerData.pic==="user.png" ? "/" +learnerData.pic: learnerData.pic }`} alt="profilepicture"  className="w-20 h-20 object-cover rounded-full"></img>,
-        <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguify, {learnerData.firstname+" "+learnerData.lastname}!</span>
+        <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguifyy, {learnerData.firstname+" "+learnerData.lastname}!</span>
     ]
 
 
