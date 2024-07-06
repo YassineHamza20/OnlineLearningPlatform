@@ -28,7 +28,15 @@ function ShowMoreRow({lesson}) {
             return "Approved"
         }
     }
-
+    const getStatusClass = (Accepted) => {
+        if (Accepted === -1) {
+            return "bg-yellow-500 text-black"; // Example color for On Hold
+        } else if (Accepted === 0) {
+            return "bg-red-500 text-white"; // Example color for Canceled
+        } else {
+            return "bg-green-500 text-white"; // Example color for Approved
+        }
+    };
     const fetchImage = async () => {
         try {
             setLoading(true)
@@ -76,11 +84,16 @@ function ShowMoreRow({lesson}) {
                         </span>
                     </div>
                     <div className="flex">
-                        <div className="bg-lightGreen text-xs p-1 border border-elements text-elements rounded-xl">
+                        {/* <div className="bg-lightGreen text-xs p-1 border border-elements text-elements rounded-xl">
                             {
                                 handleLessonStatus(lesson.Accepted)
                             }
-                        </div>
+                        </div> */}
+                        <div className="flex">
+    <div className={`text-xs p-1 border border-elements text-elements rounded-xl ${getStatusClass(lesson.Accepted)}`}>
+        {handleLessonStatus(lesson.Accepted)}
+    </div>
+</div>
                     </div>
                 </div>
                 <span className="text-sm" >
