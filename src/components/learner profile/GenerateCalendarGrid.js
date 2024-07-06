@@ -153,7 +153,10 @@ const GenerateCalendarGrid = (props) => {
                         className={`text-xs p-1 border max-w-full truncate ${handleLessonDifficultyColor(lesson.lesson_difficulty, 'other')} rounded-xl`}>
                             {lesson.lesson_difficulty}
                         </div>
-
+                        <div 
+                        className={`text-xs p-1 border max-w-full truncate ${handleLessonDifficultyColor(lesson.lesson_difficulty, 'other')} rounded-xl`}>
+                            {lesson.lesson_difficulty}
+                        </div>
                         <div className="flex">
                         <div className="bg-lightGreen text-xs p-1 border border-elements text-elements rounded-xl">
                             {
