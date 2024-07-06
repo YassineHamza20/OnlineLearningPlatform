@@ -3,7 +3,7 @@ import { setDescription } from "../../state/slices/CourseSlice";
 
 
 function Description(props) {
-    const maxDescriptionLength = 800
+    const maxDescriptionLength = 1200
     const courseDescription = useSelector(state => state.courseData.description)
     const dispatch = useDispatch()
     
@@ -13,7 +13,7 @@ function Description(props) {
    
     return (
         <div className="w-full">
-            <label className="block text-[#000] text-sm font-semibold ">Description</label>
+            <label className="block text-[#000] text-sm font-semibold ">Notes / Unavailable times </label>
             <div className="flex items-start relative space-x-3 ">
                 <div className="relative h-[85%] w-full">
                     <textarea 

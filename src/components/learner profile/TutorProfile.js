@@ -194,7 +194,7 @@ function TutorProfile(props) {
                         </div>
                     </div>
                     <div className="flex-1 bg-white rounded-lg shadow-xl p-8">
-                        <h4 className="text-xl text-gray-900 font-bold">Description</h4>
+                        <h4 className="text-xl text-gray-900 font-bold">Notes / Unavailable times</h4>
                         <p className="mt-2 text-gray-700">{selectedTutorData.description}</p>
                     </div>
                     <div className="flex flex-col space-y-3 bg-white rounded-lg shadow-xl p-8">

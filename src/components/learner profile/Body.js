@@ -39,6 +39,7 @@ function Body() {
             <div key="leftpart" className="flex flex-col col-span-1 h-auto space-y-5">
                 <Card content={welcomeContent}></Card>
                 <ChatLessonCard></ChatLessonCard>
+                
             </div>
             <div key="rightpart" className="flex flex-col col-span-1 md:col-span-2 h-auto space-y-5">
                 <StartedCard></StartedCard>  
