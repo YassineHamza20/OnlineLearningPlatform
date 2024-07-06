@@ -103,6 +103,15 @@ const GenerateCalendarGrid = (props) => {
             return "Approved"
         }
     }
+    const getStatusClass = (Accepted) => {
+        if (Accepted === -1) {
+            return "bg-yellow-500 text-black"; // Example color for On Hold
+        } else if (Accepted === 0) {
+            return "bg-red-500 text-white"; // Example color for Canceled
+        } else {
+            return "bg-green-500 text-white"; // Example color for Approved
+        }
+    };
     //generating the cell to be show in calendar
     const cellContent = (day, cellClass, isToday) => {
         cellClass += `bg-cellColor flex flex-col text-white ${firstSegment === "learner"? "cursor-pointer" : ""}`;
@@ -153,17 +162,13 @@ const GenerateCalendarGrid = (props) => {
                         className={`text-xs p-1 border max-w-full truncate ${handleLessonDifficultyColor(lesson.lesson_difficulty, 'other')} rounded-xl`}>
                             {lesson.lesson_difficulty}
                         </div>
-                        <div 
-                        className={`text-xs p-1 border max-w-full truncate ${handleLessonDifficultyColor(lesson.lesson_difficulty, 'other')} rounded-xl`}>
-                            {lesson.lesson_difficulty}
-                        </div>
+                        
                         <div className="flex">
-                        <div className="bg-lightGreen text-xs p-1 border border-elements text-elements rounded-xl">
-                            {
-                                handleLessonStatus(lesson.Accepted)
-                            }
-                        </div>
-                        </div>
+    <div className={`text-xs p-1 border border-elements text-elements rounded-xl ${getStatusClass(lesson.Accepted)}`}>
+        {handleLessonStatus(lesson.Accepted)}
+    </div>
+</div>
+
 
                         <div className="flex items-center space-x-1 max-w-full truncate">
                             <IoMdTime className="text-darkg" size="15"></IoMdTime>
