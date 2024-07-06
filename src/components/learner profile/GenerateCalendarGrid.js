@@ -155,11 +155,12 @@ const GenerateCalendarGrid = (props) => {
                         </div>
                          
                         <div className="flex">
-                        <div className="bg-lightGreen text-xs p-1 border border-elements text-elements rounded-xl">
-                            {
-                                handleLessonStatus(lesson.Accepted)
-                            }
-                        </div>
+                        <div className={`p-1 border rounded-xl text-xs ${lesson.Accepted === 'On Hold' ? 'bg-blue text-white border-blue' : 'bg-lightGreen text-elements border-elements'}`}>
+     {
+        handleLessonStatus(lesson.Accepted)
+        }
+            </div>
+
                         </div>
 
                         <div className="flex items-center space-x-1 max-w-full truncate">
