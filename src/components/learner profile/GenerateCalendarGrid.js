@@ -105,7 +105,7 @@ const GenerateCalendarGrid = (props) => {
     }
     const getStatusClass = (Accepted) => {
         if (Accepted === -1) {
-            return "bg-yellow-500 text-black"; // Example color for On Hold
+            return "bg-blue-500 text-white"; // Example color for On Hold
         } else if (Accepted === 0) {
             return "bg-red-500 text-white"; // Example color for Canceled
         } else {
