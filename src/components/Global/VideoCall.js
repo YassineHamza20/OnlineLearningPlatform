@@ -134,7 +134,7 @@ export default function VideoCall() {
         ]
       },
       // Uncomment and set your JWT if required
-       jwt: "accesstoken"
+      // jwt: "accesstoken"
     };
     const api = new window.JitsiMeetExternalAPI(domain, options);
 
