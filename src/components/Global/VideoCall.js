@@ -79,8 +79,6 @@
 
 
 
-
-
 import React, { useEffect, useRef } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
@@ -92,11 +90,9 @@ export function getUrlParams(url = window.location.href) {
 function randomID(len) {
   let result = '';
   if (result) return result;
-  var chars = '12345qwertyuiopasdfgh67890jklmnbvcxzMNBVCZXASDQWERTYHGFUIOLKJP',
-    maxPos = chars.length,
-    i;
-  len = len || 5;
-  for (i = 0; i < len; i++) {
+  const chars = '12345qwertyuiopasdfgh67890jklmnbvcxzMNBVCZXASDQWERTYHGFUIOLKJP';
+  const maxPos = chars.length;
+  for (let i = 0; i < len; i++) {
     result += chars.charAt(Math.floor(Math.random() * maxPos));
   }
   return result;
@@ -107,18 +103,16 @@ export default function VideoCall() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const name = searchParams.get('name');
-  const roomID = param.uuid;
+  const roomID = param.uuid || 'SampleAppVulnerableDealsWanderOut';
   const jitsiContainerRef = useRef(null);
 
   useEffect(() => {
-    const domain = 'https://linguify.netlify.app/';  // Replace with your own domain
+    const domain = '8x8.vc';  // Use the correct domain for Jitsi Meet API
     const options = {
-      roomName: roomID,
-      width: '100%',
-      height: '100%',
+      roomName: `vpaas-magic-cookie-3b0bd970a46948c686edbc6becbcac23/${roomID}`,
       parentNode: jitsiContainerRef.current,
       userInfo: {
-        displayName: name
+        displayName: name || 'Guest'
       },
       configOverwrite: {
         prejoinPageEnabled: false
@@ -134,7 +128,9 @@ export default function VideoCall() {
           'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts', 'tileview',
           'videobackgroundblur', 'download', 'help', 'mute-everyone'
         ]
-      }
+      },
+      // Uncomment and set your JWT if required
+      // jwt: "YOUR_JWT_TOKEN"
     };
     const api = new window.JitsiMeetExternalAPI(domain, options);
 
