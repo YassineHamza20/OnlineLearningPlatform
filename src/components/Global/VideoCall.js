@@ -71,7 +71,16 @@
 //     ></div>
     
 //   );
-// }
+// } 
+
+
+
+
+
+
+
+
+
 import React, { useEffect, useRef } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
@@ -102,7 +111,7 @@ export default function VideoCall() {
   const jitsiContainerRef = useRef(null);
 
   useEffect(() => {
-    const domain = 'meet.jit.si';
+    const domain = 'https://linguify.netlify.app/';  // Replace with your own domain
     const options = {
       roomName: roomID,
       width: '100%',
