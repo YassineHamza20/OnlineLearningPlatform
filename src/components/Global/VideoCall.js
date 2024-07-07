@@ -76,9 +76,6 @@
 
 
 
-
-
-
 import React, { useEffect, useRef } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 
@@ -99,14 +96,21 @@ function randomID(len) {
 }
 
 export default function VideoCall() {
-  const param = useParams();
+  const { uuid: roomID } = useParams();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const name = searchParams.get('name');
-  const roomID = param.uuid || 'SampleAppVulnerableDealsWanderOut';
   const jitsiContainerRef = useRef(null);
 
+  console.log('Room ID:', roomID); // Debugging
+  console.log('Name:', name); // Debugging
+
   useEffect(() => {
+    if (!roomID) {
+      console.error('Room ID is undefined');
+      return;
+    }
+
     const domain = '8x8.vc';  // Use the correct domain for Jitsi Meet API
     const options = {
       roomName: `vpaas-magic-cookie-3b0bd970a46948c686edbc6becbcac23/${roomID}`,
@@ -130,7 +134,7 @@ export default function VideoCall() {
         ]
       },
       // Uncomment and set your JWT if required
-      // jwt: "YOUR_JWT_TOKEN"
+       jwt: "accesstoken"
     };
     const api = new window.JitsiMeetExternalAPI(domain, options);
 
@@ -144,3 +148,5 @@ export default function VideoCall() {
     />
   );
 }
+
+ 
