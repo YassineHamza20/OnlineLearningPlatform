@@ -6,7 +6,7 @@ const mysql = require('../helpers/Sql_connection')
 
 
 
-
+ 
 router.post('/Revenue', auth, roleCheck(["Tutor"]), (req, res) => {
     const userId= req.user.id
     const query = `select * from private_lesson where
@@ -18,6 +18,7 @@ router.post('/Revenue', auth, roleCheck(["Tutor"]), (req, res) => {
         }else {
             let Revenue = 0
             result.map((lesson) => {
+                
                 const time = lesson.duration.split(' ')[0]
                 Revenue = Revenue + (parseInt(time)*10)/60
             })
