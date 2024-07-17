@@ -8,6 +8,7 @@
     "build": "echo 'Build step for Node.js backend (if needed)' && npm install"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.44.4",
     "aws-sdk": "^2.1569.0",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
