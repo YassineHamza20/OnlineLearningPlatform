@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: { 
-    origin: 'https://linguify.netlify.app',
+    origin: 'https://onlinelearningplatform-d9w2.onrender.com',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Authorization', 'Content-Type'],
     credentials: true
