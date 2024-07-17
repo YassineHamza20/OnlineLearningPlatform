@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: { 
-    origin: 'https://onlinelearningplatform-d9w2.onrender.com',
+    origin: 'https://linguify.netlify.app',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Authorization', 'Content-Type'],
     credentials: true
@@ -20,9 +20,11 @@ const io = socketIo(server, {
 
 // Middleware for parsing multipart/form-data
 app.use(cors({
-    origin: "https://linguify.netlify.app"
-}))
-
+  origin: 'https://linguify.netlify.app',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Authorization', 'Content-Type'],
+  credentials: true
+}));
 //port
 const port = process.env.PORT || 5000
 
