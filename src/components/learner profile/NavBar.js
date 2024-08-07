@@ -160,7 +160,7 @@ import Drawer from "./Drawer";
 import DropdownMenu from "./DropdownMenu";
 import Notifications from "./LessonNotifications";
 import MessagesNotif from "../Global/MessagesNotif";
-// import SubscriptionPlan from "../Subscription/SubscriptionPlan";
+import SubscriptionPlan from "../Subscription/SubscriptionPlan";
 
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -251,7 +251,7 @@ function NavBar() {
                 </div>
             </div>
             <Drawer userData={learnerData} role="learner" isOpen={isOpen} closeDrawer={() => setIsOpen(!isOpen)} />
-            {/* <SubscriptionPlan visibility={paymentVisiblity} setVisibility={setPaymentVisibility} /> */}
+            <SubscriptionPlan visibility={paymentVisiblity} setVisibility={setPaymentVisibility} />
         </>
     );
 }
