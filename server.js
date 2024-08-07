@@ -200,7 +200,10 @@ app.use('/tutor', getMessagesTutor)
 app.use('/tutor', getLearner)
 app.use('/tutor', getLatestMessagesTutor)
 app.use('/learner', getLatestMessagesLearner)
+
 app.use('/learner', paymentRouter)
+
+
 app.use('/learner', getSubscriptionHistory)
 app.use('/tutor', tutorRevenue)
 app.use('/tutor', tutorInformation)
