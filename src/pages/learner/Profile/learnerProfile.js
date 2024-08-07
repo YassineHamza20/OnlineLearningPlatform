@@ -23,7 +23,7 @@ import Subscription from "../../../components/Settings/Subscription";
 import CoursePage from "../../../components/LearnerCourses/CoursePage";
 import Chat from "../../Chat";
 import { addChatNotification, setNewMessages } from "../../../state/slices/chatSlice";
-
+import FeedbackForm from "./FeedbackForm";
 
 
 function LearnerProfile() {
@@ -213,6 +213,7 @@ function LearnerProfile() {
         ChatBot: <LinguaBuddy></LinguaBuddy>,
         Settings: <Settings userData={learnerData}></Settings>,
         calendar: <BigCalendar></BigCalendar>,
+        feedback: <FeedbackForm></FeedbackForm>,
         Notifications: <NotificationsPage></NotificationsPage>,
         studentProfile: <ProfileChange></ProfileChange>,
         informationChange: <Account></Account>,
@@ -239,7 +240,9 @@ function LearnerProfile() {
             return bodyContent.Settings
         }else if (path === '/learner/profile/Calendar') {
             return bodyContent.calendar
-        }else if(path === '/learner/profile/Notifications') {
+        }else if(path === '/learner/profile/FeedbackForm') {
+            return bodyContent.FeedbackForm
+    }else if(path === '/learner/profile/Notifications') {
             return bodyContent.Notifications
         }else if(location.pathname.startsWith('/learner/profile/Tutor/')) {
             return bodyContent.TutorProfile

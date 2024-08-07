@@ -16,7 +16,7 @@ import VerifyEmail from './components/Settings/VerifyEmail';
 import Admin from './pages/admin/Admin';
 import LogIn from './pages/admin/LogIn';
 import ProtectedRoute from './components/ProtectedRoute';
-
+import FeedbackForm from './pages/learner/Profile/FeedbackForm.js';
 function App() {
   return (
     <Router>
@@ -39,6 +39,14 @@ function App() {
         <Route path='/learner/profile/Settings/subscription' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
         <Route path='/learner/profile/Courses/:uuid' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
         <Route path='/learner/profile/Chat/:uuid' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
+        <Route
+          path='/learner/profile/feedback'
+          element={
+            <ProtectedRoute>
+              <FeedbackForm/>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path='/learner/profile/Calendar'
           element={
@@ -85,7 +93,14 @@ function App() {
         <Route path='/landingpage/Courses' element={<Landingpage />} />
         <Route path='/landingpage/Tutors' element={<Landingpage />} />
         <Route path='/landingpage/LinguaBuddy' element={<Landingpage />} />
-
+ <Route
+          path='/learner/profile/Courses'
+          element={
+            <ProtectedRoute>
+              <LearnerProfile />
+            </ProtectedRoute>
+          }
+        />
         {/* Default Route */}
         <Route index element={<Landingpage />} />
       </Routes>
