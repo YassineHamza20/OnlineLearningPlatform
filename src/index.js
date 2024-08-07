@@ -6,16 +6,24 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
 import store from './state/store'
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { ChakraProvider , extendTheme} from '@chakra-ui/react';
 
-
-
+const theme = extendTheme({
+  colors: {
+      orange: {
+          500: '#ED8936', // Customize this value as needed
+      },
+  },
+});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <ChakraProvider theme={theme}>
     <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENTID}>
       <Provider store={store}>
       <App />
     </Provider>
     </GoogleOAuthProvider>
+    </ChakraProvider>
 );
 
 
