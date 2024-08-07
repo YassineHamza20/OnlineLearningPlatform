@@ -20,11 +20,10 @@ const io = socketIo(server, {
 
 // Middleware for parsing multipart/form-data
 app.use(cors({
-  origin: 'https://linguify.netlify.app',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Authorization', 'Content-Type'],
-  credentials: true
-}));
+  cors
+  // origin: "https://linguify.netlify.app"
+}))
+
 //port
 const port = process.env.PORT || 5000
 
