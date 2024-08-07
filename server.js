@@ -126,6 +126,12 @@ const adminInformation = require('./routes/AdminAccountInfo')
 const Getadmins = require('./routes/getAdmins')
 const AdminDeleteAdmin = require('./routes/AdminDeleteAdmin')
 
+const feedback = require('./routes/feedback');  
+const getAllFeedback =require('./routes/ViewFeedBack');  
+const updatefeedback =require('./routes/UpdateFeedback');  
+const review =require('./routes/Review');  
+const getreview =require('./routes/Review');  
+
 //apis
 app.use('/', googleSignupRouter)
 app.use('/', regularSignupRouter)
@@ -198,6 +204,14 @@ app.use('/learner', paymentRouter)
 app.use('/learner', getSubscriptionHistory)
 app.use('/tutor', tutorRevenue)
 app.use('/tutor', tutorInformation)
+
+
+app.use('/learner', feedback);
+app.use('/admin', getAllFeedback);
+app.use('/admin', updatefeedback);
+app.use('/learner', review)
+app.use('/learner', getreview)
+
 
 
 app.use('/admin', adminLogin)

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 const generateAccessToken = async(user) => {
     try{
-        const payload = {id: user.id, role: user.role}
+        const payload = {id: user.id, role: user.role,uuid: user.uuid}
         const accessToken = jwt.sign(
             payload, 
             process.env.ACCESS_TOKEN_SECRET, 

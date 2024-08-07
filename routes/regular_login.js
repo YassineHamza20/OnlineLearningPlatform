@@ -23,7 +23,7 @@ router.post('/regularLogin', async (req, res) => {
         if(email && password) { // checking whether the user sent his credentials or not
             //assuring that the email exists
          //learner
-            const query = `SELECT id, pword FROM ${mysql.escapeId(information)} where email = ?`
+            const query = `SELECT id,uuid, pword FROM ${mysql.escapeId(information)} where email = ?`
             mysql.query(query, [email], (err, result) => {
                 if(err) {
                     console.log(err);
@@ -38,7 +38,7 @@ router.post('/regularLogin', async (req, res) => {
                         }else {//matching case
                             //return tokenn
                             const {refreshToken} = await generateRefreshToken({id: user.id, role:information ==='learner'? "Learner": "Tutor"})
-                            const {accessToken} = await generateAccessToken({id: user.id, role:information ==='learner'? "Learner": "Tutor"})
+                            const {accessToken} = await generateAccessToken({id: user.id, role:information ==='learner'? "Learner": "Tutor",uuid: user.uuid})
                             res.status(200).json({refreshToken: refreshToken, accessToken: accessToken})
                         }
                     })
