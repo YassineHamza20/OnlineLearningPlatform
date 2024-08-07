@@ -8,7 +8,7 @@ router.post('/AdminInfo', auth, roleCheck(["Admin"]), (req, res) => {
     
     const userId = req.user.id;
     
-    const query = `SELECT email, firstname, lastname, tel, cin FROM administrator WHERE id = ?`;
+    const query = `SELECT email, firstname, lastname, tel, CIN FROM administrator WHERE id = ?`;
 
     // Assuming `mysql` is the connection object
     mysql.query(query, [userId], (err, result) => {
