@@ -45,8 +45,8 @@ function Subscription(props) {
           <tbody>
             {subHistory.map((payment) => (
               <tr key={payment.SubId} className="hover:bg-gray-100 transition-colors duration-200">
-                <td className="py-2 px-4 border-b border-gray-200">{payment.SubId}</td>
-                <td className="py-2 px-4 border-b border-gray-200">💲{payment.cost}</td>
+               <td className="py-2 px-4 border-b border-gray-200">{payment.SubId}</td>
+               <td className="py-2 px-4 border-b border-gray-200">{payment.cost/1000}DT</td>
                 <td className="py-2 px-4 border-b border-gray-200">
                  📅 {new Date(payment.PayementDate).toLocaleDateString()}
                 </td>
