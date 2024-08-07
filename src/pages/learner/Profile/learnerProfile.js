@@ -120,7 +120,7 @@ function LearnerProfile() {
         fetchNumberOfUnreadNotifs()
     }, [])
 
-
+ 
     //action to do when there's error in rejection query it server side
     const handleCancelLessonError = (err) => {
         console.log("error canceling lesson : ", err.removedLesson);
@@ -219,7 +219,9 @@ function LearnerProfile() {
         informationChange: <Account></Account>,
         subscription: <Subscription></Subscription>,
         coursePage: <CoursePage></CoursePage>,
-        Chat: <Chat></Chat>
+        Chat: <Chat></Chat>,
+        
+
 
     }
     //knowing whether it's a tutor or learner signing up
@@ -241,8 +243,8 @@ function LearnerProfile() {
         }else if (path === '/learner/profile/Calendar') {
             return bodyContent.calendar
         }else if(path === '/learner/profile/FeedbackForm') {
-            return bodyContent.FeedbackForm
-    }else if(path === '/learner/profile/Notifications') {
+                return bodyContent.FeedbackForm
+        }else if(path === '/learner/profile/Notifications') {
             return bodyContent.Notifications
         }else if(location.pathname.startsWith('/learner/profile/Tutor/')) {
             return bodyContent.TutorProfile
@@ -257,6 +259,7 @@ function LearnerProfile() {
         }else if(location.pathname.startsWith('/learner/profile/Chat/')){
             return bodyContent.Chat
         }
+         
     }
 
     useEffect(() => {
@@ -358,11 +361,14 @@ function LearnerProfile() {
     }, [learnerId])
 
     return (
+        <>
         <div className="w-screen h-screen bg-backg flex flex-col">
             <NavBar></NavBar>
+            
             {
                 handleBody()
             }
+            
             {
                 lessonModalVisibility?
                     <LessonReminderModal type=""></LessonReminderModal>
@@ -375,7 +381,10 @@ function LearnerProfile() {
                 :
                 null
             }
+           
         </div>
+       
+        </>
     );
 }
 

@@ -17,6 +17,8 @@ import Admin from './pages/admin/Admin';
 import LogIn from './pages/admin/LogIn';
 import ProtectedRoute from './components/ProtectedRoute';
 import FeedbackForm from './pages/learner/Profile/FeedbackForm.js';
+import PaymentSuccessComponent from './components/Subscription/PaymentSuccessComponent.js'
+
 function App() {
   return (
     <Router>
@@ -39,6 +41,7 @@ function App() {
         <Route path='/learner/profile/Settings/subscription' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
         <Route path='/learner/profile/Courses/:uuid' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
         <Route path='/learner/profile/Chat/:uuid' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
+        
         <Route
           path='/learner/profile/feedback'
           element={
@@ -47,6 +50,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+          <Route path="/learner/payment_success" element={<PaymentSuccessComponent />} />
         <Route
           path='/learner/profile/Calendar'
           element={
