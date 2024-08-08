@@ -167,6 +167,12 @@ function Drawer(props) {
                                 <IoMdCalendar size="25" color="#767676"></IoMdCalendar>
                                 <span className="">Calendar</span>
                             </NavLink>
+                            <NavLink to="/learner/profile/feedback" 
+                             className="flex h-10 drawerNav items-center w-full space-x-4">
+                       
+                        <AiFillStar size="25" color="#767676"></AiFillStar>
+                        <span className="">Review</span>
+                    </NavLink>
                             <NavLink to={`/${firstSegment}/signin`} onClick={logout}
                                 className="flex h-10 drawerNav items-center w-full space-x-4">
                                 <IoLogOut size="25" color="red"></IoLogOut>
