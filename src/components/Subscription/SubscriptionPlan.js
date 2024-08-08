@@ -133,7 +133,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import ReactLoading from 'react-loading';
-import jwtDecode from 'jwt-decode'; // Correct import statement
+import {jwtDecode} from 'jwt-decode'; // Correct import statement
 import { useNavigate } from 'react-router-dom';
 
 function SubscriptionPlan(props) {
