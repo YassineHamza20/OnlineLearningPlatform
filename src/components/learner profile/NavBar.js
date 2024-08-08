@@ -229,9 +229,9 @@ function NavBar() {
                     </NavLink>
 
                     <NavLink to="/learner/profile/feedback">
-                            <span className="text-darkg">
-                                <AiFillStar className=" text-grey-400 mr-1   hidden lg:block   " /></span>
-                        </NavLink>
+                        <span className="text-darkg ">
+                            <AiFillStar className="text-2xl text-grey-400 mr-1  " /></span>
+                    </NavLink>
 
                     {learnerData.isLoading ? (
                         <div className="rounded-full hidden lg:block animate-pulse bg-darkg w-12 h-12 self-center"></div>
