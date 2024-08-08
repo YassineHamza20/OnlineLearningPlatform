@@ -229,7 +229,7 @@ function NavBar() {
                     </NavLink>
 
                     <NavLink to="/learner/profile/feedback">
-                        <span className="text-darkg">
+                        <span className="text-darkg ">
                             <AiFillStar className="text-2xl text-grey-400 mr-1" /></span>
                     </NavLink>
 
