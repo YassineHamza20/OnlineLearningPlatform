@@ -41,7 +41,11 @@ function App() {
         <Route path='/learner/profile/Settings/subscription' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
         <Route path='/learner/profile/Courses/:uuid' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
         <Route path='/learner/profile/Chat/:uuid' element={<ProtectedRoute><LearnerProfile /></ProtectedRoute>} />
-        
+        {/* <Route path="/payment_success" component={PaymentSuccess} />
+        <Route path="/payment_fail" component={PaymentFail} />
+        <Route path="/learner/profile" component={LearnerProfile} /> */}
+       <Route path="/learner/payment_success" element={<PaymentSuccessComponent />} />
+       
         <Route
           path='/learner/profile/feedback'
           element={
@@ -50,7 +54,9 @@ function App() {
             </ProtectedRoute>
           }
         />
-          <Route path="/learner/payment_success" element={<PaymentSuccessComponent />} />
+          
+
+
         <Route
           path='/learner/profile/Calendar'
           element={

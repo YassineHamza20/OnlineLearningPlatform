@@ -128,6 +128,9 @@
 
 // export default SubscriptionPlan;
 
+
+
+
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
@@ -174,7 +177,7 @@ function SubscriptionPlan(props) {
             const decodedToken = jwtDecode(accessToken);
             const order_id = decodedToken.id; // Adjust this based on the actual structure of your token
 
-            const response = await axios.post('/learner/payment', {
+            const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/learner/payment', {
                 order_id: order_id,
                 duration: duration // Pass duration to the backend
             });
