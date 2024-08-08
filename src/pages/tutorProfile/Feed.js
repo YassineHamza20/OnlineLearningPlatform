@@ -5,7 +5,8 @@ import InformationalCard from "../../components/tutor profile/FollowersCard";
 import Calendar from "../../components/tutor profile/Calendar"
 import Revenue from "../../components/tutor profile/Revenue"
 import Footer from "../../components/Global/Footer";
-
+import ViewReviews from "./ViewReview";
+ 
 function Feed(props) {
 
     const tutorData = useSelector(state => state.tutorData)
@@ -14,12 +15,12 @@ function Feed(props) {
 
     //introduction card of the tutor
     const content = [
-        // <img key="0"  src={tutorData.displayableImage}  alt="profilepicture"  className="w-20 h-20 object-cover rounded-full"></img>,
+        <img key="0"  src={tutorData.displayableImage}  alt="profilepicture"  className="w-20 h-20 object-cover rounded-full"></img>,
         <div key="Country" className="flex items-center space-x-2">
             {tutorData.countryFlag && tutorData.countryFlag[0]?.flags && (
                 <img className="rounded-lg w-8 h-8 object-cover" src={tutorData.countryFlag[0].flags.png} alt={tutorData.Country} />
             )}
-            
+           
         </div>,
         <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguify, {tutorData.firstname+" "+tutorData.lastname}!</span>,
 <span className="text-darkg ">Country: {tutorData.Country}</span>
@@ -34,7 +35,7 @@ function Feed(props) {
                 <Revenue></Revenue>
             </div>
             <div key="rightpart" className="flex flex-col col-span-1 md:col-span-2 h-auto space-y-5">
-                <Calendar></Calendar>
+                <Calendar></Calendar><ViewReviews></ViewReviews>
             </div>
             <Footer></Footer>
         </div>

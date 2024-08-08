@@ -17,7 +17,7 @@ import FollowTutor from "./FollowTutor"
 import ScheduleLessonFromTutorProfile from "./ScheduleLessonFromTutorProfile";
 import { setLikedTutors } from "../../state/slices/likedTutorSlice";
 import Footer from "../Global/Footer";
-
+import ViewReviews from "../../pages/learner/Profile/ViewReviews";
 function TutorProfile(props) {
 
     const [videoUrl, setVideoUrl] = useState(null);
@@ -241,7 +241,7 @@ function TutorProfile(props) {
                                                 <span className="text-darkg"> {item.tag}</span>
                                             </div>
                                             <span className="text-black text-sm"> {item.description}</span>
-                                        </div>
+                                            <ViewReviews></ViewReviews></div>
                                 )
                             })
                             :
