@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode'; // Correct import statement
+import {jwtDecode} from 'jwt-decode'; // Correct import statement
 import { useToast } from '@chakra-ui/react';
 import Footer from "../../../components/Global/Footer";
 import NavBar from "../../../components/learner profile/NavBar";
@@ -53,8 +53,8 @@ const FeedbackForm = () => {
       <div className="fixed top-0 left-0 w-full z-10">
         <NavBar />
       </div>
-      <div className="pt-40 flex flex-col justify-between items-center min-h-screen bg-gray-50 py-12">
-        <div className="w-full max-w-2xl mx-auto bg-white p-10 rounded-2xl shadow-lg">
+      <div className="pt-40 flex flex-col justify-center items-center min-h-screen bg-gray-50 py-12">
+        <div className="w-full max-w-2xl mx-auto bg-white p-10 rounded-2xl shadow-lg mb-6">
           <h1 className="text-4xl text-center font-extrabold text-orange-700 mb-6">Submit A Review</h1>
           <form onSubmit={handleSubmit}>
             <div className="space-y-6">
@@ -77,9 +77,8 @@ const FeedbackForm = () => {
               </button>
             </div>
           </form>
-          
         </div>
-        <Footer></Footer>
+        <Footer />
       </div>
     </>
   );

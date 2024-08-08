@@ -17,10 +17,6 @@ import FollowTutor from "./FollowTutor"
 import ScheduleLessonFromTutorProfile from "./ScheduleLessonFromTutorProfile";
 import { setLikedTutors } from "../../state/slices/likedTutorSlice";
 import Footer from "../Global/Footer";
-import ReviewForm from "../../pages/learner/Profile/review";
-import ViewReviews from "../../pages/learner/Profile/ViewReviews";
-import FeedbackForm from "../../pages/learner/Profile/FeedbackForm";
-import { Button, useDisclosure } from '@chakra-ui/react';
 
 function TutorProfile(props) {
 
@@ -35,12 +31,7 @@ function TutorProfile(props) {
     const [countryFlag, setCountryFlag] = useState(null)
 
     const [isLoading, setIsLoading] = useState(null)
-    const [showReviewForm, setShowReviewForm] = useState(false);
-     const { isOpen, onOpen, onClose } = useDisclosure();
 
-    const handleReviewButtonClick = () => {
-        setShowReviewForm(true);
-    };
     //ref for the component to be scrolled to
     const scheduleRef = useRef(null);
 
@@ -63,57 +54,8 @@ function TutorProfile(props) {
         }
         fetchLikedTutors()
     }, [])
-    const fetchData = async () => {
-        try {
-          setIsLoading(true);
-          const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/selectedTutor', {
-            uuid: param.uuid
-          }, {
-            headers: {
-              'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
-            }
-          });
-          console.log("tutor:", response.data.message);
-    
-          // storing the tutor data
-          dispatch(setSelectedTutor(response.data.message));
-    
-          if (!isGoogleProfilePicture(response.data.message.pfp)) {
-            // fetching the image from database
-            fetchFile(response.data.message.pfp, "images", "tutor", response.data.message.id)
-              .then(async (resp) => {
-                console.log(response.data.message);
-    
-                // storing the img
-                setImgUrl(resp);
-              })
-              .catch(err => {
-                console.log(err);
-              });
-          } else {
-            setImgUrl(response.data.message.pfp);
-          }
-          // fetching the video from database
-          if (response.data.message.introductionVideo) {
-            const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id);
-            // storing the video
-            setVideoUrl(data);
-          }
-    
-          if (response.data.message.country) {
-            // fetching the country's flag
-            const flag = await fetchCountryData(response.data.message.country);
-            setCountryFlag(flag);
-          }
-    
-          setIsLoading(false);
-        } catch (err) {
-          console.log(err);
-        }
-      };
-    useEffect(() => {
-        fetchData();
-      }, []);
+
+
 
 
     //getting the uuid from the url
@@ -153,11 +95,11 @@ function TutorProfile(props) {
                     setImgUrl(response.data.message.pfp)
                 }
                 //fetching the video from database
-                if(response.data.message.introductionVideo) {
-                    const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
-                    //storing the video
-                    setVideoUrl(data)
-                }
+                // if(response.data.message.introductionVideo) {
+                //     const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
+                //     //storing the video
+                //     setVideoUrl(data)
+                // }
 
                 if(response.data.message.country){
                     //fetching the country's flag
@@ -209,17 +151,17 @@ function TutorProfile(props) {
                             <img src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg" className="w-full h-full rounded-tl-lg rounded-tr-lg"></img>
                         </div>
                         <div className="flex flex-col items-center -mt-20">
-                            <img 
+                            {/* <img 
                             referrerPolicy="no-referrer"
                             src={imgUrl} 
-                            className="min-w-40 max-w-40 min-h-40 max-h-40 object-cover border-4 border-white rounded-full" alt="Profile" />
+                            className="min-w-40 max-w-40 min-h-40 max-h-40 object-cover border-4 border-white rounded-full" alt="Profile" /> */}
                             <div className="flex items-center space-x-2 mt-2">
                                 <span className="text-2xl">{selectedTutorData.firstname+" "+selectedTutorData.lastname}</span>
                             </div>
                             <div className="flex space-x-2 items-center">
-                                {countryFlag && countryFlag[0]?.flags && (
+                                {/* {countryFlag && countryFlag[0]?.flags && (
                                     <img className="rounded-lg w-9 h-9 object-cover" src={countryFlag[0].flags.png} alt={selectedTutorData.country} />
-                                )}
+                                )} */}
                                 <p className="text-sm text-gray-500">{selectedTutorData.country}</p>
                             </div>
                         </div>
@@ -252,7 +194,7 @@ function TutorProfile(props) {
                         </div>
                     </div>
                     <div className="flex-1 bg-white rounded-lg shadow-xl p-8">
-                        <h4 className="text-xl text-gray-900 font-bold">Description</h4>
+                        <h4 className="text-xl text-gray-900 font-bold">Notes / Unavailable times</h4>
                         <p className="mt-2 text-gray-700">{selectedTutorData.description}</p>
                     </div>
                     <div className="flex flex-col space-y-3 bg-white rounded-lg shadow-xl p-8">
@@ -309,7 +251,6 @@ function TutorProfile(props) {
                             <RiGraduationCapFill size="25" className="text-button"></RiGraduationCapFill>
                             <h4 className="text-lg text-gray-700 font-bold">Education</h4>
                         </div>
-                        
                         {
                             selectedTutorData.Education?
                                 JSON.parse(selectedTutorData.Education).map((item, index) => {
@@ -319,33 +260,16 @@ function TutorProfile(props) {
                                                     <span className="text-darkg"> {item.tag}</span>
                                                 </div>
                                                 <span className="text-black text-sm"> {item.description}</span>
-                                                <ViewReviews></ViewReviews> </div>
+                                            </div>
                                     )
                                 })
                             :
                             null
-                        }<div className="container   mt-4">
-                      <Button
-  onClick={onOpen}
-  className="py-1 px-2 bg-white text-black rounded-lg      "
->
-  Add Review
-</Button>
-
-
-
-                        <ReviewForm isOpen={isOpen} onClose={onClose} onReviewSubmitted={fetchData}/>
-                      </div>
-                       
-                       
-                    </div> 
-                   
+                        }
+                    </div>
                     <div ref={scheduleRef} className="flex flex-col space-y-3 bg-white rounded-lg shadow-xl p-8">
-            <ScheduleLessonFromTutorProfile />
-            
-        </div>
-                    {/* <FeedbackForm></FeedbackForm> */}
-                    
+                        <ScheduleLessonFromTutorProfile></ScheduleLessonFromTutorProfile>
+                    </div>
                 </>
                 
                 :
