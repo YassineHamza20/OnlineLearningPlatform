@@ -105,11 +105,11 @@ function Drawer(props) {
                     <nav className="flex flex-col w-full px-4">
                         {props.role === "learner" ?
                             <>
-                                <NavLink
+                                {/* <NavLink
                                     className="flex h-10 drawerNav items-center w-full space-x-4">
                                     <IoChatbubbles size="25" color="#767676"></IoChatbubbles>
                                     <span>Chat</span>
-                                </NavLink>
+                                </NavLink> */}
                                 <NavLink
                                     to="/learner/profile/Notifications"
                                     className="flex h-10 drawerNav items-center w-full space-x-4">
@@ -136,7 +136,7 @@ function Drawer(props) {
                             </>
                             :
                             <>
-                                <NavLink
+                                <NavLink to="/tutor/profile/Notifications"
                                     className="flex h-10 drawerNav items-center w-full space-x-4">
                                     <IoChatbubbles size="25" color="#767676"></IoChatbubbles>
                                     <span>Chat</span>
