@@ -33,7 +33,7 @@ const FeedbackForm = () => {
       toast({
         title: "Feedback submitted. Please wait for the admin to post it.",
         status: "success",
-        duration: 5000,
+        duration: 7000,
         isClosable: true,
       });
       setFeedbackText('');
