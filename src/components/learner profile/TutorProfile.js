@@ -241,7 +241,7 @@ function TutorProfile(props) {
                                                 <span className="text-darkg"> {item.tag}</span>
                                             </div>
                                             <span className="text-black text-sm"> {item.description}</span>
-                                            <ViewReviews></ViewReviews></div>
+                                           </div>
                                 )
                             })
                             :
@@ -265,7 +265,7 @@ function TutorProfile(props) {
                                 })
                             :
                             null
-                        }
+                        } <ViewReviews></ViewReviews>
                     </div>
                     <div ref={scheduleRef} className="flex flex-col space-y-3 bg-white rounded-lg shadow-xl p-8">
                         <ScheduleLessonFromTutorProfile></ScheduleLessonFromTutorProfile>
