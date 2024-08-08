@@ -33,7 +33,7 @@ const FeedbackForm = () => {
       toast({
         title: "Feedback submitted. Please wait for the admin to post it.",
         status: "success",
-        duration: 6000,
+        duration: 5000,
         isClosable: true,
       });
       setFeedbackText('');
@@ -42,7 +42,7 @@ const FeedbackForm = () => {
         title: "An error occurred.",
         description: error.response ? error.response.data.message : "Unable to submit feedback.",
         status: "error",
-        duration: 6000,
+        duration: 5000,
         isClosable: true,
       });
     }
@@ -77,10 +77,10 @@ const FeedbackForm = () => {
               </button>
             </div>
           </form>
+          
         </div>
-         
+        <Footer></Footer>
       </div>
-      <Footer/>
     </>
   );
 };
