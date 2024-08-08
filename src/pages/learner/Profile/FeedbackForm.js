@@ -78,8 +78,9 @@ const FeedbackForm = () => {
             </div>
           </form>
         </div>
-         <Footer></Footer>
+         
       </div>
+      <Footer></Footer>
     </>
   );
 };
