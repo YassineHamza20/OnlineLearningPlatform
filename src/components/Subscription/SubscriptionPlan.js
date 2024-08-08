@@ -129,13 +129,11 @@
 // export default SubscriptionPlan;
 
 
-
-
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import ReactLoading from 'react-loading';
-import {jwtDecode} from 'jwt-decode'; // Correct import statement
+import jwtDecode from 'jwt-decode'; // Correct import statement
 import { useNavigate } from 'react-router-dom';
 
 function SubscriptionPlan(props) {
@@ -177,7 +175,7 @@ function SubscriptionPlan(props) {
             const decodedToken = jwtDecode(accessToken);
             const order_id = decodedToken.id; // Adjust this based on the actual structure of your token
 
-            const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/learner/payment', {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/learner/payment`, {
                 order_id: order_id,
                 duration: duration // Pass duration to the backend
             });
