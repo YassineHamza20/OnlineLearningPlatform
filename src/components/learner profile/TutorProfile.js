@@ -153,11 +153,11 @@ function TutorProfile(props) {
                     setImgUrl(response.data.message.pfp)
                 }
                 //fetching the video from database
-                if(response.data.message.introductionVideo) {
-                    const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
-                    //storing the video
-                    setVideoUrl(data)
-                }
+                // if(response.data.message.introductionVideo) {
+                //     const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
+                //     //storing the video
+                //     setVideoUrl(data)
+                // }
 
                 if(response.data.message.country){
                     //fetching the country's flag
@@ -216,14 +216,14 @@ function TutorProfile(props) {
                             <div className="flex items-center space-x-2 mt-2">
                                 <span className="text-2xl">{selectedTutorData.firstname+" "+selectedTutorData.lastname}</span>
                             </div>
-                            {/* <div className="flex space-x-2 items-center">
+                            <div className="flex space-x-2 items-center">
                                 {countryFlag && countryFlag[0]?.flags && (
                                     <img className="rounded-lg w-9 h-9 object-cover" src={countryFlag[0].flags.png} alt={selectedTutorData.country} />
                                 )}
                                 <p className="text-sm text-gray-500">{selectedTutorData.country}</p>
-                            </div> */}
+                            </div>
                         </div>
-                        {/* {
+                        {
                             videoUrl?
                             <video
                             poster={imgUrl}
@@ -235,7 +235,7 @@ function TutorProfile(props) {
                             </video>
                             :
                             null
-                        } */}
+                        }
                         <div className="flex flex-col w-full justify-center items-center space-y-3 mt-4"> 
                             <button onClick={scrollToSchedule} className="button w-[70%] flex items-center justify-center space-x-2 bg-white border py-3 px-4 rounded-full hover:bg-button2 transition-colors duration-300 hover:text-white border-button2 text-button2">
                                 <IoMdCalendar size="25" className="icon"></IoMdCalendar>
