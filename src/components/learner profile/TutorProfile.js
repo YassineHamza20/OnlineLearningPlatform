@@ -19,6 +19,7 @@ import { setLikedTutors } from "../../state/slices/likedTutorSlice";
 import Footer from "../Global/Footer";
 import ViewReviews from "../../pages/learner/Profile/ViewReviews";
 import ReviewForm from "../../pages/learner/Profile/review";
+import { Button, useDisclosure } from '@chakra-ui/react';
 function TutorProfile(props) {
 
     const [videoUrl, setVideoUrl] = useState(null);
@@ -32,7 +33,8 @@ function TutorProfile(props) {
     const [countryFlag, setCountryFlag] = useState(null)
 
     const [isLoading, setIsLoading] = useState(null)
-
+    const [showReviewForm, setShowReviewForm] = useState(false);
+    const { isOpen, onOpen, onClose } = useDisclosure();
     //ref for the component to be scrolled to
     const scheduleRef = useRef(null);
 
