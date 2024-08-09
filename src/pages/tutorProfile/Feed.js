@@ -22,8 +22,9 @@ function Feed(props) {
             )}
            
         </div>,
-        <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguify, {tutorData.firstname+" "+tutorData.lastname}!</span>,
-<span className="text-darkg ">Country: {tutorData.Country}</span>
+        <span className="text-darkg ">Country: {tutorData.Country}</span>,
+        <span key="1"  className="font-bold text-2xl text-center">Welcome to Linguify, {tutorData.firstname+" "+tutorData.lastname}!</span>
+
     ]
 
     //content to show the component has finished loading

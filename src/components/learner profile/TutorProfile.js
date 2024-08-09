@@ -18,6 +18,7 @@ import ScheduleLessonFromTutorProfile from "./ScheduleLessonFromTutorProfile";
 import { setLikedTutors } from "../../state/slices/likedTutorSlice";
 import Footer from "../Global/Footer";
 import ViewReviews from "../../pages/learner/Profile/ViewReviews";
+import ReviewForm from "../../pages/learner/Profile/review";
 function TutorProfile(props) {
 
     const [videoUrl, setVideoUrl] = useState(null);
@@ -266,6 +267,18 @@ function TutorProfile(props) {
                             :
                             null
                         } <ViewReviews></ViewReviews>
+                        <div className="container   mt-4">
+                      <Button
+  onClick={onOpen}
+  className="py-1 px-2 bg-white text-black rounded-lg      "
+>
+  Add Review
+</Button>
+
+
+
+                        <ReviewForm isOpen={isOpen} onClose={onClose} onReviewSubmitted={fetchData}/>
+                      </div>
                     </div>
                     <div ref={scheduleRef} className="flex flex-col space-y-3 bg-white rounded-lg shadow-xl p-8">
                         <ScheduleLessonFromTutorProfile></ScheduleLessonFromTutorProfile>
