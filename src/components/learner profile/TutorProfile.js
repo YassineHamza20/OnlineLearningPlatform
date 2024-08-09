@@ -119,6 +119,60 @@ function TutorProfile(props) {
         fetchData()
     }, [])
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setIsLoading(true)
+                const response = await axiosInstance.post('http://localhost:5000/learner/selectedTutor', {
+                    uuid: param.uuid
+                }, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
+                    }
+                })
+                console.log("tutor:" , response.data.message)
+
+    
+                //storing the tutor data
+                dispatch(setSelectedTutor(response.data.message))
+
+                if(!isGoogleProfilePicture(response.data.message.pfp)){
+                    //fetching the image from database
+                    fetchFile(response.data.message.pfp, "images", "tutor", response.data.message.id)
+                    .then(async (resp )=> {
+                        console.log(response.data.message);
+                        
+                        //storing the img
+                        setImgUrl(resp)
+    
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+                }else {
+                    setImgUrl(response.data.message.pfp)
+                }
+                //fetching the video from database
+                if(response.data.message.introductionVideo) {
+                    const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
+                    //storing the video
+                    setVideoUrl(data)
+                }
+
+                if(response.data.message.country){
+                    //fetching the country's flag
+                    const flag = await fetchCountryData(response.data.message.country)
+                    setCountryFlag(flag)
+                }
+
+                setIsLoading(false)
+
+            }catch(err) {
+                console.log(err)
+            }
+        }
+        fetchData()
+    }, [])
   // Function to format timestamp into a readable format
   const formatTimestamp = (timestamp) => {
     const date = new Date(timestamp);
