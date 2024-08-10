@@ -152,12 +152,12 @@ function TutorProfile(props) {
                 }else {
                     setImgUrl(response.data.message.pfp)
                 }
-                //fetching the video from database
-                // if(response.data.message.introductionVideo) {
-                //     const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
-                //     //storing the video
-                //     setVideoUrl(data)
-                // }
+                fetching the video from database
+                if(response.data.message.introductionVideo) {
+                    const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
+                    //storing the video
+                    setVideoUrl(data)
+                }
 
                 if(response.data.message.country){
                     //fetching the country's flag
