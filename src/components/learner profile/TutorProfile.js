@@ -111,12 +111,10 @@ function TutorProfile(props) {
           console.log(err);
         }
       };
-    // useEffect(() => {
-    //     fetchData();
-    //   }, []);
-useEffect(() => {
+    useEffect(() => {
         fetchData();
-    }, [param.uuid]);
+      }, []);
+
 
     //getting the uuid from the url
     const param = useParams()
