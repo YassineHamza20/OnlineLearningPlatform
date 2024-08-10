@@ -153,11 +153,11 @@ function TutorProfile(props) {
                     setImgUrl(response.data.message.pfp)
                 }
                 //fetching the video from database
-                if(response.data.message.introductionVideo) {
-                    const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
-                    //storing the video
-                    setVideoUrl(data)
-                }
+                // if(response.data.message.introductionVideo) {
+                //     const data = await fetchFile(response.data.message.introductionVideo, "videos", "tutor", response.data.message.id)
+                //     //storing the video
+                //     setVideoUrl(data)
+                // }
 
                 if(response.data.message.country){
                     //fetching the country's flag
@@ -209,10 +209,10 @@ function TutorProfile(props) {
                             <img src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg" className="w-full h-full rounded-tl-lg rounded-tr-lg"></img>
                         </div>
                         <div className="flex flex-col items-center -mt-20">
-                            {/* <img 
+                            <img 
                             referrerPolicy="no-referrer"
                             src={imgUrl} 
-                            className="min-w-40 max-w-40 min-h-40 max-h-40 object-cover border-4 border-white rounded-full" alt="Profile" /> */}
+                            className="min-w-40 max-w-40 min-h-40 max-h-40 object-cover border-4 border-white rounded-full" alt="Profile" />
                             <div className="flex items-center space-x-2 mt-2">
                                 <span className="text-2xl">{selectedTutorData.firstname+" "+selectedTutorData.lastname}</span>
                             </div>
