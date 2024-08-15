@@ -231,28 +231,7 @@ app.use('/admin', adminDeleteTutor)
 app.use('/admin', adminDeleteLearner)
 app.use('/admin', adminInformation)
 
-
-const https = require('https');
-
-// Function to send a GET request to the specified URL
-function pingServer() {
-  https.get('https://onlinelearningplatform-d9w2.onrender.com/admin/getAllFeedback', (res) => {
-    console.log(`Pinged server, statusCode: ${res.statusCode}`);
-    
-    res.on('data', (data) => {
-      process.stdout.write(data);
-    });
-  }).on('error', (e) => {
-    console.error('Error pinging server:', e);
-  });
-}
-
-// Ping the server every 20 minutes (20 * 60 * 1000 milliseconds)
-setInterval(pingServer, 1200000);
-
-// Optional: Initial ping when the server starts
-pingServer();
-
+  
 // Socket.io logic
 require('./helpers/socketHandler')(io);//non authenticated 
 
