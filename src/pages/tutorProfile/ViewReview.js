@@ -21,7 +21,7 @@ console.log(accessToken)
         const decodedToken = jwtDecode(accessToken);
         const tutor_uuid = decodedToken.uuid;
 
-        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/learner/review/${tutor_uuid}`);
+        const response = await axios.get(`https://onlinelearningplatform-d9w2.onrender.com/learner/review/${tutor_uuid}`);
         setReviews(response.data);
       } catch (error) {
         setError('Error fetching reviews');

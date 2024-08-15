@@ -28,7 +28,7 @@ export default function MailSignIn() {
                 dispatch(setLoading(true))
                 //send post request with google token in header
                 const resp = await axios.post(
-                    '${process.env.REACT_APP_BACKEND_URL}/GoogleLogin',
+                    `${process.env.REACT_APP_SERVER_URL}/GoogleLogin`,
                     {
                         information: firstSegment //specifying if it's a tutor or a learner
                     },

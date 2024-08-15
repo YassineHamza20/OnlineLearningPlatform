@@ -47,7 +47,7 @@ function Notification(props) {
         if(!props.notification.ReadByLearner) {
             //Marking the notification as read 
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/markAsRead', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/markAsRead`, {
                     notificationId: props.notification.lesson_id,
                     notificationType: 'private Lesson'
                 }, {

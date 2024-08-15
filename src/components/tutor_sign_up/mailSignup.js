@@ -21,7 +21,7 @@ function MailSignup() {
                 dispatch(setIsLoading(true))
                 //send post request with google token in header
                 const resp = await axios.post(
-                    '${process.env.REACT_APP_BACKEND_URL}/tutor/signupgoogle',
+                    `${process.env.REACT_APP_SERVER_URL}/tutor/signupgoogle`,
                     {},
                     {
                         headers: {

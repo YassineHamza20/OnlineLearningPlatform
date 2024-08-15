@@ -47,7 +47,7 @@ function MakeCourses(props) {
             try {
                 
                 dispatch(setLoading(true))
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/CreateCrouse', formData,
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/CreateCrouse`, formData,
                 {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`,

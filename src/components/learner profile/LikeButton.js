@@ -10,7 +10,7 @@ const LikeButton = (props) => {
   const handleCheckboxChange = async () => {
       if(!isChecked) {//liking tutor
         try {
-            await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/Like', {
+            await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/Like`, {
               tutorId: props.id,
               action: 'Like'
             })
@@ -19,7 +19,7 @@ const LikeButton = (props) => {
         }
       }else {//disliking tutor
         try {
-            await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/Like', {
+            await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/Like`, {
                 tutorId: props.id,
                 action: 'Dislike'
             }) 
@@ -36,7 +36,7 @@ const LikeButton = (props) => {
     if(likedTutors) {
         const fetchLikedTutors = async () => {
             try {
-                await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/LikedTutors', {})
+                await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/LikedTutors`, {})
                 const liked= likedTutors.find(item => item.id === props.id)
                 setIsChecked(liked)
             } catch (error) {

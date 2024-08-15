@@ -48,7 +48,7 @@ function Notification(props) {
     //make api call to confirm or reject lesson
     const notificationFeedBack = async (accepted, eventName) => {
         return new Promise((resolve, reject) => {
-            axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/NotificationFeedback', {
+            axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/NotificationFeedback`, {
                 lessonId: props.notification.lesson_id,
                 accepted: accepted
             }, {
@@ -59,7 +59,7 @@ function Notification(props) {
             .then((response) => {
                 console.log("response from NotificationFeedBack: ", response.data.message)
                 //sending notification to learner
-                const socket = io('${process.env.REACT_APP_BACKEND_URL}', {
+                const socket = io(`${process.env.REACT_APP_SERVER_URL}`, {
                 auth: {
                     token: localStorage.getItem('accesstoken')
                 }
@@ -85,7 +85,7 @@ function Notification(props) {
     //upon the acceptance of the lesson, we send the learner and the tutor emails containing the videoCall link
     const handleSendEmailAfterAcceptance = async(uuid, learnerId, topic, date) => {
         return new Promise((resolve, reject) => {
-            axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/sendVideoCallLink', {
+            axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/sendVideoCallLink`, {
                 lesson_uuid: uuid,
                 learner_id: learnerId,
                 lesson_topic: topic,
@@ -144,7 +144,7 @@ function Notification(props) {
         if (!props.notification.ReadByTutor) {
             //Marking the notification as read 
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/markAsRead', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/markAsRead`, {
                     notificationId: props.notification.lesson_id,
                     notificationType: 'private Lesson'
                 }, {

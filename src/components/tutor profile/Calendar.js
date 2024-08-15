@@ -17,7 +17,7 @@ function Calendar(props) {
   useEffect(() => {
     const fetchFirstDayLessons = async () => {
       try {
-        const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/getFirstLesson', {}, {
+        const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/getFirstLesson`, {}, {
          headers: {
              'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
          }

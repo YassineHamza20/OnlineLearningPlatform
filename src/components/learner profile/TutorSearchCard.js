@@ -36,7 +36,7 @@ function TutorSearchCard(props) {
         if(!liked){//liking the tutor
             try {
                 console.log("tutorId:", props.tutor.id);
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/Like', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/Like`, {
                     tutorId: props.tutor.id,
                     action: 'Like'
                 })
@@ -81,7 +81,7 @@ function TutorSearchCard(props) {
             try {
                 console.log("tutorId:", props.tutor.id);
 
-                await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/Like', {
+                await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/Like`, {
                     tutorId: props.tutor.id,
                     action: 'Dislike'
                 })

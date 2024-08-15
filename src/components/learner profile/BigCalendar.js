@@ -85,7 +85,7 @@ function BigCalendar() {
     //getting the first lesson in every day
     const fetchData = async () => {
         try {
-           const response = await axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/${firstSegment}/getFirstLesson`, {}, {
+           const response = await axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${firstSegment}/getFirstLesson`, {}, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`
             }

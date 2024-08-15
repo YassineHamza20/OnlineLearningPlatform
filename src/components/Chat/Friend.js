@@ -23,7 +23,7 @@ export default function Friend() {
 
                 setIsLoading(true)
                 if(segments[1] === "learner"){
-                    const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/selectedTutor', {
+                    const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/selectedTutor`, {
                         uuid: param.uuid
                     }, {
                         headers: {
@@ -59,7 +59,7 @@ export default function Friend() {
                     setIsLoading(false)
                 }else {
 
-                    const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/getLearner', {
+                    const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/getLearner`, {
                         uuid: param.uuid
                     }, {
                         headers: {

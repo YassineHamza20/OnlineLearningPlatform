@@ -37,7 +37,7 @@ function DeleteAccountModal(props) {
       const handleDelete = async () => {
         try {
             setLoading(true)
-            const response = await axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/${props.role}/DeleteAccount`,
+            const response = await axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${props.role}/DeleteAccount`,
             {}, 
             {
                 headers: {

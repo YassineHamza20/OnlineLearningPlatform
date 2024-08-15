@@ -21,7 +21,7 @@ export default function Mail() {
                 dispatch(setIsLoading(true))
                 //send post request with google token in header
                 const resp = await axios.post(
-                    '${process.env.REACT_APP_BACKEND_URL}/googlesignup',
+                    `${process.env.REACT_APP_SERVER_URL}/googlesignup`,
                     {},
                     {
                         headers: {

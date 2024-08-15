@@ -21,7 +21,7 @@ function BirthdayField(props) {
 
     const modifyCall = async () => {
         return new Promise((resolve, reject) => {
-            axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/${props.role}/Update`, {
+            axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${props.role}/Update`, {
                 type: "Bday",
                 newParameter: value
             }, {

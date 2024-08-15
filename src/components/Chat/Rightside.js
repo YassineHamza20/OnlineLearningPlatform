@@ -43,7 +43,7 @@ useEffect(() => {
   const fetchConvo = async() => {
 
     try {
-      const response = await axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/${segments[1]}/getMessages`, {
+      const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/${segments[1]}/getMessages`, {
       uuid: param.uuid
     })
     console.log("RESULT", response.data)
@@ -67,7 +67,7 @@ const handleReceiveMessage = (data) => {
 
 useEffect(() => {
   if(userId) {
-      const socket = io('${process.env.REACT_APP_BACKEND_URL}', {
+      const socket = io(`${process.env.REACT_APP_SERVER_URL}`, {
       auth: {
           token: localStorage.getItem('accesstoken')
       }

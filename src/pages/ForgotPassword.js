@@ -33,7 +33,7 @@ function ForgotPassword() {
 
     const verifyToken = async () => {
         try {
-           const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/verifyForgotPassword', {},
+           const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/verifyForgotPassword`, {},
                 { 
                     headers: {
                     Authorization: `Bearer ${param.token}`
@@ -57,7 +57,7 @@ function ForgotPassword() {
         e.preventDefault()
         try {
             setLoading(true)
-            const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/resetpassword', {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/resetpassword`, {
                 password: password
             },
             { 

@@ -44,7 +44,7 @@ function MessagesNotif(props) {
         try {
             if(!modalVisibility){
                 setLoading(true)
-                const response = await axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/${segments[1]}/getLatestMessages`)
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/${segments[1]}/getLatestMessages`)
                 console.log("message: ", response)
                 dispatch(setChatNotification(response.data))
                 setLoading(false)

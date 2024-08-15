@@ -39,7 +39,7 @@ function LessonNotifications(props) {
             console.log("fetching notifications again ");
             try {
                 setLoading(true)
-                const notifications = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/getNotifications', {
+                const notifications = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/getNotifications`, {
                     page: 1,
                     pageSize: 5,
                     Accepted: Accepted
@@ -93,7 +93,7 @@ function LessonNotifications(props) {
         }
         console.log("accepted: ", accepted);
         try {
-            const notifications = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/getNotifications', {
+            const notifications = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/getNotifications`, {
                 page: 1,
                 pageSize: 5,
                 Accepted: accepted
@@ -131,7 +131,7 @@ function LessonNotifications(props) {
         const handleMarkAllAsRead = async () => {
             try {
                 setMarkAllAsReadLoading(true)
-                const reponse = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/markAllAsRead', {
+                const reponse = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/markAllAsRead`, {
 
                 }, {
                     headers: {

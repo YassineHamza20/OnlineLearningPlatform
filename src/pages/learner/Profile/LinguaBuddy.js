@@ -37,7 +37,7 @@ const LinguaBuddy = () => {
         return new Promise(async (resolve, reject) => {
             setLoading(true);
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/user/ChatBot', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/user/ChatBot`, {
                     data: { 
                         topic: topic,
                         language: language,

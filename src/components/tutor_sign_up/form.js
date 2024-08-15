@@ -31,7 +31,7 @@ export default function Form() {
         e.preventDefault()
         try {
             dispatch(setIsLoading(true))
-            const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/tutor/regsignup', {
+            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/tutor/regsignup`, {
                 email: tutorData.email, 
                 pword: tutorData.password
             })

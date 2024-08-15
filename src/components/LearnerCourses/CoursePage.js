@@ -19,7 +19,7 @@ function CoursePage(props) {
     useEffect (() => {
         const fetchCourseData = async () => {
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/getCourseInfo', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/getCourseInfo`, {
                     courseUuid: param.uuid
                 })
                 console.log("CourseData", response.data.result);

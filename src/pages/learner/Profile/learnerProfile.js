@@ -51,7 +51,7 @@ function LearnerProfile() {
         const fetchData = async () => {
             dispatch(setIsLoading(true))
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/details', {}, {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/details`, {}, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`,
                         'Content-Type': 'multipart/form-data' // Set the content type to multipart/form-data
@@ -102,7 +102,7 @@ function LearnerProfile() {
         //consuming api to get if there are unread notifs or not 
         const fetchNumberOfUnreadNotifs = async () => {
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/CountUnreadNotifications', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/CountUnreadNotifications`, {
 
                 },  {
                     headers: {
@@ -177,7 +177,7 @@ function LearnerProfile() {
 
     useEffect(() => {
         if(learnerId) {
-            const socket = io('${process.env.REACT_APP_BACKEND_URL}', {
+            const socket = io(`${process.env.REACT_APP_SERVER_URL}`, {
             auth: {
                 token: localStorage.getItem('accesstoken')
             }
@@ -271,7 +271,7 @@ function LearnerProfile() {
 
         const fetchTodaysUpcomingLessons = async () => {
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/getDayLessons', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/getDayLessons`, {
                     date: `${year}-${month}-${dayOfMonth}`
                 }, {
                     headers: {
@@ -341,7 +341,7 @@ function LearnerProfile() {
 
     useEffect(() => {
         if(learnerId) {
-            const socket = io('${process.env.REACT_APP_BACKEND_URL}', {
+            const socket = io(`${process.env.REACT_APP_SERVER_URL}`, {
             auth: {
                 token: localStorage.getItem('accesstoken')
             }

@@ -35,7 +35,7 @@ function TutorsSearch(props) {
     useEffect(() => {
         const fetchLikedTutors = async () => {
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/LikedTutors', {})
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/learner/LikedTutors`, {})
                 
                 dispatch(setLikedTutors(response.data.message))
             } catch (error) {
@@ -50,7 +50,7 @@ function TutorsSearch(props) {
         try {
                 dispatch(resetPageNumber())
                 setLoading(true)
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/SearchTutors', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/SearchTutors`, {
                     page: 1,
                     pageSize: 3,
                     filterOptions: filterOption

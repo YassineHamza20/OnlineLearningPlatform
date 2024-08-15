@@ -12,7 +12,7 @@ async function refreshToken() {
     
     // Call your backend to refresh the token
     const refreshedTokenResponse = await axios.post(
-      '${process.env.REACT_APP_BACKEND_URL}/api/refreshToken',
+      `${process.env.REACT_APP_SERVER_URL}/api/refreshToken`,
       {},
       {
         headers: {
@@ -33,7 +33,7 @@ async function refreshToken() {
     throw error;
   }
 }
-const socket = io('${process.env.REACT_APP_BACKEND_URL}', {
+const socket = io(`${process.env.REACT_APP_SERVER_URL}`, {
   auth: {
     token: localStorage.getItem('accesstoken')
   }

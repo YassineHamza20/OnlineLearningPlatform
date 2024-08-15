@@ -44,7 +44,7 @@ function Field(props) {
 
     const modifyCall = async () => {
         return new Promise((resolve, reject) => {
-            axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/${firstSegment}/Update`, {
+            axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${firstSegment}/Update`, {
                 type: props.name,
                 newParameter: value
             }, {

@@ -22,7 +22,7 @@ function FourthPhase() {
         setIsLoading(true);
     
         axiosInstance.post(
-            '${process.env.REACT_APP_BACKEND_URL}/speedTest',
+            `${process.env.REACT_APP_SERVER_URL}/speedTest`,
             {},
             {
                 headers: {

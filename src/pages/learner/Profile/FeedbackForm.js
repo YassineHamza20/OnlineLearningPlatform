@@ -26,7 +26,7 @@ const FeedbackForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/learner/feedback', {
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/learner/feedback`, {
         learnerId,
         feedbackText,
       });

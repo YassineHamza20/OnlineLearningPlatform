@@ -3,7 +3,7 @@ import {jwtDecode} from 'jwt-decode';
 
 
 const axiosInstance = axios.create({
-  baseURL: '${process.env.REACT_APP_BACKEND_URL}',
+  baseURL: `${process.env.REACT_APP_SERVER_URL}`,
 });
 
 axiosInstance.interceptors.request.use(
@@ -18,7 +18,7 @@ axiosInstance.interceptors.request.use(
         try {
           // Call your backend to refresh the token
           const refreshedTokenResponse = await axios.post(
-            '${process.env.REACT_APP_BACKEND_URL}/api/refreshToken',
+            `${process.env.REACT_APP_SERVER_URL}/api/refreshToken`,
             {},
             { 
               headers: {

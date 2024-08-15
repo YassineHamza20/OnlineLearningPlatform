@@ -47,7 +47,7 @@
 //   useEffect(() => {
 //     const fetchCourses = async () =>  {
 //       try {
-//         const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/visitor/getCoursesLP')
+//         const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/visitor/getCoursesLP`)
 //         console.log("courses: ", response.data);
 //         setCourseData(response.data.result)
 //       } catch (error) {
@@ -187,7 +187,7 @@ const App = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/visitor/getCoursesLP');
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/visitor/getCoursesLP`);
         console.log("courses: ", response.data);
         setCourseData(response.data.result);
       } catch (error) {
@@ -197,7 +197,7 @@ const App = () => {
 
     const fetchFeedback = async () => {
       try {
-        const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/admin/getAllFeedback');
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/admin/getAllFeedback`);
         const verifiedFeedback = response.data.feedback.filter(fb => fb.feedback_state === 1);
         setFeedbackData(verifiedFeedback);
       } catch (error) {

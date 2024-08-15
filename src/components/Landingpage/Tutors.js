@@ -10,7 +10,7 @@ const Tutors = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-        const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/visitor/getTutorinfoLandingPage')
+        const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/visitor/getTutorinfoLandingPage`)
         setTutors(response.data.result)
         console.log("tutors: ", response.data.result) 
     }

@@ -75,7 +75,7 @@ function TutorProfile() {
         const fetchData = async () => {
             dispatch(setIsLoading(true))
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/details', {}, {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/details`, {}, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`,
                         'Content-Type': 'multipart/form-data' // Set the content type to multipart/form-data
@@ -147,7 +147,7 @@ function TutorProfile() {
         //consuming api to get if there are unread notifs or not 
         const fetchNumberOfUnreadNotifs = async () => {
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/CountUnreadNotifications', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/CountUnreadNotifications`, {
 
                 },  {
                     headers: {
@@ -182,7 +182,7 @@ function TutorProfile() {
 
     useEffect(() => {
         if(tutorData.id) {
-            const socket = io('${process.env.REACT_APP_BACKEND_URL}', {
+            const socket = io(`${process.env.REACT_APP_SERVER_URL}`, {
             auth: {
                 token: localStorage.getItem('accesstoken')
             }
@@ -255,7 +255,7 @@ function TutorProfile() {
 
         const fetchTodaysUpcomingLessons = async () => {
             try {
-                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/getDayLessons', {
+                const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/tutor/getDayLessons`, {
                     date: `${year}-${month}-${dayOfMonth}`
                 }, {
                     headers: {
@@ -324,7 +324,7 @@ function TutorProfile() {
 
     useEffect(() => {
         if(tutorData.id) {
-            const socket = io('${process.env.REACT_APP_BACKEND_URL}', {
+            const socket = io(`${process.env.REACT_APP_SERVER_URL}`, {
             auth: {
                 token: localStorage.getItem('accesstoken')
             }

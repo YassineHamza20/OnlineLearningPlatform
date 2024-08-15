@@ -31,7 +31,7 @@ export default function Voicemsg() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
-    const response = await axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/${segments[1]}/saveMessages`, {
+    const response = await axiosInstance.post(`${process.env.REACT_APP_SERVER_URL}/${segments[1]}/saveMessages`, {
     id: param.uuid,
     msg: text
     })
@@ -65,7 +65,7 @@ export default function Voicemsg() {
       firstname: segments[1] === "learner" ? learnerData.firstname : tutorData.firstname,
       otherUuid: segments[1] === "learner" ? learnerData.uuid : tutorData.uuid 
     } 
-    const socket = io('${process.env.REACT_APP_BACKEND_URL}/', {
+    const socket = io(`${process.env.REACT_APP_SERVER_URL}/`, {
             auth: {
                 token: localStorage.getItem('accesstoken')
             }
