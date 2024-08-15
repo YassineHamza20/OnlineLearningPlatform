@@ -31,21 +31,19 @@ function handleDisconnect() {
     }
   });
 
-  // Keep the connection alive by sending a query every 30 seconds
+  // Keep the connection alive by sending a query every 10 minutes
   setInterval(() => {
     connection.query('SELECT 1', (err) => {
       if (err) {
         console.error('Error keeping the connection alive:', err);
       }
     });
-  }, 60000 * 5);
+  }, 60000 * 10); // 10 minutes
 }
 
 handleDisconnect();
 
 module.exports = connection;
-
-
 
 
 
