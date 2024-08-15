@@ -44,7 +44,7 @@ function VerifEmail({role, user}) {
                 setResendDisabled(false);
             }, timeoutDuration);
             
-            const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/resend/verification_link', {
+            const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/resend/verification_link', {
                 email: user.email,
                 role : role,
                 type: "Signup"

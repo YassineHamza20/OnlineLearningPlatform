@@ -33,7 +33,7 @@ function ForgotPassword() {
 
     const verifyToken = async () => {
         try {
-           const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/verifyForgotPassword', {},
+           const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/verifyForgotPassword', {},
                 { 
                     headers: {
                     Authorization: `Bearer ${param.token}`
@@ -57,7 +57,7 @@ function ForgotPassword() {
         e.preventDefault()
         try {
             setLoading(true)
-            const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/resetpassword', {
+            const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/resetpassword', {
                 password: password
             },
             { 

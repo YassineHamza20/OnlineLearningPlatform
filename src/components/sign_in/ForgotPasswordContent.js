@@ -25,7 +25,7 @@ function ForgotPasswordContent(props) {
         e.preventDefault()
         try {
             setIsLoading(true)
-            const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/forgotpassword', {
+            const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/forgotpassword', {
                 role: firstSegment,
                 email: email,
             })

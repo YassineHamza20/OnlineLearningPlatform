@@ -49,7 +49,7 @@ function CardSignIn(){
                // dispatch(setRecaptchaToken(''))
                 
                 //sending request to the server in order to login
-                const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/regularLogin', {
+                const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/regularLogin', {
                     email: loginData.email, 
                     password: loginData.password, 
                     information: firstSegment, //telling whether it's a learner or tutor

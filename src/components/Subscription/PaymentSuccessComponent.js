@@ -23,7 +23,7 @@ const PaymentSuccessComponent = () => {
             console.log(`Payment success for learnerId: ${learnerId}, subId: ${subId}, paymentId: ${paymentId}, duration: ${duration}`);
 
             // Make the API call to update the backend
-            axios.get('https://onlinelearningplatform-d9w2.onrender.com/learner/payment_success', {
+            axios.get('${process.env.REACT_APP_BACKEND_URL}/learner/payment_success', {
                 params: {
                     learnerId,
                     subId,

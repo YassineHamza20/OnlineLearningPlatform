@@ -25,7 +25,7 @@ function ProfileChange(props) {
 
     const modifyCall = async (value, type) => {
         return new Promise((resolve, reject) => {
-            axiosInstance.post(`https://onlinelearningplatform-d9w2.onrender.com/${firstSegment}/Update`, {
+            axiosInstance.post(`${process.env.REACT_APP_BACKEND_URL}/${firstSegment}/Update`, {
                 type: type,
                 newParameter: value
             }, {

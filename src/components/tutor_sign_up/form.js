@@ -31,7 +31,7 @@ export default function Form() {
         e.preventDefault()
         try {
             dispatch(setIsLoading(true))
-            const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/regsignup', {
+            const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/tutor/regsignup', {
                 email: tutorData.email, 
                 pword: tutorData.password
             })

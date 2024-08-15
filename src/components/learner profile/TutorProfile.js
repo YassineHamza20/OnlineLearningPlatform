@@ -53,7 +53,7 @@ function TutorProfile(props) {
     useEffect(() => {
         const fetchLikedTutors = async () => {
             try {
-                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/LikedTutors', {})
+                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/LikedTutors', {})
                 
                 dispatch(setLikedTutors(response.data.message))
                 
@@ -66,7 +66,7 @@ function TutorProfile(props) {
     const fetchData = async () => {
         try {
           setIsLoading(true);
-          const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/selectedTutor', {
+          const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/selectedTutor', {
             uuid: param.uuid
           }, {
             headers: {
@@ -123,7 +123,7 @@ function TutorProfile(props) {
         const fetchData = async () => {
             try {
                 setIsLoading(true)
-                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/selectedTutor', {
+                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/selectedTutor', {
                     uuid: param.uuid
                 }, {
                     headers: {

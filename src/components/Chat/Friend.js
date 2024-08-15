@@ -23,7 +23,7 @@ export default function Friend() {
 
                 setIsLoading(true)
                 if(segments[1] === "learner"){
-                    const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/selectedTutor', {
+                    const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/selectedTutor', {
                         uuid: param.uuid
                     }, {
                         headers: {
@@ -59,7 +59,7 @@ export default function Friend() {
                     setIsLoading(false)
                 }else {
 
-                    const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/getLearner', {
+                    const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/getLearner', {
                         uuid: param.uuid
                     }, {
                         headers: {

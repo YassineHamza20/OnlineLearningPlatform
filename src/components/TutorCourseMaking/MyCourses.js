@@ -15,7 +15,7 @@ function MyCourses(props) {
         const fetchMyCourses = async () => {
             try {
                 setLoading(true)
-                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/getMyCourses')
+                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/getMyCourses')
                 console.log("myCourses: ", response.data);
                 if(response.data.result.length ===0) {
                     setIsEmpty(true)

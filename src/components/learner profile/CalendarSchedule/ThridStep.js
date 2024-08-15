@@ -29,7 +29,7 @@ function ThirdStep(props) {
     
             console.log("normalTime: ", normalTime);
 
-            const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getFreeTutors', {
+            const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/getFreeTutors', {
                 selectedDate: selectedDate,
                 lessonLength: `${scheduleData.lessonLength} minutes`,
                 lessonTopic: scheduleData.lessonTopic, 

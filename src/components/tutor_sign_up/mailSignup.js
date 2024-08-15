@@ -21,7 +21,7 @@ function MailSignup() {
                 dispatch(setIsLoading(true))
                 //send post request with google token in header
                 const resp = await axios.post(
-                    'https://onlinelearningplatform-d9w2.onrender.com/tutor/signupgoogle',
+                    '${process.env.REACT_APP_BACKEND_URL}/tutor/signupgoogle',
                     {},
                     {
                         headers: {

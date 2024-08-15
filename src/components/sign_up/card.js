@@ -42,7 +42,7 @@ export default function Card() {
     const handleRegularSignup = async () => {
         try {
             dispatch(setIsLoading(true))
-            const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/regular_signup', {
+            const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/regular_signup', {
                 email: userData.email, 
                 pword: userData.password,
                 pfp: userData.pic

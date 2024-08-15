@@ -61,7 +61,7 @@ const ReviewForm = ({ isOpen, onClose, onReviewSubmitted }) => {
     console.log('Submitting review data:', reviewData);
 
     try {
-      const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/learner/review', reviewData);
+      const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/learner/review', reviewData);
       setMessage(response.data.message);
       setReview('');
       onReviewSubmitted(); // Call the callback function

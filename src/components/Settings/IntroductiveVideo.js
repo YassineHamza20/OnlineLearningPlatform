@@ -39,7 +39,7 @@ function IntroductiveVideo(props) {
                 reader.onload = async () => {
                     const videoDataURL = reader.result;   
                     try {
-                        const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/tutor/UpdateFile', formData, 
+                        const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/tutor/UpdateFile', formData, 
                             {
                                 headers: {
                                     'Authorization': `Bearer ${localStorage.getItem('accesstoken')}`,

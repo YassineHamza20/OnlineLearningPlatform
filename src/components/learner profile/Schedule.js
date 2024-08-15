@@ -44,7 +44,7 @@ function Schedule(props) {
                 let response;
                 //if we're scheduling from a tutors profile 
                 if(location.pathname.startsWith('/learner/profile/Tutor/')){
-                    response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getTutorAndLearnerBusyTimes', {
+                    response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/getTutorAndLearnerBusyTimes', {
                         selectedDate: scheduleData.selectedDate,
                         tutorId: selectedTutorData.id
                     }, {
@@ -55,7 +55,7 @@ function Schedule(props) {
                     console.log("response coming from getTutorAndLearnerBusyTimes");
                 }else {
                     //if we're scheduling from general calendar
-                    response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/getBusyTimes', {
+                    response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/getBusyTimes', {
                         selectedDate: scheduleData.selectedDate
                     }, {
                         headers: {

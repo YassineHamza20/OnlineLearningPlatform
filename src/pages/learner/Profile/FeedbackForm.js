@@ -26,7 +26,7 @@ const FeedbackForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('https://onlinelearningplatform-d9w2.onrender.com/learner/feedback', {
+      const response = await axios.post('${process.env.REACT_APP_BACKEND_URL}/learner/feedback', {
         learnerId,
         feedbackText,
       });

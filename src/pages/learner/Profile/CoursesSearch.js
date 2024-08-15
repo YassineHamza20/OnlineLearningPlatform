@@ -35,7 +35,7 @@ function CoursesSearch() {
         const fetchMyCourses = async () => {
             try {
                 setLoading(true)
-                const response = await axiosInstance.post('https://onlinelearningplatform-d9w2.onrender.com/learner/getAllCourses')
+                const response = await axiosInstance.post('${process.env.REACT_APP_BACKEND_URL}/learner/getAllCourses')
                 console.log("myCourses: ", response.data);
                 if (response.data.result.length === 0) {
                     setIsEmpty(true)
