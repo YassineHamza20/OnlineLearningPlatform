@@ -1,3 +1,50 @@
+// const mysql = require('mysql');
+
+// const dbConfig = {
+//   host: '9antra.tn',
+//   user: 'kantralang',
+//   password: 'kantralangp@ssword',
+//   database: 'kantralang',
+//   port: 3306
+// };
+
+// let connection;
+
+// function handleDisconnect() {
+//   connection = mysql.createConnection(dbConfig);
+
+//   connection.connect((err) => {
+//     if (err) {
+//       console.error('Error connecting to the database:', err);
+//       setTimeout(handleDisconnect, 20 00); // Reconnect after 2 seconds
+//     } else {
+//       console.log('Connected to the database as id', connection.threadId);
+//     }
+//   });
+
+//   connection.on('error', (err) => {
+//     console.error('Database error:', err);
+//     if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+//       handleDisconnect(); // Reconnect if connection is lost
+//     } else {
+//       throw err;
+//     }
+//   });
+
+//   // Keep the connection alive by sending a query every 10 minutes
+//   setInterval(() => {
+//     connection.query('SELECT 1', (err) => {
+//       if (err) {
+//         console.error('Error keeping the connection alive:', err);
+//       }
+//     });
+//   }, 60000 * 10); // 10 minutes
+// }
+
+// handleDisconnect();
+
+// module.exports = connection;
+
 const mysql = require('mysql');
 
 const dbConfig = {
@@ -8,42 +55,41 @@ const dbConfig = {
   port: 3306
 };
 
-let connection;
+const pool = mysql.createPool({
+  connectionLimit: 10, // Adjust based on your needs
+  ...dbConfig
+});
 
-function handleDisconnect() {
-  connection = mysql.createConnection(dbConfig);
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error('Error getting connection from pool:', err);
+    return;
+  }
+  console.log('Connected to the database as id', connection.threadId);
 
-  connection.connect((err) => {
-    if (err) {
-      console.error('Error connecting to the database:', err);
-      setTimeout(handleDisconnect, 2000); // Reconnect after 2 seconds
-    } else {
-      console.log('Connected to the database as id', connection.threadId);
-    }
-  });
+  // Use the connection for queries
+  // Remember to release the connection back to the pool when done
+  connection.release();
+});
 
-  connection.on('error', (err) => {
-    console.error('Database error:', err);
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-      handleDisconnect(); // Reconnect if connection is lost
-    } else {
-      throw err;
-    }
-  });
+module.exports = pool;
 
-  // Keep the connection alive by sending a query every 10 minutes
-  setInterval(() => {
-    connection.query('SELECT 1', (err) => {
-      if (err) {
-        console.error('Error keeping the connection alive:', err);
-      }
-    });
-  }, 60000 * 10); // 10 minutes
-}
 
-handleDisconnect();
 
-module.exports = connection;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
