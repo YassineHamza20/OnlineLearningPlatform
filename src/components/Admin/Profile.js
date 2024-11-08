@@ -9,13 +9,13 @@ function Profile(props) {
 
     return (
             <div className="max-w-md mx-auto mt-auto bg-white shadow-lg rounded-lg overflow-hidden">
-                <div className="flex justify-center items-center py-4 bg-lightg">
+                {/* <div className="flex justify-center items-center py-4 bg-lightg">
                     <img
                     className="w-28 h-28 rounded-full border-4 border-gray-200"
                     src="https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg"
                     alt="Admin Avatar"
                     />
-                </div>
+                </div> */}
                 <div className="px-6 py-4">
                     <div className="flex flex-col space-y-4">
                     <div className="flex items-center justify-between">
