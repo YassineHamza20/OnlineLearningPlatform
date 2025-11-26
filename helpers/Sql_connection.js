@@ -52,35 +52,62 @@
 
 
 
+// helpers/Sql_connection.js
 const mysql = require('mysql');
 
-const connection = mysql.createConnection({
+const dbConfig = {
   host: '7oxpc7.h.filess.io',
   user: 'learning_recenttin',
   password: '2db45f888a04963ff3d2acfeee5d351bebad7f24',
   database: 'learning_recenttin',
   port: 61002
+};
+
+// Create pool with minimal connections for free hosting
+const pool = mysql.createPool({
+  connectionLimit: 2, // Very small for free hosting
+  ...dbConfig,
+  connectTimeout: 10000,
+  acquireTimeout: 10000,
+  timeout: 10000,
+  charset: 'utf8mb4'
 });
 
-connection.connect((err) => {
+// Test connection on startup
+pool.getConnection((err, connection) => {
   if (err) {
-    console.error('Database connection failed:', err.message);
-    // Don't exit - let the server run without DB connection
+    console.error('❌ Initial database connection failed:', err.code);
+    console.log('⚠️  Server will start but database operations may fail');
     return;
   }
-  console.log('✅ Connected to database with single connection');
+  
+  console.log('✅ Database connected successfully');
+  connection.release(); // Release immediately after test
 });
 
-// Handle connection errors
-connection.on('error', (err) => {
-  console.error('Database error:', err.code);
+// Handle pool errors gracefully
+pool.on('error', (err) => {
+  console.error('🔄 Pool error:', err.code);
   if (err.code === 'PROTOCOL_CONNECTION_LOST') {
     console.log('Database connection was closed.');
+  } else if (err.code === 'ER_CON_COUNT_ERROR') {
+    console.log('Database has too many connections.');
+  } else if (err.code === 'ECONNREFUSED') {
+    console.log('Database connection was refused.');
   }
 });
 
-module.exports = connection;
+// Handle connection acquisition
+pool.on('acquire', (connection) => {
+  console.log('🔗 Connection %d acquired', connection.threadId);
+});
 
+// Handle connection release
+pool.on('release', (connection) => {
+  console.log('🔓 Connection %d released', connection.threadId);
+});
+
+module.exports = pool;
 
 
 
