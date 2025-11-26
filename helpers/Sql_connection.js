@@ -45,40 +45,41 @@
 
 // module.exports = connection;
 
+
+
+
+
+
+
+
 const mysql = require('mysql');
 
-const dbConfig = {
-  host: '9antra.tn',
-  user: 'kantralang',
-  password: 'kantralangp@ssword',
-  database: 'kantralang',
-  port: 3306
-};
-
-const pool = mysql.createPool({
-  connectionLimit: 10, // Adjust based on your needs
-  ...dbConfig
+const connection = mysql.createConnection({
+  host: '7oxpc7.h.filess.io',
+  user: 'learning_recenttin',
+  password: '2db45f888a04963ff3d2acfeee5d351bebad7f24',
+  database: 'learning_recenttin',
+  port: 61002
 });
 
-pool.getConnection((err, connection) => {
+connection.connect((err) => {
   if (err) {
-    console.error('Error getting connection from pool:', err);
+    console.error('Database connection failed:', err.message);
+    // Don't exit - let the server run without DB connection
     return;
   }
-  console.log('Connected to the database as id', connection.threadId);
-
-  // Use the connection for queries
-  // Remember to release the connection back to the pool when done
-  connection.release();
+  console.log('✅ Connected to database with single connection');
 });
 
-module.exports = pool;
+// Handle connection errors
+connection.on('error', (err) => {
+  console.error('Database error:', err.code);
+  if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+    console.log('Database connection was closed.');
+  }
+});
 
-
-
-
-
-
+module.exports = connection;
 
 
 

@@ -239,7 +239,115 @@ app.get('/check', (req, res) => {
   res.status(200).send('Server is running');
 });
 
+////////////////////
+// Add this with your other routes, before the pingServer function
+// In your routes, always release connections
+app.get('/some-route', (req, res) => {
+  pool.getConnection((err, connection) => {
+    if (err) {
+      console.error('Connection error:', err);
+      return res.status(500).json({ error: 'Database unavailable' });
+    }
+    
+    connection.query('SELECT * FROM table', (queryErr, results) => {
+      connection.release(); // ← CRITICAL: Always release!
+      
+      if (queryErr) {
+        return res.status(500).json({ error: queryErr.message });
+      }
+      
+      res.json(results);
+    });
+  });
+});
+// Simple database test endpoint
+app.get('/test-db', (req, res) => {
+  const db = require('./helpers/Sql_connection'); // Your database connection
+  
+  db.getConnection((err, connection) => {
+    if (err) {
+      console.error('❌ Database Connection Error:', err.code);
+      return res.status(500).json({
+        status: 'error',
+        message: 'Database connection failed',
+        error: err.code,
+        details: err.message
+      });
+    }
+    
+    console.log('✅ Got database connection, testing query...');
+    
+    // Test a simple query
+    connection.query('SELECT 1 + 1 AS result, NOW() AS time', (queryErr, results) => {
+      connection.release(); // Always release connection
+      
+      if (queryErr) {
+        console.error('❌ Query Error:', queryErr.code);
+        return res.status(500).json({
+          status: 'error',
+          message: 'Database query failed',
+          error: queryErr.code,
+          details: queryErr.message
+        });
+      }
+      
+      console.log('✅ Database test successful!');
+      res.json({
+        status: 'success',
+        message: 'Database is working correctly',
+        data: {
+          testCalculation: results[0].result,
+          serverTime: results[0].time,
+          connection: 'OK'
+        }
+      });
+    });
+  });
+});
 
+// More comprehensive test with your actual tables
+app.get('/test-db-tables', async (req, res) => {
+  const db = require('./helpers/Sql_connection');
+  
+  try {
+    const connection = await new Promise((resolve, reject) => {
+      db.getConnection((err, connection) => {
+        if (err) reject(err);
+        else resolve(connection);
+      });
+    });
+    
+    // Test multiple queries
+    const [tables] = await new Promise((resolve, reject) => {
+      connection.query('SHOW TABLES', (err, results) => {
+        if (err) reject(err);
+        else resolve([results]);
+      });
+    });
+    
+    connection.release();
+    
+    res.json({
+      status: 'success',
+      message: `Found ${tables.length} tables in database`,
+      tables: tables.map(t => Object.values(t)[0]),
+      database: '4494471_learning'
+    });
+    
+  } catch (error) {
+    console.error('❌ Database test failed:', error.message);
+    res.status(500).json({
+      status: 'error',
+      message: 'Database test failed',
+      error: error.code,
+      details: error.message
+    });
+  }
+});
+
+// Your existing code continues here...
+ 
+// ... rest of your server.js code
 const https = require('https');
 
 // Data to send with the POST request (if needed)
